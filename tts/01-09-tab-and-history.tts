@@ -1,0 +1,9 @@
+Tab completion and history, the two shortcuts you'll use most.
+
+These two shell features will save you more keystrokes than anything else you learn, so it's worth building the habit early.
+
+The first is tab completion. You start typing a command or a path, and you press the Tab key. If there's only one possible way to finish it, the shell just completes it for you. If there are several possibilities, press Tab twice and it shows you the list. For example, type list, space, slash-e-t, then Tab, and the shell fills it out to slash-e-t-c. Tab completes commands, paths, filenames, and even some option names. Typing out a long path like slash-u-s-r-slash-share-slash-applications by hand is a mistake. Tab through it instead. It's faster and it's typo-proof.
+
+The second feature is command history. Every command you run gets recorded. The simplest way to get one back is the up and down arrow keys. But there are faster jumps. The word history shows you your recent commands, each with a number. Two exclamation marks re-runs the previous command, which is wonderful as sudo, bang-bang, when you forgot to put sudo in front. Bang forty-two re-runs command number forty-two. And bang-l-s re-runs the most recent command that started with l-s.
+
+The one to really learn is Control-R. Press it, start typing, and it searches backwards through your history for the most recent match. Press Enter to run it, or the right arrow to edit it first. Your history even survives across sessions, saved in a file called bash-history in your home directory.

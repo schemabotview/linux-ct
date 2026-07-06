@@ -1,0 +1,13 @@
+Getting a Linux to practise on.
+
+You can read about Linux all day, but you only learn it by typing. So the first job is to get yourself a Linux prompt to play with. There are four common ways, and I'll go from easiest to most involved.
+
+The first, and the most authentic, is a cloud V-M. You spin up a small server on a provider like DigitalOcean, A-W-S Lightsail, Linode, or Hetzner. It costs a few dollars a month. You connect to it over S-S-H, which we cover in module eight, and you have a genuine Linux server that you can break and rebuild as much as you like.
+
+The second is Multipass, from Canonical. It's free, and it gives you a one-command Ubuntu virtual machine right on your laptop. No signup, and it runs on Mac, Windows, or Linux hosts. You launch it, you shell into it, and you're in.
+
+The third, if you're on Windows, is W-S-L two, the Windows Subsystem for Linux. It runs a real Linux kernel alongside Windows with almost no friction, and your files are shared between the two.
+
+The fourth is a Docker container. If you already have Docker, one line drops you straight into a disposable Ubuntu shell. It's instant, but it has no systemd by default, which limits module nine, and nothing persists unless you mount a volume.
+
+For this course, pick Multipass if you're on a laptop, or a cheap cloud V-M if you want the most realistic experience. Then stick with it. Switching environments halfway through is just a distraction.

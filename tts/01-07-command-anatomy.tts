@@ -1,0 +1,11 @@
+The anatomy of a command.
+
+Almost every command in Linux follows the exact same shape. First the command, then some options, then some arguments.
+
+The command is simply the program you want to run, like list, or copy, or grep. The options, which people also call flags or switches, change how the command behaves. They come in two forms. The short form is a single letter after a single dash, like dash-l. The long form is a whole word after two dashes, like dash-dash-long. And often they're just two names for the same thing: list dash-a and list dash-dash-all do exactly the same job. The arguments are what the command actually operates on, usually filenames, paths, or text.
+
+Let's break one down. Copy, dash-r, slash-home-slash-ubuntu-slash-work, space, slash-backup. Here copy is the command. Dash-r is an option, meaning recursive, copy the whole folder tree. And then there are two arguments: the source you're copying from, and the destination you're copying to.
+
+Two small tricks worth knowing. Some options carry their own value, like grep dash-dash-max-count equals five. And a lone pair of dashes, on its own, marks the end of the options. After it, everything is treated as an argument, even if it starts with a dash. That's the trick for searching for a literal dash character.
+
+The convention is always command, then options, then arguments, in that order. Stick to it, and your commands stay readable.

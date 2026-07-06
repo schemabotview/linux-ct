@@ -1,0 +1,11 @@
+What Linux is, and the shape of the whole system.
+
+Ask ten people what Linux is and you'll get ten answers, and confusingly all of them are correct. Let's untangle that.
+
+Strictly speaking, Linux is just one program: the kernel. The kernel is the piece of software that talks directly to your hardware, the C-P-U, the memory, the disks, the network cards. Every time a program wants to read a file or draw to the screen, it ultimately asks the kernel to do it for it.
+
+But you can't actually use a kernel on its own. It has no command prompt, no programs to run, no way for you to interact with it. You need a whole layer of software wrapped around it: a shell to type into, basic commands like list and copy, and a way to install more. When all of that is bundled together, you get a Linux distribution, or distro for short. Ubuntu, Debian, Fedora, Red Hat, Arch. They make different choices about what to ship, but underneath they all run the same kernel.
+
+Hold on to this picture, because it's the map the whole course zooms into. At the bottom is your hardware. Just above it sits the kernel, which is what the word Linux technically means. Above the kernel are the userspace tools the distribution adds, like bash and list and systemd. And at the very top are your own programs.
+
+Why is this worth your time? Almost every server on the internet runs Linux. Every Android phone is built on it. The cloud is Linux. Containers are Linux. All five hundred of the world's top supercomputers run Linux. If you work anywhere near software, knowing Linux isn't optional, it's the floor. By the end of this course you'll be ready for the L-F-C-S exam.

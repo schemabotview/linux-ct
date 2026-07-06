@@ -1,0 +1,9 @@
+Listing what's in a directory, with the list command.
+
+A directory in Linux is exactly the same idea as a folder on Windows or a Mac. It's a container that holds files and other directories. The command to list what's inside one is l-s, short for list.
+
+On its own, list shows you the current directory. But give it a path and it lists that path instead. So list on its own shows where you are, list slash-e-t-c shows the etc directory, and list slash shows the very top of the filesystem.
+
+List takes a handful of flags that change how it shows things, and a few of them you'll use constantly. Dash-l, for long format, puts one file per line and shows the permissions, the owner, the size, and the modification time. Dash-a, for all, also shows hidden files, which are the ones whose names start with a dot. Dash-h gives you human-readable sizes, like kilobytes and megabytes, instead of raw byte counts, and it only makes sense together with dash-l. Dash-t sorts by modification time, newest first. And dash-r reverses whatever sort you've got.
+
+The nice thing is that flags combine. List dash-l-a-h is exactly the same as writing the three flags separately. You'll type list dash-l-a and list dash-l-h so often that they're genuinely worth memorising right now.

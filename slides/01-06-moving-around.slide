@@ -1,0 +1,29 @@
+# Moving around — `cd`
+
+**`cd`** changes which directory you're in. A few shorthands save constant typing.
+
+## The shorthands
+
+| Type | Means |
+|---|---|
+| **`~`** | your **home** (`/home/ubuntu`) |
+| **`.`** | **current** directory |
+| **`..`** | **parent** (one level up) |
+| **`-`** | **previous** directory (toggle) |
+| **`/`** | the **root** |
+
+```bash
+cd /etc      # go there
+cd ..        # up one level
+cd ~         # home (or just: cd)
+cd -         # toggle back
+```
+
+## Absolute vs relative
+
+- Starts with **`/`** → **absolute**, from the root
+- Doesn't → **relative**, from where you are
+
+From `/var`: `cd log` → `/var/log`, but `cd /log` → top-level (likely missing).
+
+**After any `cd`, run `pwd`** to confirm.

@@ -1,0 +1,27 @@
+# Listing a directory — `ls`
+
+A **directory** is just a folder — a container for files. **`ls`** lists one.
+
+## Where to list
+
+```bash
+ls          # current directory
+ls /etc     # a given path
+ls /        # the root
+```
+
+## The flags you'll live in
+
+- **`-l`** — **long**: permissions, owner, size, time
+- **`-a`** — **all**: include hidden **`.dotfiles`**
+- **`-h`** — **human** sizes (K/M/G) — with `-l`
+- **`-t`** — sort by **time**, newest first
+- **`-r`** — **reverse** the sort
+
+## They combine
+
+```bash
+ls -lah   ==   ls -l -a -h
+```
+
+**Memorise now:** `ls -la` and `ls -lh` — you'll type them all day.

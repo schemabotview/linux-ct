@@ -1,0 +1,23 @@
+# The filesystem hierarchy
+
+**No drive letters.** Every disk, device, and file hangs off one tree rooted at **`/`**.
+
+## The ones that matter
+
+- **`/home`** — your stuff (`/home/<you>`)
+- **`/etc`** — **config**, plain-text, editable
+- **`/var`** — changes at runtime — **`/var/log`**
+- **`/tmp`** — scratch, wiped on reboot
+- **`/usr`** — installed software (`/usr/bin`)
+- **`/boot`** — kernel + bootloader
+- **`/dev`** — device files (`/dev/sda`, `/dev/null`)
+- **`/proc`, `/sys`** — **virtual**, not on disk
+
+## Don't memorise — remember four
+
+1. config → **`/etc`**
+2. your stuff → **`/home/<you>`**
+3. logs → **`/var/log`**
+4. scratch → **`/tmp`**
+
+The rest you'll meet as you need them.

@@ -1,0 +1,9 @@
+Logging in, and the shell prompt.
+
+The first time you log into a Linux system, you'll see a prompt. It's a line that ends in a dollar sign or a hash, and it's waiting for you to type. Something like: ubuntu, at, linux-lab, colon, tilde, dollar.
+
+Let's read that left to right. The first part, ubuntu, is your username, the account you logged in as. The at sign is just a separator. Then linux-lab is the hostname, the name of this particular machine. The tilde is the current directory, and tilde is shorthand for your home directory. And finally the dollar sign is the prompt symbol. A dollar means you're a regular user. A hash would mean you're the root user, the administrator, and that's your signal to slow down and be careful.
+
+That prompt is drawn by the shell, which is the program that actually reads what you type and runs it. On most Linux systems the shell is called bash.
+
+Here's what happens every time you type a command and press Enter. The shell reads your line. It figures out which command you meant. It runs that command. It prints any output. And then it shows you a fresh prompt and waits again. Read, run, print, prompt again. That loop is your entire conversation with Linux, and everything else in this course is just a variation on it.

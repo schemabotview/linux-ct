@@ -1,0 +1,22 @@
+# What Linux is
+
+Ten answers, all correct — because "Linux" names **two things**: the kernel, and the whole system built around it.
+
+## The kernel
+
+**Linux** is one program: the **kernel** — the software that talks to **hardware** (CPU, RAM, disk, network). Every file read, every pixel drawn, is ultimately a request to the kernel.
+
+## The distribution
+
+A kernel alone has **no prompt**. Wrap it in a **shell**, commands (`ls`, `cp`), and a package manager and you get a **distro** — Ubuntu, Debian, Fedora, RHEL. Same kernel underneath.
+
+## The map (this whole course)
+
+```
+Your programs        firefox · python
+Userspace tools      bash · ls · systemd
+The kernel           ← "Linux"
+Hardware             CPU · RAM · disk · NIC
+```
+
+**Why bother:** servers, Android, the **cloud**, containers, all 500 top supercomputers — Linux. It's the **floor**. Goal: **zero → LFCS**.

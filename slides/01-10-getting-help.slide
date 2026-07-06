@@ -1,0 +1,27 @@
+# Getting help
+
+Don't memorise commands — learn to **look them up**. Three layers, all **offline**.
+
+## `<command> --help`
+
+A short built-in summary. **Fastest** for a quick reminder.
+```bash
+ls --help
+```
+
+## `man <command>`
+
+The full **manual page**. Inside: **Space** next · **`/text`** search · **`q`** quit.
+
+Numbered **sections** — same name, different topic:
+- `man 1 passwd` → the **command**
+- `man 5 passwd` → the **file format**
+
+## `apropos <keyword>`
+
+Search man-page descriptions — *"I don't know the command."*
+```bash
+apropos compress
+```
+
+**The flow when stuck:** `--help` → `man` → `apropos`.

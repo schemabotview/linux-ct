@@ -1,0 +1,11 @@
+Getting help, when you're stuck.
+
+Here's a liberating idea: you do not need to memorise every command. What you need is to know how to look up the thing you've forgotten. And Linux ships with three layers of help, all of them available locally, with no internet connection required.
+
+The first is man, short for manual. You type man and then a command name, and you get the manual page for that command, the most thorough reference there is. While you're inside a man page, the Space bar moves you down a page, slash followed by some text searches forwards, the letter n jumps to the next match, and the letter q quits back to the shell. One subtlety: manual pages are organised into numbered sections. So man five passwd gives you the format of the passwd file, while man one passwd gives you the command for changing your password. Same name, genuinely different topics.
+
+The second layer is faster. Almost every command accepts dash-dash-help, and it prints a short summary built right into the program. That's the quickest way to jog your memory.
+
+The third is apropos, spelled a-p-r-o-p-o-s. It searches the descriptions of every installed man page by keyword. It's the tool for when you don't know the command's name, you only know what you want to do. Apropos compress lists everything to do with compression.
+
+So the flow when you're stuck is: try dash-dash-help first, because it's quickest. Then reach for man when you want the full detail. And fall back to apropos when you don't even know what the command is called.

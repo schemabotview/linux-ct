@@ -1,0 +1,119 @@
+{
+  "concept": "Linux",
+  "modules": [
+    {
+      "id": "01-getting-started-with-linux",
+      "title": "Getting Started with Linux",
+      "sections": [
+        {
+          "heading": "What Linux is — and the shape of the whole system",
+          "notebook": "notebooks/01-01-what-linux-is.ipynb",
+          "slide": "slides/01-01-what-linux-is.slide",
+          "audio": "audio/01-01-what-linux-is.wav",
+          "scene": "linux",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Getting a Linux to practise on",
+          "notebook": "notebooks/01-02-getting-linux.ipynb",
+          "slide": "slides/01-02-getting-linux.slide",
+          "audio": "audio/01-02-getting-linux.wav",
+          "scene": "linux",
+          "focus": "lx-userspace",
+          "highlight": ["lx-userspace"],
+          "spine": true
+        },
+        {
+          "heading": "Logging in — the shell prompt and your session",
+          "notebook": "notebooks/01-03-logging-in.ipynb",
+          "slide": "slides/01-03-logging-in.slide",
+          "audio": "audio/01-03-logging-in.wav",
+          "scene": "linux",
+          "focus": "lx-shell",
+          "highlight": ["lx-shell"],
+          "spine": true
+        },
+        {
+          "heading": "Where am I? — pwd, whoami, and your first commands",
+          "notebook": "notebooks/01-04-where-am-i.ipynb",
+          "slide": "slides/01-04-where-am-i.slide",
+          "audio": "audio/01-04-where-am-i.wav",
+          "scene": "linux",
+          "focus": "lx-shell",
+          "highlight": ["lx-shells"],
+          "spine": true
+        },
+        {
+          "heading": "Listing a directory — ls",
+          "notebook": "notebooks/01-05-listing-ls.ipynb",
+          "slide": "slides/01-05-listing-ls.slide",
+          "audio": "audio/01-05-listing-ls.wav",
+          "scene": "linux",
+          "focus": "lx-fhs",
+          "highlight": ["lx-fhs-home"],
+          "spine": true
+        },
+        {
+          "heading": "Moving around — cd, ., .., ~",
+          "notebook": "notebooks/01-06-moving-around.ipynb",
+          "slide": "slides/01-06-moving-around.slide",
+          "audio": "audio/01-06-moving-around.wav",
+          "scene": "linux",
+          "focus": "lx-fhs",
+          "highlight": ["lx-fhs-home", "lx-fhs-etc"],
+          "spine": true
+        },
+        {
+          "heading": "The anatomy of a command",
+          "notebook": "notebooks/01-07-command-anatomy.ipynb",
+          "slide": "slides/01-07-command-anatomy.slide",
+          "audio": "audio/01-07-command-anatomy.wav",
+          "scene": "linux",
+          "focus": "lx-shell",
+          "highlight": ["lx-shells", "lx-expansion"],
+          "spine": true
+        },
+        {
+          "heading": "A tour of the filesystem hierarchy",
+          "notebook": "notebooks/01-08-filesystem-tour.ipynb",
+          "slide": "slides/01-08-filesystem-tour.slide",
+          "audio": "audio/01-08-filesystem-tour.wav",
+          "scene": "linux",
+          "focus": "lx-fhs",
+          "highlight": [
+            "lx-fhs-proc",
+            "lx-fhs-sys",
+            "lx-fhs-dev",
+            "lx-fhs-etc",
+            "lx-fhs-var",
+            "lx-fhs-home",
+            "lx-fhs-tmp",
+            "lx-fhs-run"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Tab completion and history",
+          "notebook": "notebooks/01-09-tab-and-history.ipynb",
+          "slide": "slides/01-09-tab-and-history.slide",
+          "audio": "audio/01-09-tab-and-history.wav",
+          "scene": "linux",
+          "focus": "lx-shell",
+          "highlight": ["lx-shells"],
+          "spine": true
+        },
+        {
+          "heading": "Getting help — man, --help, apropos",
+          "notebook": "notebooks/01-10-getting-help.ipynb",
+          "slide": "slides/01-10-getting-help.slide",
+          "audio": "audio/01-10-getting-help.wav",
+          "scene": "linux",
+          "focus": "lx-shell",
+          "highlight": ["lx-shells"],
+          "spine": true
+        }
+      ]
+    }
+  ]
+}

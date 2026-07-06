@@ -1,0 +1,23 @@
+# Tab completion & history
+
+Two features that save more keystrokes than anything else.
+
+## Tab — complete it for you
+
+- Type part of a command/path → **Tab** completes it
+- **Tab twice** → list all matches
+- `ls /et` + Tab → **`ls /etc/`**
+
+Completes commands, paths, filenames, options. **Never hand-type a long path.**
+
+## History — recall what you ran
+
+- **`history`** — recent commands, numbered
+- **`!!`** — re-run last (→ **`sudo !!`**)
+- **`!42`** — re-run number 42
+- **`!ls`** — last one starting `ls`
+- **Ctrl-R** — **reverse-search**: type, it finds the match
+
+Persists in **`~/.bash_history`** (~1000 lines).
+
+**Tab and Ctrl-R are the two habits that make you fast.**

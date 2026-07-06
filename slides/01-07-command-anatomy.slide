@@ -1,0 +1,30 @@
+# Anatomy of a command
+
+Every command is the **same shape**:
+
+```
+command   [options]   [arguments]
+```
+
+## The three parts
+
+- **`command`** — the **program** (`ls`, `cp`, `grep`)
+- **`options`** — change **how** it behaves
+  - short: **`-l`** · long: **`--long`** (same thing)
+- **`arguments`** — **what** it acts on (files, text)
+
+## Worked example
+
+```
+cp  -r  /home/ubuntu/work  /backup
+│   │   └──────── source & destination
+│   └── option: recursive
+└── command
+```
+
+## Two tricks
+
+- Options can take a **value**: `grep --max-count=5 'error' file`
+- Lone **`--`** = end of options → `grep -- '-x' file` (literal dash)
+
+**Convention:** `command → options → arguments`.

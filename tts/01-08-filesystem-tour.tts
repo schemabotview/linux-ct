@@ -1,0 +1,7 @@
+A first tour of the filesystem hierarchy.
+
+Unlike Windows, Linux doesn't have drive letters, no C-drive or D-drive. Instead, every disk, every device, and every file lives under a single tree, rooted at one slash, which we just call the root.
+
+There are a handful of top-level directories you'll meet again and again. Slash-home holds user home directories, so your personal stuff lives under slash-home-slash-your-name. The root user gets its own home at slash-root, deliberately kept separate. Slash-e-t-c holds system configuration, all plain text you can edit; think of it as where all the settings live. Slash-var holds things that change while the system runs, and that's where you'll find the logs, under slash-var-slash-log. Slash-t-m-p is temporary scratch space that anyone can write to and that's usually wiped on reboot. Slash-u-s-r is where most installed software lives. Slash-boot holds the kernel image and the bootloader. Slash-dev holds device files. And slash-proc and slash-sys are virtual directories that expose information about processes and the kernel; they aren't really on disk at all.
+
+Please don't try to memorise all of that. Just hold on to four things: configuration lives in slash-e-t-c, your own stuff lives in slash-home, logs live in slash-var-slash-log, and scratch space lives in slash-t-m-p. Everything else you'll pick up naturally as you need it.

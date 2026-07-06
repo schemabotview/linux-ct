@@ -1,0 +1,28 @@
+# Logging in
+
+First thing you see: a **prompt**, waiting for you to type.
+
+```
+ubuntu@linux-lab:~$
+```
+
+## Reading the prompt
+
+- **`ubuntu`** — your **username**
+- **`linux-lab`** — the **hostname**
+- **`~`** — current directory (**home**)
+- **`$`** — regular user · **`#`** — **root** (careful!)
+
+## The shell reads it
+
+The **shell** (usually **bash**) draws the prompt and runs what you type.
+
+## The loop — every session is this
+
+1. **Read** your line
+2. Figure out the **command**
+3. **Run** it
+4. **Print** output
+5. Fresh prompt, **wait**
+
+**Read → run → print → prompt.** Everything in this course is a variation on that loop.

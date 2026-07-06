@@ -1,0 +1,25 @@
+# Where am I?
+
+Five tiny **orientation** commands — no arguments, just type and Enter.
+
+## Who am I
+
+- **`whoami`** — your **username**
+- **`hostname`** — this **machine's** name
+
+## Where am I
+
+- **`pwd`** — **print working directory** (where you are now)
+
+## What else
+
+- **`date`** — system date & time
+- **`uname -a`** — **kernel** info (`-a` = all)
+
+```bash
+whoami        # ubuntu
+pwd           # /home/ubuntu
+uname -a      # Linux linux-lab ...
+```
+
+**Reflex:** unsure after an `ssh`, a `sudo`, or a `cd`? → **`whoami`** and **`pwd`**.

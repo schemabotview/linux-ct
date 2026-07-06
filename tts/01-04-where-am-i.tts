@@ -1,0 +1,15 @@
+Where am I? Your first commands.
+
+Here are five tiny commands that answer the two most basic questions: who am I, and where am I. Every one of them takes no arguments at all. You just type the name and hit Enter.
+
+The first is whoami, spelled who-a-m-i, all one word. It prints your username. That's surprisingly useful once you start switching between accounts and lose track.
+
+The second is hostname, which prints the name of the machine you're on.
+
+The third is p-w-d, which stands for print working directory. It tells you exactly where you are in the filesystem right now.
+
+The fourth is date, which prints the system's current date and time.
+
+And the fifth is uname, spelled u-name, with the dash-a flag. That prints information about the kernel. The dash-a just means give me all of it.
+
+Think of these as your orientation tools. Any time you're not sure who you are or where you are, maybe after connecting over S-S-H, or after switching users with sudo, or after a change-directory you're not certain worked, whoami and p-w-d are the two commands you'll reach for without even thinking.
