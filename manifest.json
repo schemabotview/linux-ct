@@ -114,6 +114,120 @@
           "spine": true
         }
       ]
+    },
+    {
+      "id": "02-the-shell-and-its-mechanics",
+      "title": "The Shell and Its Mechanics",
+      "sections": [
+        {
+          "heading": "The shell as a machine — line in, program out",
+          "notebook": "notebooks/02-01-shell-pipeline.ipynb",
+          "slide": "slides/02-01-shell-pipeline.slide",
+          "audio": "audio/02-01-shell-pipeline.wav",
+          "scene": "linux",
+          "spine": true,
+          "role": "hook"
+        },
+        {
+          "heading": "Keyboard shortcuts",
+          "notebook": "notebooks/02-02-keyboard-shortcuts.ipynb",
+          "slide": "slides/02-02-keyboard-shortcuts.slide",
+          "audio": "audio/02-02-keyboard-shortcuts.wav",
+          "scene": "linux",
+          "focus": "lx-shells",
+          "highlight": ["lx-bash"],
+          "spine": true
+        },
+        {
+          "heading": "Variables — naming values",
+          "notebook": "notebooks/02-03-variables.ipynb",
+          "slide": "slides/02-03-variables.slide",
+          "audio": "audio/02-03-variables.wav",
+          "scene": "linux",
+          "focus": "lx-expansion",
+          "highlight": ["lx-pvar"],
+          "spine": true
+        },
+        {
+          "heading": "The environment — variables that programs inherit",
+          "notebook": "notebooks/02-04-the-environment.ipynb",
+          "slide": "slides/02-04-the-environment.slide",
+          "audio": "audio/02-04-the-environment.wav",
+          "scene": "linux",
+          "focus": "lx-process",
+          "highlight": ["lx-fork", "lx-exec"],
+          "spine": true
+        },
+        {
+          "heading": "export — promoting a variable to the environment",
+          "notebook": "notebooks/02-05-export.ipynb",
+          "slide": "slides/02-05-export.slide",
+          "audio": "audio/02-05-export.wav",
+          "scene": "linux",
+          "focus": "lx-expansion",
+          "highlight": ["lx-pvar"],
+          "spine": true
+        },
+        {
+          "heading": "Quoting — when the shell takes you literally",
+          "notebook": "notebooks/02-06-quoting.ipynb",
+          "slide": "slides/02-06-quoting.slide",
+          "audio": "audio/02-06-quoting.wav",
+          "scene": "linux",
+          "focus": "lx-expansion",
+          "highlight": ["lx-quote"],
+          "spine": true
+        },
+        {
+          "heading": "Redirection — pointing the streams",
+          "notebook": "notebooks/02-07-redirection.ipynb",
+          "slide": "slides/02-07-redirection.slide",
+          "audio": "audio/02-07-redirection.wav",
+          "scene": "linux",
+          "focus": "lx-streams",
+          "highlight": ["lx-stdin", "lx-stdout", "lx-stderr"],
+          "spine": true
+        },
+        {
+          "heading": "Pipes — the most important character in the shell",
+          "notebook": "notebooks/02-08-pipes.ipynb",
+          "slide": "slides/02-08-pipes.slide",
+          "audio": "audio/02-08-pipes.wav",
+          "scene": "linux",
+          "focus": "lx-streams",
+          "highlight": ["lx-stdout", "lx-stdin"],
+          "spine": true
+        },
+        {
+          "heading": "Globs — matching filenames with patterns",
+          "notebook": "notebooks/02-09-globs.ipynb",
+          "slide": "slides/02-09-globs.slide",
+          "audio": "audio/02-09-globs.wav",
+          "scene": "linux",
+          "focus": "lx-expansion",
+          "highlight": ["lx-glob"],
+          "spine": true
+        },
+        {
+          "heading": "Expansion order — what the shell does to your line",
+          "notebook": "notebooks/02-10-expansion-order.ipynb",
+          "slide": "slides/02-10-expansion-order.slide",
+          "audio": "audio/02-10-expansion-order.wav",
+          "scene": "linux",
+          "focus": "lx-expansion",
+          "highlight": [
+            "lx-brace",
+            "lx-tilde",
+            "lx-pvar",
+            "lx-cmdsub",
+            "lx-arith",
+            "lx-split",
+            "lx-glob",
+            "lx-quote"
+          ],
+          "spine": true
+        }
+      ]
     }
   ]
 }

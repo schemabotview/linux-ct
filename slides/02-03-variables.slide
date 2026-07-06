@@ -1,0 +1,24 @@
+# Variables — naming values
+
+A **label for a value**, so you don't retype it.
+
+## Create & read
+
+```bash
+greeting="Hello, Linux"   # NO spaces around =
+echo $greeting            # Hello, Linux
+```
+
+`name=value` creates · **`$name`** reads it back.
+
+⚠️ `name = value` fails — the shell reads `name` as a **command**.
+
+## Two things straight away
+
+- **No types** — everything is a **string**. `count=5` stores `"5"`.
+- **Convention:** lowercase for yours (`filename`), **UPPERCASE** for environment (`HOME`, `PATH`).
+
+## Manage
+
+- **`unset name`** — remove it (no `$`)
+- **`set`** — list all defined variables

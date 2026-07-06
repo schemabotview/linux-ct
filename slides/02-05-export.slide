@@ -1,0 +1,21 @@
+# `export`
+
+`name=value` makes a **shell variable** (this shell only). **`export`** promotes it to the **environment**.
+
+```bash
+MY_VAR="hello"          # shell variable
+export MY_VAR           # now in the environment
+export MY_VAR="hello"   # both at once
+```
+
+Verify: a shell variable is in **`set`** but not **`env`**; an exported one is in **both**.
+
+## Inheritance flows one way
+
+A launched program gets a **copy** of the environment. Its changes **never** flow back to the parent.
+
+→ A variable set **inside a script doesn't persist** after it exits — the script's shell took its environment with it.
+
+## So startup files export
+
+`~/.bashrc` / `~/.profile` **`export`** the vars you want in **every session** (module 06).

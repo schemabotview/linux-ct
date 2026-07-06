@@ -1,0 +1,11 @@
+Keyboard shortcuts, the ones that pay back instantly.
+
+The shell's command line is editable, just like a tiny text editor. Most beginners move around it one character at a time with the arrow keys. But there's a much faster set of shortcuts that move by whole lines and whole words, and they're worth building into your fingers early. They're Emacs-style, which is bash's default editing mode.
+
+Start with jumping. Control-A jumps to the start of the line, Control-E to the end. For deleting, Control-U deletes everything from the cursor back to the start, and Control-K deletes from the cursor to the end. Control-W deletes just the word before the cursor. And whatever you delete with those, Control-Y pastes back. To move by words instead of characters, Alt-B goes back a word and Alt-F goes forward a word.
+
+Then the control keys. Control-L clears the screen instantly. Control-C abandons the line you're typing, or interrupts a command that's running. And Control-D signals end of input; on an empty prompt, it logs you out of the shell.
+
+But the truly magical one is Alt, followed by a period. It pastes the last argument of your previous command. So if you just ran make-directory on some long path like slash-tmp-slash-long-slash-path, your next command can be change-directory, space, Alt-period, and the shell fills in that whole path for you. Tap it again and it walks back through earlier last-arguments.
+
+Spend five minutes practising these in your shell just once, and you'll save yourself hours over a career.

@@ -1,0 +1,11 @@
+Variables: naming values.
+
+A variable in the shell is simply a label you give to a value, so you can refer to it later without retyping it. Think of it as a sticky note: you write a value on it, give the note a name, and stick it on the wall.
+
+To create one, you write the name, an equals sign, and the value, with no spaces around the equals. That "no spaces" part matters, because it's the single most common beginner mistake. If you write name, space, equals, space, value, the shell doesn't create a variable at all. It thinks name is a command you want to run.
+
+To read the value back, you put a dollar sign in front of the name. So dollar-greeting gets replaced with whatever you stored in greeting.
+
+Two things to know right away. First, there are no types. Everything is a string. When you write count equals five, you're storing the string "five", not the number. Second, there's a naming convention worth following: lowercase names for your own variables, like filename or user-input, and uppercase names for environment variables, like HOME and PATH. The shell doesn't enforce it, but it's a strong and universal convention.
+
+Two more commands. Unset, followed by a name, removes a variable; notice there's no dollar sign there, because you're naming the variable, not reading it. And set, on its own, lists every variable currently defined. It prints a lot, so pipe it through grep to find what you want.

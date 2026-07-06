@@ -1,0 +1,22 @@
+# Pipes — the key character
+
+A pipe **`|`** connects the **stdout** of one command to the **stdin** of the next.
+
+```bash
+ls /etc | wc -l
+```
+`ls /etc`'s output flows into `wc -l` → the count of entries. **Chain freely:**
+
+```bash
+ls /etc | sort | head -5
+ps -ef | grep bash | wc -l
+cat /etc/passwd | cut -d: -f1 | sort
+```
+
+## The rules
+
+- Each `|` joins **stdout → stdin**
+- **stderr is NOT piped** — redirect it separately
+- Exit status = the **last** command's (`set -o pipefail` to change)
+
+**This is the Unix philosophy:** small tools, read stdin, write stdout, **compose**.

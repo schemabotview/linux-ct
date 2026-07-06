@@ -1,0 +1,22 @@
+# The environment
+
+**Two** kinds of variables:
+
+- **Shell variables** — this shell only
+- **Environment variables** — **inherited** by every program the shell launches
+
+See it: **`env`** / **`printenv`** · one: `echo $VAR`
+
+## The ones you'll meet constantly
+
+- **`HOME`** — home dir (what `~` is)
+- **`USER`** — your username
+- **`PATH`** — dirs searched for commands
+- **`PWD`** — current dir · **`EDITOR`** — your editor · **`LANG`** — locale
+
+## PATH deserves attention
+
+Type `ls` → the shell searches each **`PATH`** dir **in order**, runs the **first match**.
+
+- **`which ls`** — which one runs
+- **`type ls`** — thorough (aliases, builtins too)

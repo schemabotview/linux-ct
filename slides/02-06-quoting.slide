@@ -1,0 +1,25 @@
+# Quoting
+
+`echo Hello   World` → `Hello World` (**one space**). The shell collapses whitespace first. To keep meaning literal, **quote** — three degrees:
+
+## Single `'...'` — fully literal
+
+```bash
+echo 'My home is $HOME'   # My home is $HOME
+```
+No substitution at all.
+
+## Double `"..."` — literal, but vars expand
+
+```bash
+echo "My home is $HOME"   # My home is /home/ubuntu
+```
+Preserves spaces; **`$var`** and **`$(...)`** still run.
+
+## Backslash `\` — escape one char
+
+`\$` → a literal `$`.
+
+## The rule that prevents bugs
+
+**Double-quote variable references: `"$var"`.** Unquoted, a value with spaces gets **word-split** into several arguments.

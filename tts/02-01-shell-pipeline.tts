@@ -1,0 +1,9 @@
+The shell as a machine: line in, program out.
+
+In module one you met the shell's basic loop: read, run, print, and prompt again. In this module we're going to pry open that middle step, the run step, and look at the machine inside it. Every single line you type gets processed the same way, and it's genuinely worth seeing the whole path once before we get into the details.
+
+Here's the thing that surprises people. When you press Enter, the shell does not just hand your line straight to a program. First it rewrites the line, through a fixed sequence of expansions. It handles history, like bang-bang. It expands braces. It expands the tilde into your home directory. It substitutes your variables, like dollar-HOME. It runs command substitutions and arithmetic. And then it splits the result into words and expands any filename wildcards. Only the result of all of that becomes the actual command and its arguments.
+
+Then the shell runs it. For a builtin like change-directory, it just acts directly. But for an external command like list, it asks the kernel, through the C library, to fork a child process and exec the program inside it. At the same time it wires up the three standard streams: standard input, standard output, and standard error, so that input and output flow wherever you asked. And that's all redirection and pipes really are: the shell rearranging those streams before the program even starts.
+
+So the shell sits right at the top of the stack, translating your text into requests to the kernel. The rest of this module walks that whole path. Shortcuts to edit the line, variables and the environment they travel in, quoting to control expansion, and finally the stream plumbing, redirection and pipes.

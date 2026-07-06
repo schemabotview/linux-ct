@@ -1,0 +1,9 @@
+Export: promoting a variable to the environment.
+
+A plain assignment, name equals value, creates a shell variable, and only the current shell can see it. To make a variable visible to the commands you launch, you use export. You can export a variable you've already made, or you can assign and export it in a single line.
+
+Here's how to verify the difference. A plain shell variable shows up when you run set, but not when you run env. An exported variable shows up in both.
+
+Now the key rule, and it's one that trips people up: inheritance flows one way only. When you launch a program, it receives a copy of the environment. Any changes that child makes to its own environment never flow back to the parent. This is exactly why a variable you set inside a script doesn't stick around after the script finishes. The script ran in its own shell, and when that shell exited, it took its environment with it.
+
+And that, in turn, is why shell startup files matter so much. Files like dot-bashrc and dot-profile are read every time a shell starts, and they typically export the variables you want available in every single session. We'll cover those files in detail in module six.

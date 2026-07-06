@@ -1,0 +1,9 @@
+Expansion order: what the shell does to your line.
+
+Here's the rough sequence of everything the shell does to a line you type, before any command actually runs. And the reason to see it laid out is that knowing the order saves you from a whole class of surprising bugs.
+
+First comes history expansion, where things like bang-bang and bang-forty-two are replaced with previous commands. Second, brace expansion, where a-comma-b-comma-c in braces becomes three separate arguments, and one-dot-dot-five becomes one through five. Third, tilde expansion, where the tilde becomes your home directory. Fourth, variable expansion, where dollar-name becomes its value. Fifth, command substitution, where dollar-parens runs a command and drops in its output. Sixth, arithmetic expansion, where dollar-double-parens evaluates the maths. Seventh, word splitting, where the result so far is split on whitespace into separate arguments. Eighth, glob expansion, where the wildcards are matched against filenames. And ninth, quote removal, where any surviving quotes and backslashes are stripped just before the command runs.
+
+The order explains real bugs. Take name equals dollar-parens list star-dot-txt. First the glob expands into a list of files, then list runs on them, then the substitution captures that output, and finally it's assigned to name. Now, if any of those filenames contain spaces, then later using dollar-name without quotes re-splits it on those very spaces.
+
+And that's the deeper reason quoting is the safe default. Writing dollar-name in double quotes skips both word-splitting and globbing on the value. Which is exactly what you want whenever that value is meant to be a single string.

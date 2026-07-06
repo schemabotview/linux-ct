@@ -1,0 +1,21 @@
+# The shell as a machine
+
+Module 01 gave you the loop — **read, run, print, prompt**. Now we open the **run** step.
+
+## Your line is rewritten first
+
+The shell doesn't hand your text straight to a program. It **expands** it — `~`, `$HOME`, `$(...)`, `*.txt` — then the *result* becomes the command + args.
+
+## Then it runs it
+
+```
+your line ─▶ expansion (8 phases) ─▶ command + args
+                          │
+                   fork + exec  (libc → syscall)
+                          │
+              a running program, streams wired
+```
+
+For `ls`, the shell asks the kernel to **`fork`** a child and **`exec`** the program, wiring **stdin / stdout / stderr**. Redirection and pipes just rearrange those streams first.
+
+**This module walks that path** — shortcuts, variables, quoting, streams.

@@ -1,0 +1,9 @@
+The environment: variables that programs inherit.
+
+It turns out there are actually two kinds of variables in the shell. The first kind, shell variables, are visible only inside the current shell. The greeting variable you made a moment ago is one of those. The second kind, environment variables, are visible to every program the shell launches. They get inherited by child processes when the shell forks and execs them.
+
+The environment is really just a list of name-equals-value pairs that gets handed to every command you run. It's how a program finds out things like your home directory, your username, and where to look for other executables. To see the whole environment, run env, or printenv. To see just one variable, echo dollar and its name.
+
+There are a handful you'll meet constantly. HOME is the path to your home directory, and it's what the tilde expands to. USER is your username. PATH is a colon-separated list of directories. PWD is the current directory, kept up to date automatically by change-directory. EDITOR is the editor that commands like git commit and crontab dash-e will launch. And LANG is your locale, which affects things like sort order and date formats.
+
+PATH really deserves special attention. When you type list, the shell doesn't actually know where the list program lives on disk. So it searches each directory in PATH, in order, and runs the very first match it finds. The command which, followed by list, tells you which one it would run. And type, followed by list, is even more thorough, because it also reveals aliases and shell builtins.

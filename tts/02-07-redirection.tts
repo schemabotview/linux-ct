@@ -1,0 +1,7 @@
+Redirection: pointing the streams.
+
+By default, a command reads its input from your keyboard and writes its output to your terminal. Redirection lets you re-point those streams, usually to or from a file. There are two output streams worth understanding. Standard output, or stdout, is the normal output of a successful command, and it's file descriptor one. Standard error, or stderr, is where error messages and diagnostics go, and it's file descriptor two. They're kept separate on purpose, so you can redirect one without touching the other.
+
+For output, a single greater-than writes stdout to a file, overwriting whatever was there. A double greater-than appends instead. Two, greater-than sends stderr to a file. Ampersand, greater-than sends both streams to a file. The sequence two, greater-than, ampersand, one sends stderr to wherever stdout is currently going. And redirecting to slash-dev-slash-null simply throws output away. So to silence a command completely, you send stdout to dev-null and then merge stderr into it. And do watch the order, because redirections are read left to right.
+
+For input, a single less-than feeds a file's contents into a command, so word-count dash-l, less-than, the passwd file, counts its lines. A here-document, written with two less-thans and a marker word, lets you embed several lines of text right in the command; the marker word on its own line ends the block. And a here-string, three less-thans, is the one-line version, handy for feeding a single string straight into a command's input.

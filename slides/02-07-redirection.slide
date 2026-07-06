@@ -1,0 +1,22 @@
+# Redirection — pointing the streams
+
+Commands read **stdin** and write **stdout** (fd 1) + **stderr** (fd 2) — separate, so you redirect one without the other.
+
+## Output — `>`
+
+- **`> file`** — write stdout (overwrite) · **`>> file`** — append
+- **`2> file`** — errors · **`&> file`** — both
+- **`2>&1`** — stderr → wherever stdout goes
+- **`> /dev/null`** — throw away
+
+Silence all: `cmd > /dev/null 2>&1`. **Order matters** (read left → right).
+
+## Input — `<`
+
+```bash
+wc -l < /etc/passwd        # file as input
+cat <<EOF                  # here-doc: multi-line
+line one
+EOF
+grep root <<< "$text"      # here-string: one line
+```

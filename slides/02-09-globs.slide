@@ -1,0 +1,19 @@
+# Globs — filename patterns
+
+A **glob** is a wildcard the **shell** expands into matching filenames **before** the command runs. `ls *.txt` → `ls a.txt b.txt …` — `ls` never sees the `*`.
+
+## The patterns
+
+- **`*`** — any run of chars (not a leading `.`)
+- **`?`** — exactly one char
+- **`[abc]`** / **`[a-z]`** — one char, set / range
+- **`[!abc]`** — one char, **not** those
+
+`report?.csv` → `report1.csv`, not `report10.csv`.
+
+## Two traps
+
+- The **shell** expands globs, **not** the command
+- **No match → the literal pattern passes through** (`ls *.none` errors) — `shopt -s nullglob` to fix
+
+⚠️ **Globs are NOT regex.** Glob `*` = any chars; regex `*` = zero-or-more of the previous. (Regex → module 04.)

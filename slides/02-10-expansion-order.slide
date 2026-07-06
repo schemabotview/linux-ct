@@ -1,0 +1,19 @@
+# Expansion order
+
+Before any command runs, the shell rewrites your line — **in this order**:
+
+1. **History** — `!!`, `!42`
+2. **Brace** — `{a,b}` · `{1..5}`
+3. **Tilde** — `~` → home
+4. **Variable** — `$name`
+5. **Command sub** — `$(cmd)`
+6. **Arithmetic** — `$(( ))`
+7. **Word splitting** — on whitespace
+8. **Glob** — `*` `?` `[ ]`
+9. **Quote removal**
+
+## Why the order matters
+
+`name=$(ls *.txt)` → glob first (file list) → `ls` runs → captured → assigned. If names have spaces, later **`$name`** unquoted **re-splits** them.
+
+→ So **`"$name"`** is the safe default: it **skips word-splitting + globbing** on the value.

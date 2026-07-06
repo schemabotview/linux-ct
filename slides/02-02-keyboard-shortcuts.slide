@@ -1,0 +1,23 @@
+# Keyboard shortcuts
+
+The command line is a **tiny text editor**. Stop arrow-keying — move by **line and word**.
+
+## Move & delete
+
+- **Ctrl-A / Ctrl-E** — start / end of line
+- **Ctrl-U / Ctrl-K** — delete to start / to end
+- **Ctrl-W** — delete word before cursor
+- **Ctrl-Y** — paste back what you deleted
+- **Alt-B / Alt-F** — back / forward one word
+
+## Control
+
+- **Ctrl-L** — clear screen · **Ctrl-C** — abandon line
+- **Ctrl-D** — end-of-input (empty prompt = log out)
+
+## The magic one
+
+**Alt-.** pastes the **last argument** of the previous command.
+`mkdir /tmp/a/b/c` → `cd ` **Alt-.** → `cd /tmp/a/b/c`.
+
+**Emacs-style** (bash default). Five minutes now saves hours.

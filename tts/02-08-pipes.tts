@@ -1,0 +1,11 @@
+Pipes: the most important character in the shell.
+
+A pipe, the vertical bar, takes the standard output of one command and feeds it directly into the standard input of the next. It's the single operator that turns Linux's small, single-purpose tools into something far more powerful than any one of them could be alone.
+
+Take list, slash-etc, pipe, word-count dash-l. The list command doesn't print to your terminal this time. Instead its output flows into word-count dash-l, which counts the lines. So the result is the number of entries in the etc directory. And you can chain as many stages as you want. List, then sort, then head, to get the first five entries in order. Or p-s piped into grep piped into word-count, to count how many bash processes are running.
+
+Two things to keep straight. Each pipe connects standard output on the left to standard input on the right. And standard error is not piped. Error messages still go to your terminal unless you redirect them separately.
+
+This pattern is the Unix philosophy in a nutshell: write small programs that each do one thing well, that read from standard input and write to standard output, and then compose them with pipes to solve bigger problems. You'll lean on this constantly in module four, when we meet grep, sed, awk, cut, sort, and uniq.
+
+One rule worth filing away: by default, the exit status of a whole pipeline is just the last command's status. If you want the pipeline to fail whenever any stage fails, you set the pipefail option, which we'll come back to in module ten.

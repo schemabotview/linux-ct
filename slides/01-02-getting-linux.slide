@@ -1,17 +1,16 @@
 # Getting a Linux to practise on
 
-You learn Linux by **typing**, not reading. Four ways to a prompt — easiest first.
+You learn Linux by **typing**. Four ways to a prompt — easiest first.
 
 ## Cloud VM — most authentic
 
-A small server on **DigitalOcean / Lightsail / Linode / Hetzner**, a few dollars a month. **SSH in**, break it, rebuild it. A *real* box.
+A small server on **DigitalOcean / Linode / Hetzner**, a few $/month. **SSH in**, break it, rebuild it. A *real* box.
 
 ## Multipass — free, local
 
 One command, an Ubuntu VM on your laptop. No signup.
 ```bash
 multipass launch --name linux-lab
-multipass shell linux-lab
 ```
 
 ## WSL2 — Windows
