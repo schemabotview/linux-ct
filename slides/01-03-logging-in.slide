@@ -13,16 +13,13 @@ ubuntu@linux-lab:~$
 - **`~`** — current directory (**home**)
 - **`$`** — regular user · **`#`** — **root** (careful!)
 
-## The shell reads it
+## The loop — the shell reads it, every session
 
-The **shell** (usually **bash**) draws the prompt and runs what you type.
-
-## The loop — every session is this
+The **shell** (usually **bash**) draws the prompt and runs what you type:
 
 1. **Read** your line
 2. Figure out the **command**
-3. **Run** it
-4. **Print** output
-5. Fresh prompt, **wait**
+3. **Run** it · **Print** output
+4. Fresh prompt, **wait**
 
-**Read → run → print → prompt.** Everything in this course is a variation on that loop.
+**Read → run → print → prompt** — the whole course is variations on it.

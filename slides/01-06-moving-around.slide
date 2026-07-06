@@ -24,6 +24,4 @@ cd -         # toggle back
 - Starts with **`/`** → **absolute**, from the root
 - Doesn't → **relative**, from where you are
 
-From `/var`: `cd log` → `/var/log`, but `cd /log` → top-level (likely missing).
-
 **After any `cd`, run `pwd`** to confirm.

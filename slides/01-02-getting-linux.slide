@@ -23,6 +23,5 @@ A real Linux kernel beside Windows. Install **Ubuntu** from the Store. Zero fric
 ```bash
 docker run -it --rm ubuntu:24.04 bash
 ```
-No systemd by default; no persistence without a volume.
 
 **Pick one and stick with it** — switching mid-course is a distraction.
