@@ -18,17 +18,13 @@ Type, then **three groups of three** — owner, group, other.
 
 ## The rest of the line
 
-- **`1`** — hard links to this inode
-- **`ubuntu ubuntu`** — owner, then group
-- **`1234`** — size in bytes
-- **`Mar 14 10:23`** — last modified
+- **`1`** — hard links · **`ubuntu ubuntu`** — owner, then group
+- **`1234`** — size in bytes · **`Mar 14 10:23`** — last modified
 - **`report.txt`** — the name
 
-## Reading the type + bits
+## Type + bits
 
 ```
 drwxr-xr-x  → directory, owner all, others read + traverse
 -rwxr-xr-x  → a program everyone can run
 ```
-
-Read `ls -l /etc/` until the ten-char block is **instant** — the ground truth of Linux.

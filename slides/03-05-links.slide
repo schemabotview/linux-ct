@@ -1,16 +1,12 @@
 # Links — one inode, many names
 
-Names and inodes are separate *(§1)* — so one inode can have **many names**.
-
 ## Hard link — `ln src name`
 
-A second directory entry pointing at the **same inode**. Both names are equal — no "original."
+A second directory entry pointing at the **same inode**. Both names are equal — no "original." Delete one → data survives while any name remains.
 
 ```bash
 ln original.txt second-name.txt
 ```
-
-Delete one name → data survives while any name remains.
 
 ## Symbolic link — `ln -s target name`
 

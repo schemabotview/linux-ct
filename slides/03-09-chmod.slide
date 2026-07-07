@@ -1,14 +1,11 @@
 # `chmod` — changing permissions
 
-Two syntaxes — learn to read both.
-
 ## Symbolic — like a sentence
 
 `chmod [who][op][what] file` · who **u g o a** · op **+ − =** · what **r w x**
 
 ```bash
 chmod u+x script.sh        # add execute for owner
-chmod go-w file.txt        # remove write, group + other
 chmod u=rw,go=r file.txt   # set exactly
 ```
 
@@ -26,9 +23,8 @@ chmod u=rw,go=r file.txt   # set exactly
 
 ## Flags & a gotcha
 
-`-R` recursive · `-v` verbose. ⚠️ `chmod -R 755 dir/` makes **every file** executable — split them:
+`-R` recursive · `-v` verbose. ⚠️ `chmod -R 755 dir/` makes **every file** executable — split with `find`:
 
 ```bash
-find dir -type d -exec chmod 755 {} +
-find dir -type f -exec chmod 644 {} +
+find dir -type d -exec chmod 755 {} +   # dirs 755, files 644
 ```

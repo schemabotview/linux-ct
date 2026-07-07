@@ -16,13 +16,8 @@ Every inode has an **owner**, a **group**, and permissions for three classes.
 | **w** | change contents | add / delete / rename inside |
 | **x** | run it | **enter** it (`cd`), reach files within |
 
-⚠️ **x on a directory = traversable.** Read-but-not-execute is locked — no `cd`, no access inside. And deleting a file is *writing its directory* — you can delete a file you can't write, if you can write its parent.
+⚠️ **x on a directory = traversable** — read-but-not-execute is locked. And deleting a file is *writing its directory*, not the file.
 
-## Nine bits
-
-```
-   [ r w x ] [ r w x ] [ r w x ]
-     owner     group     other
-```
+## Nine bits — `[rwx][rwx][rwx]` for owner / group / other
 
 Read them with `ls -l`, change them with `chmod`.

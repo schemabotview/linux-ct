@@ -2,14 +2,6 @@
 
 The **first character** of every `ls -l` line is the type.
 
-```
--rw-r--r--   d rwxr-xr-x   lrwxrwxrwx
-↑            ↑             ↑
-type         directory     symlink
-```
-
-## The seven
-
 | | | |
 |---|---|---|
 | **`-`** | regular file | text, binaries, images — most files |
@@ -20,6 +12,6 @@ type         directory     symlink
 | **`s`** | socket | local service endpoint — `/run/docker.sock` |
 | **`p`** | named pipe | a persistent pipe on disk |
 
-You live in the **first three**. Devices in `/dev` are how userspace reaches hardware; sockets are how local daemons talk.
+You live in the **first three** — devices in `/dev` reach hardware, sockets let local daemons talk.
 
 ⚠️ Not the same as **`file`** — `file` reads a *regular file's contents*; the `ls -l` char is the **type the kernel sees**.
