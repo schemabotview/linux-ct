@@ -14,7 +14,7 @@
  └─────────────────── type: - = regular file
 ```
 
-## The rest
+## The rest of the line
 
 - **`1`** — hard links · **`ubuntu ubuntu`** — owner, then group
 - **`1234`** — size in bytes · **`Mar 14 10:23`** — last modified
