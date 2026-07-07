@@ -16,8 +16,6 @@ A tiny file whose **contents are a path**. The kernel follows it to the target.
 ln -s /etc/hostname host-link
 ```
 
-## Which, when
-
 | | hard | symbolic |
 |---|---|---|
 | is | 2nd name for one inode | pointer holding a path |

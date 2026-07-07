@@ -1,7 +1,5 @@
 # A filename is not the file
 
-## Two separate things
-
 A file is an **inode** (a numbered record) plus a **name** that points at it.
 
 ```
