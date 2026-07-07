@@ -1,0 +1,32 @@
+# Playbook 2 — out of memory
+
+**Symptom:** processes killed, "Killed" in `dmesg`, swap thrashing.
+
+## 1 · Current state
+
+```bash
+free -h
+```
+
+⚠️ Read **`available`**, not `free` — page cache counts as "used" but is reclaimable.
+
+## 2 · What's using it?
+
+```bash
+ps -eo pid,user,rss,comm --sort=-rss | head
+top      # press M to sort by memory
+```
+
+**`rss`** = honest RAM in use · `vsz` = virtual, usually huge — ignore.
+
+## 3 · The OOM killer's verdict
+
+```bash
+sudo dmesg -T | grep -i 'killed process\|out of memory'
+```
+
+Logs exactly what it killed and why.
+
+## 4 · Swap & protection
+
+No swap? Add a file at runtime *(module 07)*. Protect a critical service in its unit: **`OOMScoreAdjust=-500`**. Real fix: more RAM or fix the leak.

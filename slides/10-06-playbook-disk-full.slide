@@ -1,0 +1,33 @@
+# Playbook 1 — disk is full
+
+**Symptom:** "No space left on device", writes & installs failing.
+
+## 1 · Bytes or inodes?
+
+```bash
+df -h        # which FS at 100%?
+df -i        # or inodes? (lots of tiny files)
+```
+
+## 2 · Find the big stuff
+
+```bash
+sudo du -h --max-depth=1 /var | sort -h | tail
+sudo find /var -type f -size +100M 2>/dev/null | head
+```
+
+## 3 · Deleted-but-held — the classic gotcha
+
+```bash
+sudo lsof | grep deleted | head
+```
+
+A process holding a deleted file keeps its space → `df` full but `du` isn't *(module 07)*. **Fix: restart the service.**
+
+## 4 · Quick wins
+
+```bash
+sudo apt clean                    # / dnf clean all
+sudo journalctl --vacuum-size=200M
+sudo apt autoremove --purge       # old kernels
+```

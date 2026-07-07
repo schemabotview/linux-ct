@@ -1,0 +1,18 @@
+# Troubleshooting methodology
+
+A sysadmin's value isn't commands — it's a **flow** that turns "something's broken" into a diagnosis.
+
+## The six steps
+
+1. **Reproduce** — no repro, no confirmed fix. Find the trigger.
+2. **Narrow** — what changed? Opener: `journalctl --since "1 hour ago" -p err`
+3. **Layer down** — app logs → `systemctl status` → journal → `dmesg`
+4. **Bisect time** — when did it last work? `journalctl -b -1`, package history
+5. **Isolate variables** — one at a time. Service dead? run its binary by hand. No host? `ping` the IP, skip DNS.
+6. **Fix, then prevent** — patch symptom, then cause, then add monitoring
+
+## The instinct: isolation
+
+Every step **cuts the problem in half** — app or system? host or network? DNS or route? config or permissions?
+
+The next five sections are **playbooks**. **Memorise the first command of each** — that's what turns panic into procedure.

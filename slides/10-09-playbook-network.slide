@@ -1,0 +1,28 @@
+# Playbook 4 — network is down
+
+The layered flow from module 08 — **in order**, each step assuming the last passed.
+
+```bash
+# 1 · interface + IP?
+ip -br link      # any DOWN?
+ip -br addr      # any address?
+
+# 2 · gateway reachable?
+ip route ; ping -c3 <gateway>
+
+# 3 · internet by IP? (skips DNS)
+ping -c3 1.1.1.1
+
+# 4 · DNS resolving?
+dig +short example.com
+dig @8.8.8.8 +short example.com   # only this works → resolver broken
+
+# 5 · path? · 6 · port? · 7 · listening?
+traceroute -n 1.1.1.1
+nc -zv example.com 443
+ss -tunlp
+```
+
+Each layer **halves** the problem: no IP = DHCP/NM · gateway fails = local net · IP works but DNS doesn't = resolver.
+
+⚠️ Suspect the firewall? Disable **only to confirm** (`ufw disable`) and **re-enable immediately** — never leave it off as the fix.

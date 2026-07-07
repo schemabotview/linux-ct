@@ -1,0 +1,35 @@
+# Conditionals and loops
+
+**`if` runs on exit code** — `0` = true. Condition is *any command*.
+
+```bash
+if [[ -f "$config" ]]; then
+    echo "exists"
+elif [[ "$count" -gt 10 ]]; then
+    echo "too many"
+fi
+```
+
+Use modern **`[[ ]]`** (adds `&&`, regex, no quoting needed). Operators:
+
+- **files** `-e -f -d -r -w -x -s` · **strings** `-z -n = != =~` · **numbers** `-eq -ne -lt -gt`
+- short-circuit: `[[ -d /backup ]] || mkdir /backup`
+- many branches → **`case`** (glob patterns, `;;` ends each)
+
+## Loops
+
+```bash
+for f in /etc/*.conf; do echo "$f"; done
+for i in {1..5}; do echo "$i"; done
+until systemctl is-active nginx; do sleep 2; done
+```
+
+⚠️ **Read a file line by line — the one form to memorise:**
+
+```bash
+while IFS= read -r line; do
+    echo "$line"
+done < /etc/hostname
+```
+
+`break` exits · `continue` skips.

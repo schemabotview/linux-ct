@@ -1,0 +1,32 @@
+# Playbook 3 — runaway CPU
+
+**Symptom:** load climbing, fans spinning, unresponsive.
+
+## 1 · Find the culprit
+
+```bash
+top      # P sorts by CPU;  htop is nicer
+ps -eo pid,user,%cpu,comm --sort=-%cpu | head
+```
+
+## 2 · What's it doing? — `strace`
+
+```bash
+sudo strace -p 12345          # syscalls right now
+sudo strace -c -p 12345       # summary count
+```
+
+A process spinning in a tight syscall loop reveals the bug instantly.
+
+## 3 · Control — escalate gently
+
+```bash
+sudo renice +10 -p 12345      # lower priority (module 05)
+sudo kill -STOP 12345         # pause to inspect
+sudo kill -CONT 12345         # resume
+kill 12345; sleep 5; kill -9 12345
+```
+
+## ⚠️ 4 · Can't kill it? — state `D`
+
+**Uninterruptible sleep** (disk/NFS) can't be killed, even `-9` *(module 05)*. Options: wait · fix the I/O cause · reboot.

@@ -1,0 +1,11 @@
+Shell scripting essentials.
+
+A shell script is nothing exotic; it's just a file containing shell commands. The shell reads it line by line and runs each line exactly as if you'd typed it at the prompt. Turning your one-off commands into scripts is how your work becomes repeatable, and how you stop solving the same problem twice.
+
+The first line of any executable script should be the shebang: a hash, an exclamation mark, then the path to the interpreter. So hash-bang-slash-bin-bash tells the kernel, "run this file with bash." Once you've written it, you make it runnable and then call it like a real command: chmod plus-x to set the executable bit, once, and then dot-slash-hello-dot-sh to run it. Note that the dot-slash form needs both the executable bit and the shebang.
+
+There are a few shebangs worth knowing. Hash-bang-slash-bin-bash is what you'll use about ninety-five percent of the time; it guarantees bash. Hash-bang-slash-bin-sh asks for a POSIX shell, which is more portable but gives up bash-only features. And hash-bang-slash-usr-slash-bin-slash-env bash finds bash via your PATH, which is handy for scripts that also need to run on macOS.
+
+Variables are a quick recap from module two. You assign with name-equals-value, and remember, no spaces around the equals. Double quotes expand a dollar-variable; single quotes do not. And the golden rule: always quote when you read a variable, echo, quote, dollar-name, quote, so that values with spaces don't get split apart.
+
+Finally, script arguments, and this vocabulary is worth memorizing cold. Inside a script, dollar-zero is the script's own name. Dollar-one and dollar-two are the first and second arguments. Dollar-at, in quotes, is all the arguments, with each one kept as its own separate word. Dollar-hash is the number of arguments. And dollar-question-mark is the exit code of the previous command. One important tip: always prefer quoted dollar-at over dollar-star when you're forwarding arguments on to another command, because dollar-at keeps arguments that contain spaces intact, whereas dollar-star would mangle them.

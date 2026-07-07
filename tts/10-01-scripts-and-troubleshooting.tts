@@ -1,0 +1,11 @@
+From one-liners to production scripts, and troubleshooting.
+
+This is the capstone module. The first nine modules taught you the individual pieces of a Linux system: the shell, files and permissions, text tools, processes, users, storage, networking, and systemd. This module ties all of those pieces together into the two skills that actually make someone a system administrator: automating work by writing scripts, and diagnosing a system when something breaks.
+
+And both of those skills use the whole map at once. On the left, scripting: variables, if-statements, for-loops, functions, and the safety flags that make a script robust; that lives mostly in the shell and streams region of the map. On the right, troubleshooting: full disks, out-of-memory situations, runaway CPUs, dead networks, broken services; and that pulls in every single subsystem you've met across the whole course.
+
+So the module has two halves. First, scripting: we turn the commands you've been typing by hand into repeatable programs. The shebang and script arguments; conditionals and loops; functions and exit codes; and the set-dash-e-u-o-pipefail preamble that makes a script production-safe.
+
+Second, troubleshooting: a general methodology, followed by five concrete playbooks for the failures you'll genuinely meet in the wild, a disk that's full, a machine that's out of memory, a process pinning the CPU, a network that's down, and a service that won't start. Each playbook is a diagnostic flow built entirely from tools you already know, df, du, free, ps, ss, journalctl, strace, now pointed at one specific emergency.
+
+And we close with the cross-cutting professional layer: mandatory access control, that's SELinux and AppArmor; performance monitoring with vmstat, iostat, and sar; and a full guide to the LFCS certification exam, what to expect, how to prepare, and where to go afterward. By the end of this module you'll have seen the entire system, and you'll know how to both build on it and fix it.

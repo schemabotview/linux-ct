@@ -29,5 +29,3 @@ sudo -i             # root shell
 | whose password? | target's | **your own** |
 | shares root pw? | yes | **no — root locked** |
 | logging / allow-list? | no | **yes** (`/etc/sudoers`) |
-
-On Ubuntu/cloud images **root is locked** — all admin goes through per-user `sudo`.

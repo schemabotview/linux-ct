@@ -1,0 +1,33 @@
+# Playbook 5 — service won't start
+
+The escalation path that solves 90%+ of cases:
+
+```
+status → journalctl -u → configtest →
+run binary by hand → SELinux/AppArmor → daemon-reload
+```
+
+## 1 · Read the status
+
+```bash
+sudo systemctl status foo
+```
+
+The last log lines usually *are* the answer. Four classics:
+
+- **`Permission denied`** — a path it can't reach
+- **`Address already in use`** — port taken
+- **`No such file or directory`** — wrong path / missing binary
+- **`Failed to parse`** — config syntax error
+
+## 2–4 · Dig in
+
+```bash
+sudo journalctl -u foo -n 100 --no-pager
+sudo nginx -t                 # config checker (sshd -t, ...)
+systemctl cat foo             # then run its ExecStart by hand
+```
+
+## 5–6 · Ports, MAC, reload
+
+`ss -tunlp | grep :80` · SELinux (`ausearch -m AVC`) · **did you `daemon-reload`?** *(module 09)* — the #1 "still fails" cause.

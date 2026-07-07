@@ -1,0 +1,22 @@
+# From one-liners to production
+
+The capstone. Modules 01–09 taught the *pieces*; this ties them into the two skills that make a sysadmin.
+
+```
+     write it once         ·          fix it fast
+ ┌────────────────────┐        ┌────────────────────────┐
+ │  shell scripting    │        │  troubleshooting        │
+ │ vars · if · for     │        │  disk · mem · CPU       │
+ │ functions · set -e  │        │  network · services     │
+ └────────────────────┘        └────────────────────────┘
+  lx-shell / lx-streams          every subsystem you've met
+```
+
+## Two halves
+
+- **Scripting** — shebang, args, conditionals, loops, functions, `set -euo pipefail`
+- **Troubleshooting** — a methodology + **five playbooks**: full disk, OOM, runaway CPU, dead network, dead service
+
+## Then the professional layer
+
+**MAC** (SELinux/AppArmor) · **performance** (`vmstat`/`iostat`) · the **LFCS exam** — what to expect and how to pass.

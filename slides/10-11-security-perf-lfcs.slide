@@ -1,0 +1,19 @@
+# Security, performance & the LFCS
+
+## MAC — SELinux & AppArmor
+
+Module 06's perms are **Discretionary**. **MAC** adds a kernel policy that constrains *even root*. SELinux (RHEL, labels) · AppArmor (Ubuntu, path profiles).
+
+**Pattern:** DAC looks right but it still fails? → **suspect MAC** → set permissive/complain → retry. Works now = policy was blocking. SELinux: `getenforce`, **`restorecon -Rv`**, `ausearch -m AVC`. ⚠️ **Never permanently disable MAC** — confirm the cause, fix the policy.
+
+## Performance — `sysstat`
+
+- **`vmstat 1`** — pulse: **`r`** (>CPU = CPU-bound) · **`wa`** (I/O-bound) · **`si`/`so`** (swap)
+- **`iostat -xz 1`** — disk: **`await`**, **`%util`** = bottleneck
+- **`sar`** — history for "what happened at 3am?"
+
+## The LFCS exam
+
+2 h, hands-on on a live VM, ~66% to pass — exactly modules 01–09. **Read tasks fully** · `man` is allowed · **make it persistent** (graders check reboot) · work in **`tmux`** · verify yourself.
+
+**That's the course** — the whole system, and how to build on it *and* fix it.

@@ -1,0 +1,32 @@
+# Functions & `set -euo pipefail`
+
+## Functions
+
+```bash
+greet() {
+    local name="$1"     # local: doesn't leak
+    echo "Hello, $name"
+}
+greet "Alice"
+```
+
+Returns the exit code of its **last command**. In a function use **`return`**, not `exit`.
+
+## Exit codes
+
+`0` = success, non-zero = failure, read via **`$?`**. Set your own with `exit 1`.
+
+## The production preamble
+
+Bash is forgiving by default. Production scripts want **fail fast, fail loud**:
+
+```bash
+#!/bin/bash
+set -euo pipefail
+```
+
+- **`-e`** exit on any failed command
+- **`-u`** error on an unset variable (typo catcher)
+- **`-o pipefail`** a pipeline fails if *any* stage does
+
+Allow a failure: `if ! risky; then …`. Debug: **`bash -x script.sh`** prints each command as it runs. `trap 'echo line $LINENO' ERR` reports where it died.

@@ -1,0 +1,31 @@
+# Shell scripting essentials
+
+A **script** is a file of shell commands, run line by line. How work becomes repeatable.
+
+## The shebang
+
+First line = `#!` + interpreter path.
+
+```bash
+#!/bin/bash
+echo "Hello, $(whoami)!"
+```
+
+```bash
+chmod +x hello.sh     # one-time
+./hello.sh            # needs +x AND a shebang
+```
+
+**`#!/bin/bash`** (95%) · `#!/bin/sh` (portable) · **`#!/usr/bin/env bash`** (finds it in `PATH`).
+
+## Arguments — memorise these
+
+| | Is |
+|---|---|
+| **`$0`** | script name |
+| **`$1` `$2`** | first, second arg |
+| **`"$@"`** | all args, each its own word |
+| **`$#`** | arg count |
+| **`$?`** | previous exit code |
+
+⚠️ Prefer **`"$@"`** over `$*` when forwarding args — keeps spaces intact. Always quote when reading: `echo "$name"`.
