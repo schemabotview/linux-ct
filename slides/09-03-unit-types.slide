@@ -12,14 +12,13 @@ Every unit file's suffix declares its **type**.
 | **`.path`** | trigger when a file changes |
 | **`.device`**/**`.slice`**/**`.swap`** | device / cgroup / swap |
 
-Author + drive three: **`.service`**, **`.timer`**, sometimes **`.target`**.
+You author + drive three: **`.service`**, **`.timer`**, sometimes **`.target`**.
 
 ## List them
 
 ```bash
-systemctl list-units --type=service        # loaded now
-systemctl list-units --type=service --all  # incl. stopped
-systemctl list-unit-files --type=service   # all files on disk
+systemctl list-units --type=service      # loaded now (--all incl. stopped)
+systemctl list-unit-files --type=service # all files on disk
 ```
 
-**loaded unit** = systemd knows it now · **unit file** = the definition on disk.
+**loaded unit** = known to systemd now · **unit file** = defined on disk.

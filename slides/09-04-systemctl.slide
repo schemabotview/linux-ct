@@ -10,7 +10,7 @@ One command for everything — `systemctl VERB [UNIT]`.
 | **`enable --now`** | start at boot **and** now |
 | **`daemon-reload`** | re-read unit files from disk |
 
-⚠️ **After editing a unit file, `systemctl daemon-reload`** — systemd caches definitions. Change not taking? Check: did I `daemon-reload`? did I `restart` (not `reload`)?
+⚠️ **After editing a unit file, `systemctl daemon-reload`** — systemd caches definitions. (And `restart`, not just `reload`.)
 
 ## Reading `status`
 
@@ -18,7 +18,6 @@ One command for everything — `systemctl VERB [UNIT]`.
 ● nginx.service - high performance web server
    Loaded: loaded (...; enabled)
    Active: active (running) since Mon 09:14; 2h ago
- Main PID: 1234 (nginx)
 ```
 
 - **`●`** green active · red failed · white inactive
