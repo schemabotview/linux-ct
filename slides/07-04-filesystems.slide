@@ -1,0 +1,26 @@
+# Filesystems — blocks into files
+
+A partition is just bytes. A **filesystem** is the layout that records the file index, where data lives, and permissions. Without one, a partition is empty space.
+
+| FS | Use when |
+|---|---|
+| **`ext4`** | default — stable, general-purpose |
+| **`xfs`** | RHEL default; large files. **Can't shrink.** |
+| **`btrfs`** | snapshots, subvolumes, built-in RAID |
+| **`vfat`/`exfat`** | universal (USB, EFI) — **no permissions** |
+| **`tmpfs`** | RAM-backed — `/tmp`, `/run` |
+
+Know **`ext4`** deeply, **`xfs`** well.
+
+## Make one — `mkfs`
+
+```bash
+sudo mkfs.ext4 -L data /dev/sdb1
+sudo mkfs.xfs /dev/sdb1
+```
+
+⚠️ **`mkfs` destroys everything** — target must be unmounted.
+
+## Check/repair — `fsck`
+
+Runs at boot; by hand after a crash. ⚠️ **Must be UNMOUNTED** — on a live FS it corrupts. XFS uses **`xfs_repair`** instead.

@@ -1,0 +1,24 @@
+# Swap — the memory pressure valve
+
+**Swap** is disk space used as overflow when RAM fills. Idle pages get written out to free RAM; read back when needed. It can be a **partition** or a **file** (flexible — the modern default).
+
+## Create a swap file
+
+```bash
+sudo fallocate -l 2G /swapfile     # a 2 GB file
+sudo chmod 600 /swapfile           # MUST be root-only
+sudo mkswap /swapfile              # format as swap
+sudo swapon /swapfile              # enable now
+```
+
+Check `swapon --show` / `free -h`. Persist in fstab: `/swapfile none swap sw 0 0`.
+
+## Swappiness — how eagerly it swaps
+
+`vm.swappiness` 0–200, default **60**. Lower = favour RAM.
+
+```bash
+sudo sysctl vm.swappiness=10       # /etc/sysctl.conf to persist
+```
+
+**60** desktop · **10–20** servers · **0** almost never. Modern boxes need less swap, but keep some (hibernate needs ≥ RAM). Cloud VMs often ship none — adding a swap file is a common first tweak.

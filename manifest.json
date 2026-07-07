@@ -769,6 +769,129 @@
           "spine": true
         }
       ]
+    },
+    {
+      "id": "07-storage-filesystems-and-mounts",
+      "title": "Storage, Filesystems & Mounts",
+      "sections": [
+        {
+          "heading": "The storage stack, top to bottom",
+          "notebook": "notebooks/07-01-storage-stack.ipynb",
+          "slide": "slides/07-01-storage-stack.slide",
+          "audio": "audio/07-01-storage-stack.wav",
+          "scene": "linux",
+          "role": "hook",
+          "spine": true
+        },
+        {
+          "heading": "Block devices and naming — lsblk",
+          "notebook": "notebooks/07-02-block-devices.ipynb",
+          "slide": "slides/07-02-block-devices.slide",
+          "audio": "audio/07-02-block-devices.wav",
+          "scene": "linux",
+          "focus": "lx-block",
+          "highlight": [
+            "lx-blk"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Partitions — MBR vs GPT",
+          "notebook": "notebooks/07-03-partitions.ipynb",
+          "slide": "slides/07-03-partitions.slide",
+          "audio": "audio/07-03-partitions.wav",
+          "scene": "linux",
+          "focus": "lx-block",
+          "highlight": [
+            "lx-blk"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Filesystems — turning blocks into files",
+          "notebook": "notebooks/07-04-filesystems.ipynb",
+          "slide": "slides/07-04-filesystems.slide",
+          "audio": "audio/07-04-filesystems.wav",
+          "scene": "linux",
+          "focus": "lx-block",
+          "highlight": [
+            "lx-fs"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Mounting — attaching a filesystem to the tree",
+          "notebook": "notebooks/07-05-mounting.ipynb",
+          "slide": "slides/07-05-mounting.slide",
+          "audio": "audio/07-05-mounting.wav",
+          "scene": "linux",
+          "focus": "lx-vfs",
+          "highlight": [
+            "lx-mount"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Persistent mounts — /etc/fstab and UUID",
+          "notebook": "notebooks/07-06-persistent-mounts.ipynb",
+          "slide": "slides/07-06-persistent-mounts.slide",
+          "audio": "audio/07-06-persistent-mounts.wav",
+          "scene": "linux",
+          "focus": "lx-vfs",
+          "highlight": [
+            "lx-mount"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Disk space — df and du",
+          "notebook": "notebooks/07-07-disk-space.ipynb",
+          "slide": "slides/07-07-disk-space.slide",
+          "audio": "audio/07-07-disk-space.wav",
+          "scene": "linux",
+          "focus": "lx-block",
+          "highlight": [
+            "lx-fs"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Swap — the memory pressure valve",
+          "notebook": "notebooks/07-08-swap.ipynb",
+          "slide": "slides/07-08-swap.slide",
+          "audio": "audio/07-08-swap.wav",
+          "scene": "linux",
+          "focus": "lx-mem",
+          "highlight": [
+            "lx-swap"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "LVM — flexible volume management",
+          "notebook": "notebooks/07-09-lvm.ipynb",
+          "slide": "slides/07-09-lvm.slide",
+          "audio": "audio/07-09-lvm.wav",
+          "scene": "linux",
+          "focus": "lx-block",
+          "highlight": [
+            "lx-lvm"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "RAID and quotas",
+          "notebook": "notebooks/07-10-raid.ipynb",
+          "slide": "slides/07-10-raid.slide",
+          "audio": "audio/07-10-raid.wav",
+          "scene": "linux",
+          "focus": "lx-block",
+          "highlight": [
+            "lx-raid"
+          ],
+          "spine": true
+        }
+      ]
     }
   ]
 }

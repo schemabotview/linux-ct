@@ -1,0 +1,27 @@
+# Partitions — MBR vs GPT
+
+A **partition** is a contiguous slice of a disk. Partition to hold multiple filesystems (`/`, `/home`, swap), dual-boot, or keep filesystems small.
+
+A **partition table** at the disk's start describes them — two formats:
+
+| | **MBR** | **GPT** |
+|---|---|---|
+| era | old | modern |
+| partitions | 4 primary | 128 |
+| max disk | **2 TB** | ~unlimited |
+| firmware | BIOS | **UEFI** |
+| backup table | no | yes |
+
+**Use GPT for any new disk.** Check with `sudo parted /dev/sda print`.
+
+## Two tools
+
+- **`fdisk`** — interactive: `p` print · `n` new · `d` delete · `t` type · `w` write
+- **`parted`** — both tables, scriptable
+
+```bash
+sudo parted /dev/sdb mklabel gpt
+sudo parted /dev/sdb mkpart primary ext4 0% 50%
+```
+
+⚠️ **Any change can destroy data** — back up, triple-check `/dev/sdX`. After, `partprobe` then `lsblk`.

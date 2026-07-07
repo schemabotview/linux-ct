@@ -1,0 +1,11 @@
+Mounting — connecting a filesystem to the tree.
+
+You've formatted a filesystem, but it's still not usable, because Linux has a single unified directory tree, and your filesystem isn't part of it yet. To make it usable, you mount it: you attach it at some directory in the tree. The mount command attaches a filesystem at a directory, and umount detaches it.
+
+The basic form is sudo mount, the device, then the mount point. So sudo mount slash-dev-sdb-one on slash-mnt-data attaches that filesystem there. Add dash-o ro to mount it read-only. And to detach, sudo umount, giving either the mount point or the device. One requirement: the mount point has to already exist as a directory, so you mkdir it first if needed. And be aware that anything that was previously visible at that directory gets hidden underneath the mount until you unmount.
+
+There are several mount options worth knowing, and they go after dash-o, comma-separated. ro and rw are read-only and read-write, with read-write being the default. noatime tells the kernel not to update file access times on every read, which is a nice free performance win. nosuid ignores SUID bits on that filesystem, noexec forbids executing binaries from it, and nodev ignores device nodes; those three are common hardening options for untrusted media. And defaults is a shorthand bundle: read-write, suid, dev, exec, auto, and async.
+
+There are also three flavours of "what" you can mount. First, a real block device, like slash-dev-sdb-one. Second, a virtual kernel filesystem, like proc mounted on slash-proc, or tmpfs mounted on slash-tmp; here the source isn't a device at all, it's a kernel filesystem type. And third, a bind mount, done with mount dash-dash-bind, which makes the same data appear at a second path in the tree; that's used heavily by containers.
+
+To see what's currently mounted, you have a few choices, but findmnt is the friendliest, giving you a clean tree; df dash-h-capital-T also shows usage and filesystem type alongside. One last thing to remember: mounts made this way are temporary. They vanish on reboot. Making them permanent is the job of etc-fstab, which is the very next section.

@@ -1,0 +1,32 @@
+# LVM — flexible volumes
+
+**LVM** sits between partitions and filesystems: pool disks together, carve out **logical volumes**, **resize them live**.
+
+```
+Physical Volumes  /dev/sdb1, sdc1   real disks
+      ↓ pooled into
+Volume Group      "datavg"          one big pool
+      ↓ carved into
+Logical Volumes   "appdata", "logs" act like partitions
+      ↓ formatted
+Filesystems       ext4 / xfs
+```
+
+## Create — bottom-up
+
+```bash
+sudo pvcreate /dev/sdb1 /dev/sdc1        # 1. mark PVs
+sudo vgcreate datavg /dev/sdb1 /dev/sdc1 # 2. pool → VG
+sudo lvcreate -L 20G -n appdata datavg   # 3. carve LV
+sudo mkfs.ext4 /dev/datavg/appdata       # 4. format
+```
+
+Inspect: `pvs` · `vgs` · `lvs`.
+
+## The superpower — grow live
+
+```bash
+sudo lvextend -L +5G -r /dev/datavg/appdata   # -r grows the FS too
+```
+
+Out of pool? `pvcreate` + **`vgextend`**. Shrink: ext4 only, unmount first. **Growing is the win.** Also instant **snapshots** (`lvcreate -s`).

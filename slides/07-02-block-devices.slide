@@ -1,0 +1,24 @@
+# Block devices & naming — `lsblk`
+
+A **block device** is the kernel's abstraction for any storage — disk, SSD, USB, RAID, LVM. All appear under `/dev/`.
+
+| Pattern | What |
+|---|---|
+| **`/dev/sda`, `sdb`** | SATA/SCSI/USB — `a`,`b` = 1st, 2nd disk |
+| **`/dev/sda1`** | partition (number = index) |
+| **`/dev/nvme0n1p1`** | NVMe partition — note the **`p`** |
+| **`/dev/vda`** | virtio — inside VMs / cloud |
+| **`/dev/mapper/…`** | LVM, LUKS · **`/dev/md0`** RAID |
+
+⚠️ **Names change between boots** — `sdb` can become `sda`. **Never use device names in `/etc/fstab`** — use UUID/LABEL *(§6)*.
+
+## First command on any system — `lsblk`
+
+```
+sda           100G  disk
+├─sda1        512M  part  /boot/efi
+└─sda3       98.5G  part
+  └─ubuntu-root    lvm   /
+```
+
+**`-f`** adds FS type + UUID. Companions: **`blkid`** (UUID+type) · **`findmnt`** (mount tree).

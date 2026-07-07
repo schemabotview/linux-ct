@@ -1,0 +1,25 @@
+# Persistent mounts — `/etc/fstab`
+
+A `mount` is temporary — gone on reboot. Make it permanent with a line in **`/etc/fstab`** — six fields:
+
+```
+UUID=ab12-cd34   /mnt/data   ext4   defaults   0   2
+ (1) device      (2) point   (3)    (4) opts  (5)(6)
+```
+
+1. **device** — prefer **UUID** · 2. **point** (`none` for swap) · 3. **type** · 4. **options** (`defaults`, `sw`) · 5. **dump** — always **0** · 6. **pass** — fsck order: **1** root, **2** others, **0** none.
+
+## Why UUID?
+
+Device names change between boots; a **UUID** is fixed at FS creation. See with **`blkid`** / `lsblk -f`. Use `UUID=…` or `LABEL=…` — never `/dev/sdX` in production.
+
+## ⚠️ Test before rebooting
+
+A broken fstab drops you into emergency mode.
+
+```bash
+sudo mount -a          # mount all fstab entries
+findmnt --verify       # validate syntax
+```
+
+Safe pattern: mount manually → `umount` → add line → `mount -a` → trust it.

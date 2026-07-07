@@ -1,0 +1,11 @@
+The storage stack, top to bottom.
+
+Before any command, let's get the picture, because storage on Linux is really a stack of layers, and once you see the stack, every command has an obvious place. When you run cat on etc-passwd, the bytes travel down through that stack, and each layer turns one abstraction into a lower-level one.
+
+At the top are files and directories: the thing you actually asked for, etc-passwd. Below that is the filesystem, like ext4 or xfs, which decides how bytes are organized on disk. Below that, optionally, is LVM, flexible software volume management. Below that, again optionally, is a RAID array, for redundancy across disks. Below that is the partition, a slice of a disk, like slash-dev-sda-two. Below that is the block device, the kernel's view of the whole disk, slash-dev-sda. And at the very bottom is the physical disk itself, the SSD or hard drive, the actual hardware.
+
+The key insight is that this stack is composable. A simple laptop uses almost none of it: just a disk, one partition, an ext4 filesystem, mounted at slash. A production server stacks more in: several disks, combined into a RAID array, managed by LVM, carved into many logical volumes, each formatted with a filesystem, and mounted at slash, slash-var, and slash-home. The kernel doesn't care which layers you use, because each layer simply exposes a block-device interface to the layer above it. So you mix and match freely.
+
+And that gives you a direction of travel for any task. When you're inspecting an existing system, work top-down: start at a mount point and follow the layers downward, with findmnt, then lsblk, then mount. When you're creating storage, work bottom-up: partition the disk, format a filesystem, then mount it.
+
+This whole module walks the stack in creation order. Block devices and how Linux names them; partitions, and MBR versus GPT; filesystems; mounting; making mounts persistent with etc-fstab; answering disk-space questions with df and du; swap; and finally the two production layers, LVM for flexible volumes and RAID for redundancy.

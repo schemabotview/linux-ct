@@ -1,0 +1,26 @@
+# RAID and quotas
+
+**RAID** combines disks for redundancy, speed, or both — Linux does software RAID via **`mdadm`**.
+
+| Level | What | Disks | Survives |
+|---|---|---|---|
+| **0** stripe | fastest | 2+ | **nothing** |
+| **1** mirror | copy on each | 2+ | N−1 fails |
+| **5** | stripe + 1 parity | 3+ | 1 fail |
+| **6** | stripe + 2 parity | 4+ | 2 fails |
+| **10** | mirror + stripe | 4+ | 1 per pair |
+
+**1** for simple redundancy · **10** the performance default · **6** over 5 on big disks.
+
+⚠️ **RAID is not a backup** — it survives disk *failure*, not `rm -rf` or corruption (those replicate). Keep backups.
+
+```bash
+sudo mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb1 /dev/sdc1
+cat /proc/mdstat            # array status + rebuilds
+```
+
+Replace a disk: `--fail` / `--remove` / `--add`.
+
+## Quotas — per-user limits
+
+Enable `usrquota` in fstab → `quotacheck -cug` + `quotaon` → **`edquota -u alice`** (soft=grace, hard=ceiling) → **`repquota -a`**. XFS: `uquota` + `xfs_quota`.

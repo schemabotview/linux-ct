@@ -1,0 +1,24 @@
+# Mounting — attach to the tree
+
+A filesystem is useless until **mounted** in the directory tree. **`mount`** attaches, **`umount`** detaches.
+
+```bash
+sudo mount /dev/sdb1 /mnt/data        # attach
+sudo mount -o ro /dev/sdb1 /mnt/data  # read-only
+sudo umount /mnt/data                 # detach
+```
+
+The mount point must exist (`mkdir` first); anything there is hidden until unmount.
+
+## Options (after `-o`)
+
+| | |
+|---|---|
+| **`ro`** / **`rw`** | read-only / read-write |
+| **`noatime`** | don't update access times — free perf |
+| **`nosuid`/`noexec`/`nodev`** | ignore SUID / block exec / ignore dev nodes |
+| **`defaults`** | `rw,suid,dev,exec,auto,async` |
+
+Three kinds: a **real device** · a **virtual** FS (`proc`, `tmpfs`) · a **bind mount** (`--bind`, same data at a 2nd path — containers).
+
+See mounts: **`findmnt`** (cleanest) · `df -hT`. These vanish on reboot → `/etc/fstab` next.

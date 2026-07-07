@@ -1,0 +1,26 @@
+# Disk space — `df` and `du`
+
+Two questions, two tools.
+
+## `df` — "how full are my filesystems?"
+
+```bash
+df -h        # human-readable
+df -hT       # + filesystem type
+df -i        # inodes, not bytes
+```
+
+Columns: Size · Used · **Avail** (for non-root) · Use% · Mounted on. Two surprises:
+
+1. **5% root reserve** (ext4) — `df` reads 95% while users can't write. `tune2fs -m 1`.
+2. **Inodes run out before bytes** — millions of tiny files. `df -i` shows it.
+
+## `du` — "what's using space in here?"
+
+```bash
+du -sh /var/log                 # one total
+du -h --max-depth=1 /var/log    # find big subdirs
+du -sh /var/log/* | sort -h     # sorted — the useful form
+```
+
+⚠️ **`df` full but `du` disagrees?** A **deleted-but-open file** — a process holds it; `rm` frees nothing until it closes. `lsof | grep deleted`. (TUI: **`ncdu`**.)

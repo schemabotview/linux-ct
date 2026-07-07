@@ -13,12 +13,12 @@ the plan we author against; the machine source of truth for structure is `manife
 
 **Status:** spine agreed — **10 modules × ~10 sections** (101 total, below). The `linux`
 scene is **ported into graphl-movie** (`src/scenes/linux.ts`, registered + catalog entry).
-**Modules 01–06 authored end-to-end** — every section has `.ipynb` + `.slide` + `.tts`, and
+**Modules 01–07 authored end-to-end** — every section has `.ipynb` + `.slide` + `.tts`, and
 `manifest.json` wires them onto the `linux` scene (§1 = hook on the whole map; §2–10 with
 per-section `focus`/`highlight`). Verified rendering in graphl-movie (slides trimmed to fit
 the non-scrolling 1080p pane). `audio/` is empty by design — the **owner** generates the
 `.wav`s from `tts/` via Colab, then the manifest `audio` fields resolve. **Pushed** to
-`github.com/schemabotview/linux-ct` (public). Modules 06–10 pending (same pattern).
+`github.com/schemabotview/linux-ct` (public). Modules 08–10 pending (same pattern).
 
 ## The scene — one dense map, framed per section
 
@@ -166,7 +166,7 @@ Frames the `lx-users` band with `lx-perms` for the SUID/SGID/ACL beats.
 | 9 | ACLs | `06-09-acls` | `lx-perms` → `lx-acl` |
 | 10 | Login mechanics *(PAM + startup files)* | `06-10-login-mechanics` | `lx-users` |
 
-### 07 — Storage, Filesystems & Mounts  (10)
+### 07 — Storage, Filesystems & Mounts  ✅ authored (10)
 Frames the `lx-block` band (the storage stack) with `lx-vfs` for mounts and `lx-mem` for swap.
 
 | # | Section | slug | focus → highlight |

@@ -1,0 +1,22 @@
+# The storage stack, top to bottom
+
+`cat /etc/passwd` → the bytes travel **down a stack of layers**, each lowering one abstraction to the next.
+
+```
+files & directories        "/etc/passwd"
+filesystem (ext4, xfs)      how bytes are organised
+(optional) LVM volume       flexible software volumes
+(optional) RAID array       redundancy across disks
+partition (/dev/sda2)       a slice of a disk
+block device (/dev/sda)     the kernel's view
+physical disk (SSD)         the hardware
+```
+
+The stack is **composable** — each layer exposes a **block-device interface** to the one above, so you mix and match. Laptop: disk → 1 partition → ext4 → `/`. Server: disks → RAID → LVM → many LVs → `/`, `/var`, `/home`.
+
+## Direction of travel
+
+- **Inspecting?** top-down — `findmnt` · `lsblk` · `mount`
+- **Creating?** bottom-up — **partition → format → mount**
+
+This module walks it in creation order, ending with **LVM** and **RAID**.
