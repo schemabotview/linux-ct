@@ -1,0 +1,13 @@
+chmod — changing permissions.
+
+Now that you can read the nine permission bits, let's change them, with chmod. It has two equivalent syntaxes, and you should learn to read both, because you'll run into both out in the wild.
+
+The first is the symbolic form, and it reads almost like a sentence: chmod, then who, then an operator, then what. The "who" is one or more of: u for the owner, g for group, o for other, or a for all of them. The operator is plus to add a permission, minus to remove one, or equals to set it exactly. And the "what" is some combination of r, w, and x.
+
+So chmod u-plus-x on a script adds execute permission for the owner. chmod g-o-minus-w removes write permission from both group and other at once. And chmod u-equals-r-w, comma, g-o-equals-r sets it exactly: owner gets read and write, group and other get read only. The equals form is nice because it sets an absolute state rather than nudging what's already there.
+
+The second is the numeric, or octal, form. Here each class gets a single digit, and the digit is a sum: read is worth four, write is worth two, execute is worth one. So seven is four plus two plus one, all three permissions. Six is read plus write. Five is read plus execute. Four is read only. And zero is nothing. You write three digits in order: user, then group, then other.
+
+A few combinations you'll see constantly, so it's worth memorising them. Seven-five-five, which is r-w-x, r-x, r-x, for programs and public directories: the owner does everything, others can read and run. Six-four-four, r-w for the owner and read for everyone else, for ordinary text and config files. Seven-zero-zero and six-zero-zero for private things like your dot-ssh directory and your private keys, where only the owner has any access at all. And seven-seven-seven, which grants everything to everyone; that one is almost always a security smell.
+
+Two flags to know. Dash-capital-R applies the change recursively, and dash-v prints what it's doing. But watch out for a classic mistake: running chmod dash-capital-R seven-five-five on a directory makes every regular file inside it executable, which you almost never want. The safe pattern is to set directories and files separately, using find: directories to seven-five-five, files to six-four-four. And find is exactly where we're headed in module four.

@@ -1,0 +1,32 @@
+# Links — one inode, many names
+
+Names and inodes are separate *(§1)* — so one inode can have **many names**.
+
+## Hard link — `ln src name`
+
+A second directory entry pointing at the **same inode**. Both names are equal — no "original."
+
+```bash
+ln original.txt second-name.txt
+```
+
+Delete one name → data survives while any name remains.
+
+## Symbolic link — `ln -s target name`
+
+A tiny file whose **contents are a path**. The kernel follows it to the target.
+
+```bash
+ln -s /etc/hostname host-link
+```
+
+## Which, when
+
+| | hard | symbolic |
+|---|---|---|
+| is | 2nd name for one inode | pointer holding a path |
+| target renamed? | survives | goes stale |
+| directory? cross-disk? | no | **yes** |
+| in `ls -l` | `-` | `l` with `→` |
+
+**Symlinks 99% of the time** — `/bin/sh`→`bash`, `python3`→a version, dotfiles. `readlink -f` resolves the chain.

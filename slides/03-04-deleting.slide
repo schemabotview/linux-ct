@@ -1,0 +1,20 @@
+# `rm` — no trash, no undo
+
+```bash
+rm report.txt          # a file — gone
+rm -r old-project/     # a directory + everything in it
+rm -rf temp/           # -f = force, no prompts
+```
+
+**`rm -rf` is genuinely dangerous.** `rm -rf /` has taken down real servers. Modern `rm` blocks `/` itself — but `rm -rf /home/someone/` runs without a word.
+
+## Habits that save you
+
+- **`rm -i`** — ask before each delete, especially with wildcards: `rm -i *.log`
+- **List first** — run `ls *.tmp`, check the matches, *then* swap `ls`→`rm`
+- **Watch variables** — `rm -rf "$dir/"` with an empty `$dir` becomes `rm -rf /`
+- **`rmdir`** — removes only an **empty** directory (a safer intent than `rm -r`)
+
+## No safety net
+
+Linux has **no built-in trash**. After `rm`, only recovery tools have a chance — and only sometimes.

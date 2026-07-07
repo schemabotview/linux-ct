@@ -1,0 +1,29 @@
+# Copy & move — `cp`, `mv`
+
+## Copy — `cp src dst`
+
+```bash
+cp report.txt backup.txt     # copy + rename
+cp report.txt /tmp/          # into a dir (keeps name)
+cp -r projects/ /backup/     # a dir needs -r
+```
+
+Flags: **`-i`** ask first · **`-p`** preserve times/owner/perms · **`-n`** never overwrite · **`-u`** only if newer.
+
+⚠️ `cp` **overwrites silently** — an existing `backup.txt` is gone with no warning. Alias `cp -i`.
+
+## Move / rename — `mv`
+
+On Linux **renaming is moving** — one command.
+
+```bash
+mv report.txt final.txt      # rename in place
+mv report.txt /tmp/          # move
+mv report.txt /tmp/new.txt   # move AND rename
+```
+
+- **Same filesystem** → just rewrites a directory entry: instant, any size *(name ≠ data)*.
+- **Across filesystems** → copy-then-delete, slower.
+- **No `-r`** — a dir always moves with its contents.
+
+Between machines → `scp` / `rsync` *(module 08)*.

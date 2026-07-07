@@ -1,0 +1,11 @@
+Links — hard links and symbolic links.
+
+Back in section one we saw that a name and an inode are two separate things. Now we get the payoff. Because they're separate, a single inode can have more than one name pointing at it. That's what a link is. Linux gives you two kinds.
+
+The first is a hard link, created with ln, the source, and a new name. A hard link is simply a second directory entry pointing at the very same inode. And here's the key idea: both names are completely equal. There's no "original" and no "copy." If you edit the file through one name, the other name sees the change, because there's really only one file underneath. If you delete one name, the data survives, as long as at least one name still points at the inode.
+
+The second kind is a symbolic link, or symlink, created with ln dash-s, a target, and a name. A symlink is a tiny separate file whose contents are just a path to another name. When you read the symlink, the kernel transparently follows that path to the target. So a symlink to slash-etc-hostname literally just holds the text "slash-etc-hostname" inside it.
+
+Let's line up the differences that matter. A hard link is a second name for one inode; a symlink is a pointer holding a path. If you rename the target, a hard link doesn't care, because both names are equal, but a symlink breaks, because the path it stored now points at nothing. A hard link can't point at a directory and can't cross to a different disk; a symlink can do both. And in ls dash-l, a hard link just looks like a regular file, with a dash, while a symlink shows a lowercase l for its type and an arrow pointing at its target.
+
+In practice, symbolic links are what you'll use ninety-nine percent of the time, and they're everywhere in Linux. slash-bin-sh is a symlink to bash, or to dash on Debian and Ubuntu. slash-usr-bin-python3 is a symlink to a specific Python version. And a dotfile like your bash-r-c is often a symlink into a dotfiles repository. You spot one in ls dash-l by the l type character and the arrow. And readlink dash-f resolves a whole chain of symlinks all the way to the final target.

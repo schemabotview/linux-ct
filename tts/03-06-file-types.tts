@@ -1,0 +1,23 @@
+The seven file types.
+
+When you run ls dash-l, the very first character of each line tells you what kind of thing you're looking at. Linux recognises seven types, and it's worth being able to name all of them.
+
+A plain dash means a regular file. That's text, binaries, images, documents; most of what you deal with.
+
+A lowercase d means a directory: a folder that holds other files, or, as we now know, a list of name-to-inode entries.
+
+A lowercase l means a symbolic link, a pointer to another path.
+
+Those first three are the ones you'll see constantly. The other four are worth recognising even if you rarely create them.
+
+A lowercase c is a character device. That's an unbuffered stream of bytes: terminals, and special files like slash-dev-null and slash-dev-random.
+
+A lowercase b is a block device. That's fixed-size, random-access storage: your disks, like slash-dev-sda or slash-dev-nvme-zero-n-one.
+
+A lowercase s is a socket, a communication endpoint between processes. Local services often listen on a socket file, like the Docker socket in slash-run.
+
+And a lowercase p is a named pipe, sometimes called a FIFO: a persistent pipe that lives on the filesystem.
+
+A little context on the exotic four. The character and block devices in slash-dev are how userspace talks to hardware; the kernel does the real work behind them. Reading from slash-dev-random gives you random bytes; writing to slash-dev-null throws everything away. Sockets are how local daemons, like databases and Docker, talk to clients on the same machine. And named pipes are rare in day-to-day work but show up in some scripted setups.
+
+One thing not to confuse: this is different from the file command we met earlier. The file command inspects the contents of a regular file, to tell you whether it's text, an image, or an executable. The first character of ls dash-l tells you the file's type, as the kernel itself sees it.

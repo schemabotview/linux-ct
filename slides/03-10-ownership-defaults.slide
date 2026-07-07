@@ -1,0 +1,27 @@
+# Ownership & defaults
+
+## Ownership — `chown` / `chgrp`
+
+Owner and group live beside the permission bits.
+
+```bash
+sudo chown alice file.txt        # owner
+sudo chown alice:devs file.txt   # owner + group
+sudo chown :devs file.txt        # group only
+sudo chown -R $USER:$USER /opt/app/   # give a tree back to you
+```
+
+⚠️ **`chown` needs `sudo`** — a user can't hand a file to someone else, or security collapses. Fixes the classic "`sudo`-installed files owned by `root`."
+
+## Defaults — `umask`
+
+New files start from **666** (files) / **777** (dirs); your **umask** says which bits to **subtract**.
+
+```
+umask 022  →  files 666−022 = 644   dirs 777−022 = 755
+umask 077  →  files 600      dirs 700   (private)
+```
+
+- `umask` — show it · `umask 077` — set this shell · `~/.bashrc` — make it permanent
+
+Set the **mask** (what to remove), not the result you want.

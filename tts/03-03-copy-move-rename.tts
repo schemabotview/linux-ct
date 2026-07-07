@@ -1,0 +1,17 @@
+Copy and move — cp and mv.
+
+Two everyday operations: copying a file and moving one.
+
+To copy, use cp, followed by a source and a destination. If the destination is a directory, the copy keeps its name; if it's a new name, the file is copied and renamed at the same time. To copy a whole directory and its contents, you need the dash-r flag, for recursive. Without it, cp refuses to copy a directory and tells you it's "omitting" it, which protects you from a common mistake.
+
+A handful of flags are worth knowing. Dash-i prompts before overwriting. Dash-p preserves the original's timestamps, ownership, and permissions instead of resetting them. Dash-n never overwrites. And dash-u only copies if the source is newer than the destination.
+
+Here's the warning that bites people: cp overwrites the destination silently by default. If a backup file already exists and you copy over it, the old one is gone with no prompt at all. That's why a lot of people alias cp to cp dash-i, so it always asks first.
+
+Now moving. On Linux, renaming a file is the same operation as moving it; there's no separate rename command in the basics. Both are done with mv. Move a file to a new name in the same place and you've renamed it; give it a directory and you've moved it; give it a directory and a new name and you've done both.
+
+There's a nice detail here that goes back to section one. When the source and destination are on the same filesystem, mv is nearly instant, no matter how big the file is, because it just rewrites a directory entry. The name is separate from the data, remember, so moving the name doesn't touch the data at all. But when you move across filesystems, say from your home directory to a USB stick, mv has to fall back to copy-then-delete, which can take a while for a large file.
+
+mv shares cp's dash-i, dash-v, dash-n, and dash-u flags. But there's no dash-r for mv: moving a directory always takes its contents with it, no questions asked.
+
+And for copying between two different machines, you'll reach for scp or rsync, which we cover in module eight.

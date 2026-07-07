@@ -1,0 +1,15 @@
+A filename is not the file.
+
+In module one you learned where files live: the filesystem tree, slash-etc, slash-home, slash-var. This module is about two deeper questions. What is a file, actually, underneath that tree? And who is allowed to touch it?
+
+Here's the idea that makes everything else in this module click. A filename is not the file. On Linux, a file is really two separate things.
+
+The first is the inode. That's a numbered record the filesystem keeps for every single file. The inode holds the file's metadata: its owner, its group, the permission bits, the timestamps, the size, and pointers to the actual data blocks on disk. Notice what's not in that list: the name. The inode does not know its own name.
+
+The second thing is the name itself. A name is just an entry in a directory that maps a human-readable label to an inode number. In fact, a directory is nothing more than a list of name-to-inode pairs.
+
+Once you see that the name and the data are separate, a lot of Linux behaviour that looks strange at first suddenly makes sense. A hard link is simply two names pointing at the same inode, and neither one is "the original." A symbolic link is a tiny file whose contents are just a path to another name. Renaming and moving a file are cheap, because you're only editing a directory entry, not copying any data. And deleting a file removes a name; the data itself only disappears when the last name pointing at that inode is gone, and no running program still has it open.
+
+The other half of this module is the permission model. Every inode records an owner, a group, and nine permission bits: read, write, and execute, each for three classes: the user who owns the file, the group, and everyone else. You'll see these nine bits every time you run list-long, ls dash l, and you change them with chmod and chown.
+
+The rest of the module walks this ground in order. Creating and viewing files, copying, moving, and deleting them, the two kinds of links, the seven file types, and then the permission model from end to end: reading ls dash l, chmod, ownership, and the umask that decides what new files get by default.

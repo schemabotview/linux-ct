@@ -1,0 +1,34 @@
+# `chmod` — changing permissions
+
+Two syntaxes — learn to read both.
+
+## Symbolic — like a sentence
+
+`chmod [who][op][what] file` · who **u g o a** · op **+ − =** · what **r w x**
+
+```bash
+chmod u+x script.sh        # add execute for owner
+chmod go-w file.txt        # remove write, group + other
+chmod u=rw,go=r file.txt   # set exactly
+```
+
+## Numeric — one digit per class
+
+**read 4 + write 2 + execute 1**, in order **user group other**.
+
+| Octal | Symbolic | Used for |
+|---|---|---|
+| **755** | `rwxr-xr-x` | programs, public dirs |
+| **644** | `rw-r--r--` | text / config files |
+| **700** | `rwx------` | private dir `~/.ssh` |
+| **600** | `rw-------` | private key `id_rsa` |
+| **777** | `rwxrwxrwx` | security smell |
+
+## Flags & a gotcha
+
+`-R` recursive · `-v` verbose. ⚠️ `chmod -R 755 dir/` makes **every file** executable — split them:
+
+```bash
+find dir -type d -exec chmod 755 {} +
+find dir -type f -exec chmod 644 {} +
+```

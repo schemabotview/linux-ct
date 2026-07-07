@@ -1,0 +1,17 @@
+Make a file, look inside one.
+
+Let's start with two verbs: making a file, and looking inside one.
+
+To make an empty file, use touch, followed by a name. Touch was originally built to update a file's timestamps, and it still does that, but its side effect of creating a file when none exists is what you'll use it for most. It takes several names at once, so you can create three empty files in a single command.
+
+To make a directory, use mkdir. Add the dash-p flag, for parents, and it creates a whole chain of nested directories in one step, and it also stays quiet if the directory already exists, which makes it safe in scripts.
+
+Two things that catch newcomers. Linux filenames are case-sensitive: capital-R Report and lowercase report are two different files. And spaces in names need quoting; the convention is to just avoid them and use dashes or underscores instead.
+
+Now, viewing. Pick the right tool for the size of the file. Cat dumps the whole file to your terminal. That's great for a small file and painful for a fifty-thousand-line log. The name is short for concatenate, because cat of two files prints them glued together.
+
+For anything large, use less, an interactive pager. The clever part is that less doesn't load the whole file into memory, just the part you're looking at, so it opens a ten-gigabyte log instantly. Inside less: Space or b to page forward and back, slash then a pattern to search, n for the next match, g and capital-G for the start and end, and q to quit.
+
+Head and tail print the first or last ten lines of a file; dash-n with a number changes the count. The star feature is tail dash-f, follow mode, which keeps printing new lines as they're appended. That's the standard way to watch a log file live: tail dash-f on slash-var-log-syslog.
+
+One last tool, for identifying rather than reading. The file command reads the first few bytes of a file and tells you what it actually is: file on slash-bin-ls says "ELF executable"; file on a text file says "ASCII text." Linux doesn't trust file extensions, so this is how you find out what something really is.

@@ -1,0 +1,28 @@
+# Who can do what
+
+Every inode has an **owner**, a **group**, and permissions for three classes.
+
+## Three classes — who's asking?
+
+- **user (u)** — the owner
+- **group (g)** — members of the file's group
+- **other (o)** — everyone else
+
+## Three actions — meaning shifts by target
+
+| | on a **file** | on a **directory** |
+|---|---|---|
+| **r** | view contents | list names (`ls`) |
+| **w** | change contents | add / delete / rename inside |
+| **x** | run it | **enter** it (`cd`), reach files within |
+
+⚠️ **x on a directory = traversable.** Read-but-not-execute is locked — no `cd`, no access inside. And deleting a file is *writing its directory* — you can delete a file you can't write, if you can write its parent.
+
+## Nine bits
+
+```
+   [ r w x ] [ r w x ] [ r w x ]
+     owner     group     other
+```
+
+Read them with `ls -l`, change them with `chmod`.

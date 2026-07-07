@@ -1,0 +1,36 @@
+# A filename is not the file
+
+Module 01 showed you **where** files live. Now: what a file **is** — and **who** can touch it.
+
+## Two separate things
+
+A file is an **inode** (a numbered record) plus a **name** that points at it.
+
+```
+directory entry            inode #8214
+┌──────────────┐          ┌────────────────────────┐
+│ report.txt → 8214 ──────▶ owner · group · rwx bits │
+│ notes.txt  → 8214 ──────▶ timestamps · size        │
+└──────────────┘          │ ─▶ data blocks on disk    │
+   names (in a dir)        └────────────────────────┘
+                          metadata + data — NO name
+```
+
+The **name lives in the directory**; the **data + metadata live in the inode**.
+
+## Why this matters
+
+- **Links** — two names, one inode *(hard)* · a name that holds a path *(symbolic)*
+- **Move / rename** is cheap — you edit a directory entry, not the data
+- **Delete** removes a *name*; data goes when the **last** name does
+
+## The permission model
+
+Every inode carries an owner, a group, and **nine bits**:
+
+```
+   [ r w x ] [ r w x ] [ r w x ]
+     owner     group     other
+```
+
+**This module:** create · view · copy/move · delete · links · file types · `chmod` · ownership.

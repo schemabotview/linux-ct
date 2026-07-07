@@ -1,0 +1,15 @@
+Ownership and defaults — chown, chgrp, and umask.
+
+We've covered the permission bits. Two things live right alongside them on every inode: the owner and the group. Let's finish the module with how you change those, and how new files get their permissions in the first place.
+
+To change ownership, you use chown for the owner and chgrp for the group, or you do both at once with chown, an owner, a colon, and a group. So chown alice on a file changes its owner to alice. chown alice colon devs changes the owner to alice and the group to devs. chown colon devs, with just a leading colon, changes only the group. And chown dash-capital-R lets you re-own a whole directory tree at once.
+
+Here's the important rule: you almost always need sudo to run chown. A regular user is not allowed to hand a file off to someone else, because if they could, security would fall apart; anyone could plant files owned by another account. Only root can reassign ownership. This is exactly how you fix the common situation where you install something with sudo, the new files end up owned by root, and you want them back. You run sudo chown dash-capital-R, dollar-USER colon dollar-USER, on the directory, and it's yours again. We cover users and groups properly in module six.
+
+Now, where do a new file's permissions come from? When touch creates a file, the kernel doesn't ask you; it applies a default. New files start from a maximum of six-six-six, and new directories from seven-seven-seven. Notice files never start executable. Then your umask, the user file-creation mask, says which permission bits to subtract from that maximum.
+
+The usual umask is zero-two-two, which means "remove write from group and other." So a new file is six-six-six minus zero-two-two, which is six-four-four, and a new directory is seven-seven-seven minus zero-two-two, which is seven-five-five. That's exactly the r-w-r-r and r-w-x-r-x-r-x you see everywhere.
+
+A stricter default, common on servers, is zero-seven-seven, which gives new files six-zero-zero and new directories seven-zero-zero: completely private to the owner. To see your current umask, just type umask. To change it for the current shell, type umask and the new value. And to make it permanent, set it in your bash-r-c. The one thing to remember: you set the mask, the bits to remove, not the result you want.
+
+And that's module three. You now know what a file really is, how to create, view, copy, move, delete, and link files, and how to read and control who's allowed to touch them.

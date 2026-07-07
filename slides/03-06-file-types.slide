@@ -1,0 +1,25 @@
+# The seven file types
+
+The **first character** of every `ls -l` line is the type.
+
+```
+-rw-r--r--   d rwxr-xr-x   lrwxrwxrwx
+↑            ↑             ↑
+type         directory     symlink
+```
+
+## The seven
+
+| | | |
+|---|---|---|
+| **`-`** | regular file | text, binaries, images — most files |
+| **`d`** | directory | holds `name → inode` entries |
+| **`l`** | symbolic link | a pointer to another path |
+| **`c`** | char device | byte stream — terminals, `/dev/null` |
+| **`b`** | block device | disks — `/dev/sda`, `/dev/nvme0n1` |
+| **`s`** | socket | local service endpoint — `/run/docker.sock` |
+| **`p`** | named pipe | a persistent pipe on disk |
+
+You live in the **first three**. Devices in `/dev` are how userspace reaches hardware; sockets are how local daemons talk.
+
+⚠️ Not the same as **`file`** — `file` reads a *regular file's contents*; the `ls -l` char is the **type the kernel sees**.

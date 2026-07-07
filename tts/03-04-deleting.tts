@@ -1,0 +1,17 @@
+Deleting, and the careful use of rm dash-r.
+
+This is the command to respect. rm, followed by a filename, deletes that file. There's no trash can, no undo. It's gone.
+
+To delete a directory and everything inside it, you need the dash-r flag, for recursive. And to suppress prompts and remove even read-only files, you add dash-f, for force. Put them together and you get rm dash-r-f, which is the command that has taken down real production servers.
+
+rm dash-r-f is genuinely dangerous. The infamous version, rm dash-r-f slash, tries to delete everything starting from the root of the filesystem. Modern rm refuses that exact command by default, but rm dash-r-f on someone's home directory still runs without a single word of warning.
+
+So let's talk about habits that save you. First, rm dash-i asks before each delete. That's especially worth it when wildcards are involved: rm dash-i star-dot-log confirms each one.
+
+Second, and this is the big one: list first, then delete. Before you run rm on star-dot-tmp, run ls on star-dot-tmp and look at exactly what matches. If the list looks right, press up-arrow to recall the line and change ls to rm. You get to see the blast radius before you pull the trigger.
+
+Third, watch your variables. If you run rm dash-r-f on quote dollar-dir slash quote, and the dir variable happens to be empty, that command expands to rm dash-r-f slash. Exactly the disaster you don't want. Always check a variable's value before you delete through it.
+
+And fourth, there's rmdir, which removes only an empty directory. When what you really mean is "this directory should be empty now, remove it," rmdir is a safer choice than rm dash-r, because it refuses if anything is still inside.
+
+The bottom line: Linux has no built-in trash like macOS or Windows. Once rm runs, only specialised recovery tools have any chance of getting your data back, and even then, only sometimes.

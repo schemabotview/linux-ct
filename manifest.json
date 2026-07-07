@@ -21,7 +21,9 @@
           "audio": "audio/01-02-getting-linux.wav",
           "scene": "linux",
           "focus": "lx-userspace",
-          "highlight": ["lx-userspace"],
+          "highlight": [
+            "lx-userspace"
+          ],
           "spine": true
         },
         {
@@ -31,7 +33,9 @@
           "audio": "audio/01-03-logging-in.wav",
           "scene": "linux",
           "focus": "lx-shell",
-          "highlight": ["lx-shell"],
+          "highlight": [
+            "lx-shell"
+          ],
           "spine": true
         },
         {
@@ -41,7 +45,9 @@
           "audio": "audio/01-04-where-am-i.wav",
           "scene": "linux",
           "focus": "lx-shell",
-          "highlight": ["lx-shells"],
+          "highlight": [
+            "lx-shells"
+          ],
           "spine": true
         },
         {
@@ -51,7 +57,9 @@
           "audio": "audio/01-05-listing-ls.wav",
           "scene": "linux",
           "focus": "lx-fhs",
-          "highlight": ["lx-fhs-home"],
+          "highlight": [
+            "lx-fhs-home"
+          ],
           "spine": true
         },
         {
@@ -61,7 +69,10 @@
           "audio": "audio/01-06-moving-around.wav",
           "scene": "linux",
           "focus": "lx-fhs",
-          "highlight": ["lx-fhs-home", "lx-fhs-etc"],
+          "highlight": [
+            "lx-fhs-home",
+            "lx-fhs-etc"
+          ],
           "spine": true
         },
         {
@@ -71,7 +82,10 @@
           "audio": "audio/01-07-command-anatomy.wav",
           "scene": "linux",
           "focus": "lx-shell",
-          "highlight": ["lx-shells", "lx-expansion"],
+          "highlight": [
+            "lx-shells",
+            "lx-expansion"
+          ],
           "spine": true
         },
         {
@@ -100,7 +114,9 @@
           "audio": "audio/01-09-tab-and-history.wav",
           "scene": "linux",
           "focus": "lx-shell",
-          "highlight": ["lx-shells"],
+          "highlight": [
+            "lx-shells"
+          ],
           "spine": true
         },
         {
@@ -110,7 +126,9 @@
           "audio": "audio/01-10-getting-help.wav",
           "scene": "linux",
           "focus": "lx-shell",
-          "highlight": ["lx-shells"],
+          "highlight": [
+            "lx-shells"
+          ],
           "spine": true
         }
       ]
@@ -135,7 +153,9 @@
           "audio": "audio/02-02-keyboard-shortcuts.wav",
           "scene": "linux",
           "focus": "lx-shells",
-          "highlight": ["lx-bash"],
+          "highlight": [
+            "lx-bash"
+          ],
           "spine": true
         },
         {
@@ -145,7 +165,9 @@
           "audio": "audio/02-03-variables.wav",
           "scene": "linux",
           "focus": "lx-expansion",
-          "highlight": ["lx-pvar"],
+          "highlight": [
+            "lx-pvar"
+          ],
           "spine": true
         },
         {
@@ -155,7 +177,10 @@
           "audio": "audio/02-04-the-environment.wav",
           "scene": "linux",
           "focus": "lx-process",
-          "highlight": ["lx-fork", "lx-exec"],
+          "highlight": [
+            "lx-fork",
+            "lx-exec"
+          ],
           "spine": true
         },
         {
@@ -165,7 +190,9 @@
           "audio": "audio/02-05-export.wav",
           "scene": "linux",
           "focus": "lx-expansion",
-          "highlight": ["lx-pvar"],
+          "highlight": [
+            "lx-pvar"
+          ],
           "spine": true
         },
         {
@@ -175,7 +202,9 @@
           "audio": "audio/02-06-quoting.wav",
           "scene": "linux",
           "focus": "lx-expansion",
-          "highlight": ["lx-quote"],
+          "highlight": [
+            "lx-quote"
+          ],
           "spine": true
         },
         {
@@ -185,7 +214,11 @@
           "audio": "audio/02-07-redirection.wav",
           "scene": "linux",
           "focus": "lx-streams",
-          "highlight": ["lx-stdin", "lx-stdout", "lx-stderr"],
+          "highlight": [
+            "lx-stdin",
+            "lx-stdout",
+            "lx-stderr"
+          ],
           "spine": true
         },
         {
@@ -195,7 +228,10 @@
           "audio": "audio/02-08-pipes.wav",
           "scene": "linux",
           "focus": "lx-streams",
-          "highlight": ["lx-stdout", "lx-stdin"],
+          "highlight": [
+            "lx-stdout",
+            "lx-stdin"
+          ],
           "spine": true
         },
         {
@@ -205,7 +241,9 @@
           "audio": "audio/02-09-globs.wav",
           "scene": "linux",
           "focus": "lx-expansion",
-          "highlight": ["lx-glob"],
+          "highlight": [
+            "lx-glob"
+          ],
           "spine": true
         },
         {
@@ -224,6 +262,131 @@
             "lx-split",
             "lx-glob",
             "lx-quote"
+          ],
+          "spine": true
+        }
+      ]
+    },
+    {
+      "id": "03-files-folders-and-permissions",
+      "title": "Files, Folders & Permissions",
+      "sections": [
+        {
+          "heading": "Files, inodes, and the permission model",
+          "notebook": "notebooks/03-01-files-and-inodes.ipynb",
+          "slide": "slides/03-01-files-and-inodes.slide",
+          "audio": "audio/03-01-files-and-inodes.wav",
+          "scene": "linux",
+          "role": "hook",
+          "spine": true
+        },
+        {
+          "heading": "Create and view files — touch, mkdir, cat, less",
+          "notebook": "notebooks/03-02-create-and-view.ipynb",
+          "slide": "slides/03-02-create-and-view.slide",
+          "audio": "audio/03-02-create-and-view.wav",
+          "scene": "linux",
+          "focus": "lx-vfs",
+          "highlight": [
+            "lx-vfs"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Copy, move, and rename — cp and mv",
+          "notebook": "notebooks/03-03-copy-move-rename.ipynb",
+          "slide": "slides/03-03-copy-move-rename.slide",
+          "audio": "audio/03-03-copy-move-rename.wav",
+          "scene": "linux",
+          "focus": "lx-vfs",
+          "highlight": [
+            "lx-file"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Deleting — rm, and the careful use of rm -r",
+          "notebook": "notebooks/03-04-deleting.ipynb",
+          "slide": "slides/03-04-deleting.slide",
+          "audio": "audio/03-04-deleting.wav",
+          "scene": "linux",
+          "focus": "lx-vfs",
+          "highlight": [
+            "lx-vfs"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Links — hard links and symbolic links",
+          "notebook": "notebooks/03-05-links.ipynb",
+          "slide": "slides/03-05-links.slide",
+          "audio": "audio/03-05-links.wav",
+          "scene": "linux",
+          "focus": "lx-vfs",
+          "highlight": [
+            "lx-hardlink",
+            "lx-symlink",
+            "lx-inode"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "The seven file types",
+          "notebook": "notebooks/03-06-file-types.ipynb",
+          "slide": "slides/03-06-file-types.slide",
+          "audio": "audio/03-06-file-types.wav",
+          "scene": "linux",
+          "focus": "lx-vfs",
+          "highlight": [
+            "lx-file"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "The permissions model — who can do what",
+          "notebook": "notebooks/03-07-permissions-model.ipynb",
+          "slide": "slides/03-07-permissions-model.slide",
+          "audio": "audio/03-07-permissions-model.wav",
+          "scene": "linux",
+          "focus": "lx-perms",
+          "highlight": [
+            "lx-rwx"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Reading ls -l, character by character",
+          "notebook": "notebooks/03-08-reading-ls-l.ipynb",
+          "slide": "slides/03-08-reading-ls-l.slide",
+          "audio": "audio/03-08-reading-ls-l.wav",
+          "scene": "linux",
+          "focus": "lx-perms",
+          "highlight": [
+            "lx-rwx"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "chmod — changing permissions",
+          "notebook": "notebooks/03-09-chmod.ipynb",
+          "slide": "slides/03-09-chmod.slide",
+          "audio": "audio/03-09-chmod.wav",
+          "scene": "linux",
+          "focus": "lx-perms",
+          "highlight": [
+            "lx-rwx"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Ownership and defaults — chown, chgrp, umask",
+          "notebook": "notebooks/03-10-ownership-defaults.ipynb",
+          "slide": "slides/03-10-ownership-defaults.slide",
+          "audio": "audio/03-10-ownership-defaults.wav",
+          "scene": "linux",
+          "focus": "lx-perms",
+          "highlight": [
+            "lx-perms"
           ],
           "spine": true
         }

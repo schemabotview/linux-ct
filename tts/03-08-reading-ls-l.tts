@@ -1,0 +1,15 @@
+Reading ls dash-l, character by character.
+
+Let's take a single line from ls dash-l and read it all the way across, because once this clicks, a huge amount of Linux stops being mysterious.
+
+Take a line for a file called report-dot-txt. It starts with dash-r-w-dash-r-dash-dash-r-dash-dash, then a number, two names, a size, a date, and the filename.
+
+The first ten characters are the important part. The very first character is the type; here a plain dash means a regular file. Then the remaining nine characters are the permission bits, and they come in three groups of three: owner, then group, then other. So for report-dot-txt: the owner's group is r-w-dash, read and write but no execute. The group's is r-dash-dash, read only. And other's is r-dash-dash, read only as well.
+
+Now the rest of the line. After the permissions comes a number, here a one; that's the number of hard links pointing at this inode. Then two names: the first is the owner, the second is the group. Then the size in bytes. Then the last-modified date and time. And finally the filename itself.
+
+So, read as a sentence, that line says: a regular file, that the owner can read and write, that everyone else can only read, with one link to it, twelve hundred-odd bytes, last changed on March fourteenth, named report-dot-txt.
+
+Directories look similar but start with a lowercase d, and they typically read r-w-x, r-x, r-x. That means the owner can do everything, and others can read the directory and traverse into it, but not modify it. And if you see a file whose bits are r-w-x, r-x, r-x, that's an executable: a program or script the owner fully controls and everyone can run.
+
+Here's my advice: spend one honest minute running ls dash-l on slash-etc and reading a few lines out, character by character, until that ten-character block is instant to you. It is the single most important piece of ground truth you'll read on a Linux system.

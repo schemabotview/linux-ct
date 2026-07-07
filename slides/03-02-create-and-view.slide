@@ -1,0 +1,22 @@
+# Make a file, look inside one
+
+## Make
+
+```bash
+touch report.txt a.txt      # empty file(s)
+mkdir projects
+mkdir -p projects/linux/notes   # -p = create every parent
+```
+
+Filenames are **case-sensitive** (`Report.txt` ≠ `report.txt`) · quote spaces, or just avoid them.
+
+## View — pick by size
+
+- **`cat`** — dump the whole file. Fine small, painful on a huge log.
+- **`less`** — interactive pager; opens a 10 GB file instantly. `Space`/`b` page · `/pat` `n` search · `q` quit.
+- **`head`** / **`tail`** — first / last 10 lines (`-n N`).
+- **`tail -f`** — **follow**: keep printing new lines. `tail -f /var/log/syslog`
+
+## Identify, don't read
+
+**`file <path>`** reads the first bytes and names what it is — `file /bin/ls` → *ELF executable*. Linux **doesn't trust extensions**.

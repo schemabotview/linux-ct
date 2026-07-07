@@ -1,0 +1,15 @@
+The permissions model — who can do what.
+
+Linux is a multi-user system from the ground up, and the permission model is how it keeps users out of each other's files. Every file's inode records an owner, a group, and a set of permissions that control what three different classes of people are allowed to do.
+
+Start with the three classes; think of them as answering "who's asking?" The first is the user, u, which is the file's owner. The second is the group, g, meaning members of the file's group. And the third is other, o, which is simply everyone else, anyone who isn't the owner and isn't in the group.
+
+Now the three actions: read, write, and execute. Here's the part that trips people up: what those actions mean depends on whether you're talking about a file or a directory.
+
+For a file, it's intuitive. Read means view the contents. Write means change the contents. Execute means run it, if it's a program or a script.
+
+For a directory, the meanings shift. Read means list the names inside it, like running ls. Write means create, delete, or rename entries inside it. And execute means enter the directory, cd into it, and reach the files within.
+
+That execute rule on directories is the one to really absorb. Execute on a directory means "traversable." A directory you can read but not execute is effectively locked: you can't cd into it, and you can't reach anything inside it. And here's a consequence that surprises people: because deleting a file is really an act of writing to its directory, you can delete a file you have no write permission on, as long as you can write to the directory that contains it.
+
+Put the three classes together with the three actions, and you get nine permission bits per file: read, write, execute for the owner; then read, write, execute for the group; then read, write, execute for other. Those nine bits are exactly what you read with ls dash-l, which is the very next section, and exactly what you change with chmod.
