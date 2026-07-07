@@ -12,10 +12,8 @@ AllowUsers alice bob                # whitelist
 
 ```bash
 sudo sshd -t                # syntax check, silent if OK
-sudo systemctl reload sshd
+sudo systemctl reload sshd   # then confirm in a SECOND session before closing this one
 ```
-
-Drill: reload → open a **second** session to confirm → *then* close the first.
 
 ## Transfer over SSH
 
@@ -33,4 +31,4 @@ rsync -avz --delete ~/work/ user@host:/backups/work/
 
 `-a` archive · `-z` compress · `--delete` mirror.
 
-⚠️ **Trailing slash:** `src/` copies the *contents*; `src` copies the *directory*. Many broken backups start here.
+⚠️ **Trailing slash:** `src/` copies the *contents*; `src` the *directory*. Many broken backups start here.
