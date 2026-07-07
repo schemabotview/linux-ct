@@ -24,10 +24,9 @@ The last log lines usually *are* the answer. Four classics:
 
 ```bash
 sudo journalctl -u foo -n 100 --no-pager
-sudo nginx -t                 # config checker (sshd -t, ...)
-systemctl cat foo             # then run its ExecStart by hand
+sudo nginx -t     # config checker (sshd -t) · then run its ExecStart by hand
 ```
 
 ## 5–6 · Ports, MAC, reload
 
-`ss -tunlp | grep :80` · SELinux (`ausearch -m AVC`) · **did you `daemon-reload`?** *(module 09)* — the #1 "still fails" cause.
+`ss -tunlp | grep :80` · SELinux `ausearch -m AVC` · **did you `daemon-reload`?** — the #1 "still fails" cause *(module 09)*.

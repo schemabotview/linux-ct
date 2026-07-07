@@ -14,13 +14,12 @@ Use modern **`[[ ]]`** (adds `&&`, regex, no quoting needed). Operators:
 
 - **files** `-e -f -d -r -w -x -s` · **strings** `-z -n = != =~` · **numbers** `-eq -ne -lt -gt`
 - short-circuit: `[[ -d /backup ]] || mkdir /backup`
-- many branches → **`case`** (glob patterns, `;;` ends each)
+- many branches → **`case`** (globs, `;;` per branch)
 
 ## Loops
 
 ```bash
 for f in /etc/*.conf; do echo "$f"; done
-for i in {1..5}; do echo "$i"; done
 until systemctl is-active nginx; do sleep 2; done
 ```
 

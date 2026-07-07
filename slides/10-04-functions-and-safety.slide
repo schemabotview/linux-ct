@@ -29,4 +29,4 @@ set -euo pipefail
 - **`-u`** error on an unset variable (typo catcher)
 - **`-o pipefail`** a pipeline fails if *any* stage does
 
-Allow a failure: `if ! risky; then …`. Debug: **`bash -x script.sh`** prints each command as it runs. `trap 'echo line $LINENO' ERR` reports where it died.
+Allow a failure: `if ! risky; then …`. Debug with **`bash -x script.sh`** — prints each command as it runs (`trap … ERR` reports the failing line).

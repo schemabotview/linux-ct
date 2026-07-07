@@ -9,11 +9,9 @@ First line = `#!` + interpreter path.
 ```bash
 #!/bin/bash
 echo "Hello, $(whoami)!"
-```
 
-```bash
-chmod +x hello.sh     # one-time
-./hello.sh            # needs +x AND a shebang
+chmod +x hello.sh     # one-time: make executable
+./hello.sh            # run (needs +x AND a shebang)
 ```
 
 **`#!/bin/bash`** (95%) · `#!/bin/sh` (portable) · **`#!/usr/bin/env bash`** (finds it in `PATH`).
