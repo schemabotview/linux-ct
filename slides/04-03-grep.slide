@@ -9,8 +9,6 @@ ps -ef | grep "bash"             # another command's output
 
 Quote the pattern to keep the shell off it.
 
-## Flags you'll use constantly
-
 | | |
 |---|---|
 | **`-i`** | case-insensitive |

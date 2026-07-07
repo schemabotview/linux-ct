@@ -1,7 +1,5 @@
 # Archives — `tar` and the tar-pipe
 
-Two separate ideas:
-
 - **Archive** — bundle many files into one stream → **`tar`**
 - **Compress** — make a stream smaller → several algorithms
 

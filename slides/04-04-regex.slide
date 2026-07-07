@@ -2,14 +2,10 @@
 
 A tiny language for string patterns. `grep`, `sed`, `awk` all speak it.
 
-## Two flavours — know this first
-
 - **Basic (BRE)** — default; `+ ? | ( )` need backslash-escaping
 - **Extended (ERE)** — `grep -E` / `sed -E` (awk always). No escaping.
 
 **Use `-E` by default** — it's what "regex" means today.
-
-## The pieces you'll meet most
 
 | | |
 |---|---|
