@@ -19,4 +19,4 @@ The kernel           ← "Linux"
 Hardware             CPU · RAM · disk · NIC
 ```
 
-**Why bother:** servers, Android, the **cloud**, containers, all 500 top supercomputers — Linux. It's the **floor**. Goal: **zero → LFCS**.
+**Why bother:** servers, Android, the **cloud**, containers — all Linux. Goal: **zero → LFCS**.

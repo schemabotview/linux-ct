@@ -26,5 +26,3 @@ cp  -r  /home/ubuntu/work  /backup
 
 - Options can take a **value**: `grep --max-count=5 'error' file`
 - Lone **`--`** = end of options → `grep -- '-x' file` (literal dash)
-
-**Convention:** `command → options → arguments`.
