@@ -1,6 +1,6 @@
 # RAID and quotas
 
-**RAID** combines disks for redundancy, speed, or both — Linux does software RAID via **`mdadm`**.
+**RAID** combines disks for redundancy, speed, or both — software RAID via **`mdadm`**.
 
 | Level | What | Disks | Survives |
 |---|---|---|---|
@@ -23,4 +23,4 @@ Replace a disk: `--fail` / `--remove` / `--add`.
 
 ## Quotas — per-user limits
 
-Enable `usrquota` in fstab → `quotacheck -cug` + `quotaon` → **`edquota -u alice`** (soft=grace, hard=ceiling) → **`repquota -a`**. XFS: `uquota` + `xfs_quota`.
+`usrquota` in fstab → `quotacheck -cug` + `quotaon` → **`edquota -u alice`** (soft=grace, hard=ceiling) → **`repquota -a`**. XFS: `uquota`.

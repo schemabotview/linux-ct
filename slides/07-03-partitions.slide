@@ -1,8 +1,6 @@
 # Partitions — MBR vs GPT
 
-A **partition** is a contiguous slice of a disk. Partition to hold multiple filesystems (`/`, `/home`, swap), dual-boot, or keep filesystems small.
-
-A **partition table** at the disk's start describes them — two formats:
+A **partition** is a contiguous slice of a disk — for multiple filesystems (`/`, `/home`, swap), dual-boot, or smaller filesystems. A **partition table** at the disk's start describes them — two formats:
 
 | | **MBR** | **GPT** |
 |---|---|---|
@@ -16,8 +14,7 @@ A **partition table** at the disk's start describes them — two formats:
 
 ## Two tools
 
-- **`fdisk`** — interactive: `p` print · `n` new · `d` delete · `t` type · `w` write
-- **`parted`** — both tables, scriptable
+**`fdisk`** — interactive (`p` print · `n` new · `d` delete · `w` write) · **`parted`** — both tables, scriptable:
 
 ```bash
 sudo parted /dev/sdb mklabel gpt
