@@ -1,0 +1,23 @@
+# SSH — the secure shell
+
+Log in to a remote machine and run commands as if at its console. Encrypted, mutually authenticated, **universal** — same everywhere. Client **`ssh`** → daemon **`sshd`** on TCP **22**.
+
+```bash
+ssh user@host                 # log in
+ssh user@host -p 2222         # custom port (lowercase -p)
+ssh -i ~/.ssh/key user@host   # a specific key
+ssh user@host "uptime"        # one command, then exit
+```
+
+## Host key verification
+
+First connect → SSH shows a **fingerprint** and asks to confirm:
+
+```
+ED25519 fingerprint is SHA256:abc...xyz
+continue connecting (yes/no)?
+```
+
+Defends against man-in-the-middle. **Verify out-of-band** the first time; then it's saved in `~/.ssh/known_hosts` and checked silently.
+
+⚠️ **`REMOTE HOST IDENTIFICATION HAS CHANGED!`** = the key differs. Usually a reinstall — but don't blindly accept. Verify, then `ssh-keygen -R hostname`.

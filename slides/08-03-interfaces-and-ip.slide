@@ -1,0 +1,29 @@
+# Interfaces & getting an IP
+
+An **interface** is the kernel's abstraction for a connection: **`lo`** loopback · **`eth0`**/`enp0s3` ethernet · **`wlan0`** wireless · **`docker0`** bridge.
+
+## The modern tool — `ip`
+
+```bash
+ip -br addr                              # one line per interface
+sudo ip addr add 192.168.1.50/24 dev eth0   # temporary!
+sudo ip link set eth0 up
+```
+
+`ifconfig`/`route`/`netstat` are **deprecated**.
+
+## Two ways to get an address
+
+- **DHCP** — the network hands one back. Laptops, VMs, cloud.
+- **Static** — set by hand. Servers, gear needing a fixed address.
+
+## Persistent config — `nmcli` (NetworkManager)
+
+```bash
+sudo nmcli connection add type ethernet con-name office ifname eth0 \
+  ipv4.method manual ipv4.addresses 192.168.1.50/24 \
+  ipv4.gateway 192.168.1.1 ipv4.dns "8.8.8.8"
+sudo nmcli connection up office
+```
+
+DHCP → `ipv4.method auto`. (Ubuntu Server: **`netplan`** YAML.)

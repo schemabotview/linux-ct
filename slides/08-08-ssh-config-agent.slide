@@ -1,0 +1,28 @@
+# SSH config & the agent
+
+## `~/.ssh/config` — save aliases
+
+```
+Host work
+    HostName 10.0.0.42
+    User alice
+    IdentityFile ~/.ssh/work_ed25519
+
+Host internal-*
+    ProxyJump bastion
+```
+
+Now `ssh work` connects with the right key; `ssh internal-db1` **jumps through** bastion. Rules: patterns (globs), **first match wins**, `Host *` sets defaults. Keys: `HostName` · `User` · `Port` · `IdentityFile` · `ProxyJump`.
+
+## `ssh-agent` — unlock the key once
+
+```bash
+ssh-add          # add id_ed25519 to the agent
+ssh-add -l       # list held keys
+```
+
+Passphrase costs you once per session.
+
+## Agent forwarding vs ProxyJump
+
+`ssh -A` lets a server use **your** agent for an onward hop — key never leaves your laptop. ⚠️ But that host can use your key while connected — **not for untrusted servers**. **`ProxyJump` is safer** — tunnels through, no agent access.

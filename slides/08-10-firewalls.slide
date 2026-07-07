@@ -1,0 +1,22 @@
+# Firewalls & troubleshooting
+
+The **firewall** decides which packets the kernel accepts. Filter in the kernel (**`nftables`**); drive it via **`ufw`** (Debian) or **`firewalld`** (RHEL).
+
+```bash
+sudo ufw allow ssh          # port 22
+sudo ufw enable
+```
+
+⚠️ **Allow SSH *before* `enable`** on a remote box — or lock yourself out. `firewalld`: zones + `--permanent` then `--reload`.
+
+## Troubleshoot up the layers
+
+1. **Connected?** `ip -br addr` — got an IP?
+2. **Gateway?** `ping -c4 <gateway>`
+3. **Internet?** `ping -c4 1.1.1.1`
+4. **DNS?** `dig +short` vs `dig @8.8.8.8 +short` — only 2nd works = resolver broken
+5. **Path?** `traceroute example.com`
+6. **Port + service?** `nc -zv host 443` outside · **`ss -tunlp`** on the server (modern `netstat`)
+7. **The wire?** `sudo tcpdump -i eth0 port 22`
+
+**Ping host → test port → resolve name → trace path → check it's listening.**

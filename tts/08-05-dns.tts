@@ -1,0 +1,11 @@
+DNS — turning names into addresses.
+
+You never really connect to ninety-three dot one-eighty-four dot two-sixteen dot thirty-four. You connect to example-dot-com. DNS, the domain name system, is the machinery that turns that human-friendly name into the numeric address the network actually uses.
+
+The lookup goes in a definite order. First, the local file etc-hosts is checked. Then the system resolver, which on modern systems is usually systemd-resolved. Then the configured DNS servers, which might be your ISP's, your company's, or public ones like eight dot eight dot eight dot eight, or one dot one dot one dot one.
+
+Let's look at the two files that matter. etc-hosts is a plain text file mapping addresses to names, one per line, and it beats every other source, so it's handy for overriding DNS during development or giving a local machine a memorable name. You just write the address, then the name, like one-ninety-two dot one-sixty-eight dot one dot ten, home-server.
+
+The second file is etc-resolv-dot-conf, which historically listed the nameserver entries and a search domain used to complete short names. But here's the important gotcha: on modern systemd distributions, etc-resolv-dot-conf is a symlink to a file that systemd-resolved manages automatically. So don't edit it directly, because it'll just get overwritten. Instead, inspect your DNS config with resolvectl status, and set DNS permanently through NetworkManager's ipv4-dot-dns setting.
+
+Now, to actually test DNS, without trusting whatever your local cache says, the tool is dig. dig example-dot-com plus-short gives you just the answer. dig at-sign eight dot eight dot eight dot eight, then the name, queries that specific server directly, bypassing your local resolver. And you can request a particular record type, like dig example-dot-com M-X for mail servers. This gives you the single most useful diagnostic in the whole DNS section: if dig at eight dot eight dot eight dot eight works, but plain dig doesn't, then the wider internet is perfectly fine and the problem is your own resolver. As for record types worth knowing: A is an IPv4 address, quad-A is IPv6, CNAME is an alias to another name, M-X is the mail server, N-S is the nameservers, T-X-T is arbitrary text used for things like domain verification, and P-T-R is the reverse lookup, from address back to name.

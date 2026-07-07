@@ -1,0 +1,36 @@
+# `sshd` server & file transfer
+
+## The server — `/etc/ssh/sshd_config`
+
+```
+PermitRootLogin prohibit-password   # root only by key (or 'no')
+PasswordAuthentication no           # keys only
+AllowUsers alice bob                # whitelist
+```
+
+⚠️ **Validate + reload before disconnecting** — a bad config refuses *new* sessions:
+
+```bash
+sudo sshd -t                # syntax check, silent if OK
+sudo systemctl reload sshd
+```
+
+Drill: reload → open a **second** session to confirm → *then* close the first.
+
+## Transfer over SSH
+
+**`scp`** = `cp` across machines (capital **`-P`** for port):
+
+```bash
+scp -r dir/ user@host:/path/
+```
+
+For real work, **`rsync`** — incremental, resumable:
+
+```bash
+rsync -avz --delete ~/work/ user@host:/backups/work/
+```
+
+`-a` archive · `-z` compress · `--delete` mirror.
+
+⚠️ **Trailing slash:** `src/` copies the *contents*; `src` copies the *directory*. Many broken backups start here.

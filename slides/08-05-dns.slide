@@ -1,0 +1,25 @@
+# DNS — names into addresses
+
+You connect to `example.com`, not a number. **DNS** does the translation.
+
+## Lookup order
+
+1. **`/etc/hosts`** — local file, beats everything
+2. system resolver — usually **`systemd-resolved`**
+3. configured DNS servers (`8.8.8.8`, `1.1.1.1`)
+
+**`/etc/hosts`** — `192.168.1.10  home-server`. Great for dev overrides.
+
+**`/etc/resolv.conf`** — on systemd it's a **symlink managed by `systemd-resolved`**; don't edit directly. Inspect with `resolvectl status`; set DNS via NetworkManager (`ipv4.dns`).
+
+## Test with `dig`
+
+```bash
+dig example.com +short        # just the answer
+dig @8.8.8.8 example.com      # ask a specific server
+dig example.com MX            # a record type
+```
+
+**Key diagnostic:** if `dig @8.8.8.8` works but plain `dig` doesn't → **your resolver is broken**, not the internet.
+
+Records: **A** v4 · **AAAA** v6 · **CNAME** alias · **MX** mail · **NS** · **TXT** · **PTR** reverse.

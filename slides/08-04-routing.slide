@@ -1,0 +1,26 @@
+# Routing — how packets find their way
+
+Sending to `93.184.216.34`? The kernel checks its **routing table** for which interface + next hop to use, picking the **most specific** match.
+
+```bash
+ip route
+```
+
+```
+default via 192.168.1.1 dev eth0
+192.168.1.0/24 dev eth0 src 192.168.1.42
+```
+
+- **`default via 192.168.1.1`** — anything unmatched goes to the **default gateway** (the router / cloud virtual gateway).
+- **`192.168.1.0/24 dev eth0`** — the local network is **directly attached**, no gateway needed.
+
+Most machines have exactly these two: **local is direct, everything else via the gateway.**
+
+## Change & debug
+
+```bash
+sudo ip route add 10.0.0.0/8 via 192.168.1.254   # temporary
+ip route get 8.8.8.8      # which interface + gateway will carry this?
+```
+
+`ip route get` answers "is my traffic really going where I think?"

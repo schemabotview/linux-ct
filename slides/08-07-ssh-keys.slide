@@ -1,0 +1,28 @@
+# SSH keys — the right way to auth
+
+Passwords are guessable and typed every time. A **key pair** fixes both: a **private key** that never leaves your machine, a **public key** copied to servers. The server challenges; only the private key answers — **no password on the wire**.
+
+## Generate — Ed25519
+
+```bash
+ssh-keygen -t ed25519 -C "you@example.com"
+```
+
+Two files: **`id_ed25519`** (private — never share) · **`id_ed25519.pub`** (public — safe to copy). **Always set a passphrase**; the agent means you type it once. Legacy fallback: `ssh-keygen -t rsa -b 3072`.
+
+## Install it
+
+```bash
+ssh-copy-id user@host       # appends .pub to server's authorized_keys
+```
+
+Then `ssh user@host` needs no password.
+
+## ⚠️ Permissions — SSH is strict
+
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_ed25519 ~/.ssh/authorized_keys
+```
+
+"Permissions are too open" errors are always this.

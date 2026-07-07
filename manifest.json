@@ -892,6 +892,129 @@
           "spine": true
         }
       ]
+    },
+    {
+      "id": "08-networking-and-ssh",
+      "title": "Networking & SSH",
+      "sections": [
+        {
+          "heading": "The network stack and the socket",
+          "notebook": "notebooks/08-01-network-stack.ipynb",
+          "slide": "slides/08-01-network-stack.slide",
+          "audio": "audio/08-01-network-stack.wav",
+          "scene": "linux",
+          "role": "hook",
+          "spine": true
+        },
+        {
+          "heading": "TCP/IP refresher",
+          "notebook": "notebooks/08-02-tcp-ip-refresher.ipynb",
+          "slide": "slides/08-02-tcp-ip-refresher.slide",
+          "audio": "audio/08-02-tcp-ip-refresher.wav",
+          "scene": "linux",
+          "focus": "lx-net",
+          "highlight": [
+            "lx-tcp"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Interfaces and getting an IP",
+          "notebook": "notebooks/08-03-interfaces-and-ip.ipynb",
+          "slide": "slides/08-03-interfaces-and-ip.slide",
+          "audio": "audio/08-03-interfaces-and-ip.wav",
+          "scene": "linux",
+          "focus": "lx-net",
+          "highlight": [
+            "lx-sockets"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Routing — how packets find their destination",
+          "notebook": "notebooks/08-04-routing.ipynb",
+          "slide": "slides/08-04-routing.slide",
+          "audio": "audio/08-04-routing.wav",
+          "scene": "linux",
+          "focus": "lx-net",
+          "highlight": [
+            "lx-tcp"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "DNS — turning names into addresses",
+          "notebook": "notebooks/08-05-dns.ipynb",
+          "slide": "slides/08-05-dns.slide",
+          "audio": "audio/08-05-dns.wav",
+          "scene": "linux",
+          "focus": "lx-net",
+          "highlight": [
+            "lx-tcp"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "SSH — the secure shell",
+          "notebook": "notebooks/08-06-ssh.ipynb",
+          "slide": "slides/08-06-ssh.slide",
+          "audio": "audio/08-06-ssh.wav",
+          "scene": "linux",
+          "focus": "lx-net",
+          "highlight": [
+            "lx-ssh"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "SSH keys — the right way to authenticate",
+          "notebook": "notebooks/08-07-ssh-keys.ipynb",
+          "slide": "slides/08-07-ssh-keys.slide",
+          "audio": "audio/08-07-ssh-keys.wav",
+          "scene": "linux",
+          "focus": "lx-net",
+          "highlight": [
+            "lx-ssh"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "SSH config and the agent",
+          "notebook": "notebooks/08-08-ssh-config-agent.ipynb",
+          "slide": "slides/08-08-ssh-config-agent.slide",
+          "audio": "audio/08-08-ssh-config-agent.wav",
+          "scene": "linux",
+          "focus": "lx-net",
+          "highlight": [
+            "lx-ssh"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "The sshd server and file transfer",
+          "notebook": "notebooks/08-09-sshd-file-transfer.ipynb",
+          "slide": "slides/08-09-sshd-file-transfer.slide",
+          "audio": "audio/08-09-sshd-file-transfer.wav",
+          "scene": "linux",
+          "focus": "lx-net",
+          "highlight": [
+            "lx-ssh"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Firewalls and troubleshooting",
+          "notebook": "notebooks/08-10-firewalls.ipynb",
+          "slide": "slides/08-10-firewalls.slide",
+          "audio": "audio/08-10-firewalls.wav",
+          "scene": "linux",
+          "focus": "lx-net",
+          "highlight": [
+            "lx-netfilter"
+          ],
+          "spine": true
+        }
+      ]
     }
   ]
 }

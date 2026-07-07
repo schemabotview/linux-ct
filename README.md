@@ -13,12 +13,12 @@ the plan we author against; the machine source of truth for structure is `manife
 
 **Status:** spine agreed — **10 modules × ~10 sections** (101 total, below). The `linux`
 scene is **ported into graphl-movie** (`src/scenes/linux.ts`, registered + catalog entry).
-**Modules 01–07 authored end-to-end** — every section has `.ipynb` + `.slide` + `.tts`, and
+**Modules 01–08 authored end-to-end** — every section has `.ipynb` + `.slide` + `.tts`, and
 `manifest.json` wires them onto the `linux` scene (§1 = hook on the whole map; §2–10 with
 per-section `focus`/`highlight`). Verified rendering in graphl-movie (slides trimmed to fit
 the non-scrolling 1080p pane). `audio/` is empty by design — the **owner** generates the
 `.wav`s from `tts/` via Colab, then the manifest `audio` fields resolve. **Pushed** to
-`github.com/schemabotview/linux-ct` (public). Modules 08–10 pending (same pattern).
+`github.com/schemabotview/linux-ct` (public). Modules 09–10 pending (same pattern).
 
 ## The scene — one dense map, framed per section
 
@@ -182,7 +182,7 @@ Frames the `lx-block` band (the storage stack) with `lx-vfs` for mounts and `lx-
 | 9 | LVM *(+ ops)* | `07-09-lvm` | `lx-block` → `lx-lvm` |
 | 10 | RAID *(+ quotas)* | `07-10-raid` | `lx-block` → `lx-raid` |
 
-### 08 — Networking & SSH  (10)
+### 08 — Networking & SSH  ✅ authored (10)
 Frames the `lx-net` band — the network stack, the socket, SSH, and the firewall.
 
 | # | Section | slug | focus → highlight |

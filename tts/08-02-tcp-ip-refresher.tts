@@ -1,0 +1,13 @@
+A TCP/IP refresher.
+
+Just three ideas will let you read almost any piece of networking output you'll ever meet.
+
+The first is the IP address, which identifies a machine on a network. IPv4 addresses are four numbers from zero to two-fifty-five, separated by dots, like one-ninety-two dot one-sixty-eight dot one dot forty-two. IPv6 addresses are eight groups of hexadecimal separated by colons. Every interface gets at least one address.
+
+The second idea is the port, a number from zero to sixty-five thousand that identifies a specific service on that machine. Some to memorize: port twenty-two is SSH, eighty is HTTP, four-forty-three is HTTPS, and five-four-three-two is PostgreSQL. The combination of IP address plus port uniquely names a network endpoint.
+
+The third is the protocol, which is how the two ends talk. TCP is connection-oriented, reliable, and ordered; it's used by HTTP, SSH, and most services. UDP is connectionless, fast, and lossy; it's used by DNS, DHCP, and video streaming.
+
+Now, a little on addressing. An IPv4 address is thirty-two bits. A network is a range of addresses, and you write a network in CIDR notation: the address, a slash, and a prefix length. So one-ninety-two dot one-sixty-eight dot one dot zero slash twenty-four is a range of two hundred fifty-six addresses, a typical home network. Ten dot zero dot zero dot zero slash eight is about sixteen million addresses, used by corporate and cloud networks. And one-twenty-seven dot zero dot zero dot one is localhost, meaning this very machine. Three of those ranges, the ten range, the one-seventy-two-dot-sixteen-through-thirty-one range, and the one-ninety-two-dot-one-sixty-eight range, are private. They're never routed on the public internet, which is why home and corporate networks all reuse them freely.
+
+One last concept: the default gateway. That's the address packets get sent to when their destination is not on your local network; usually it's your router. Without a default gateway, you can talk to machines on your own LAN, but nothing beyond it. For the exam, you don't need to be a network engineer. Just understand the address, port, protocol model, know that slash-twenty-four means a two-hundred-fifty-six-address LAN, and know that you need a gateway to reach anything past the local network.

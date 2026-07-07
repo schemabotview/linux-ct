@@ -1,0 +1,21 @@
+# TCP/IP refresher
+
+Three ideas read almost any networking output.
+
+- **IP address** — identifies a machine. IPv4 `192.168.1.42` · IPv6 `2001:db8::1`
+- **Port** — a service on it (0–65535): **22** SSH · **80** HTTP · **443** HTTPS. **IP + port** = an endpoint.
+- **Protocol** — **TCP** reliable, ordered (SSH, HTTP) · **UDP** fast, lossy (DNS, DHCP)
+
+## Addressing — CIDR
+
+`address/prefix` describes a network:
+
+| CIDR | Meaning |
+|---|---|
+| `192.168.1.0/24` | 256 addresses — a home LAN |
+| `10.0.0.0/8` | ~16.7M — corporate / cloud |
+| `127.0.0.0/8` | `127.0.0.1` = localhost |
+
+`10.x`, `172.16–31.x`, `192.168.x` are **private** — never routed publicly.
+
+A **default gateway** is where packets go when the destination isn't local — usually the router. No gateway → local only.

@@ -1,0 +1,26 @@
+# The network stack & the socket
+
+Every network task comes back to one endpoint: the **socket** — where a program plugs into the network.
+
+```
+your program ─┐
+              ▼
+   socket = IP : port / protocol     93.184.216.34 : 443 / TCP
+              │
+ interface ─▶ routing ─▶ gateway ─▶ the wider internet
+              │
+ name → address (DNS) · who can reach me (firewall)
+```
+
+## To send a packet, Linux needs
+
+- an **address** on an **interface**
+- a **route** (which interface + gateway)
+- **DNS** (name → address)
+- a **firewall** rule (who may connect)
+
+## Then use it securely — SSH
+
+Half the module is **SSH** end to end — the universal remote-admin protocol: connection & host keys, key auth, config & agent, `sshd`, `scp`/`rsync`.
+
+Modern tools throughout: **`ip`** (addresses/routes) · **`ss`** (sockets). `ifconfig`/`netstat` are deprecated.
