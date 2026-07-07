@@ -18,7 +18,7 @@ Returns the exit code of its **last command**. In a function use **`return`**, n
 
 ## The production preamble
 
-Bash is forgiving by default. Production scripts want **fail fast, fail loud**:
+Bash is forgiving; production scripts want **fail fast, fail loud**:
 
 ```bash
 #!/bin/bash
@@ -29,4 +29,4 @@ set -euo pipefail
 - **`-u`** error on an unset variable (typo catcher)
 - **`-o pipefail`** a pipeline fails if *any* stage does
 
-Allow a failure: `if ! risky; then …`. Debug with **`bash -x script.sh`** — prints each command as it runs (`trap … ERR` reports the failing line).
+Allow a failure: `if ! risky; then …`. Debug: **`bash -x script.sh`** prints each command as it runs.

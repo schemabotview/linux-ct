@@ -1,11 +1,6 @@
 # Playbook 5 — service won't start
 
-The escalation path that solves 90%+ of cases:
-
-```
-status → journalctl -u → configtest →
-run binary by hand → SELinux/AppArmor → daemon-reload
-```
+The escalation path that solves 90%+ of cases: **status → `journalctl -u` → configtest → run binary by hand → SELinux/AppArmor → `daemon-reload`**.
 
 ## 1 · Read the status
 

@@ -1,10 +1,8 @@
 # Shell scripting essentials
 
-A **script** is a file of shell commands, run line by line. How work becomes repeatable.
+A **script** is a file of shell commands, run line by line — how work becomes repeatable.
 
-## The shebang
-
-First line = `#!` + interpreter path.
+## The shebang — `#!` + interpreter path
 
 ```bash
 #!/bin/bash

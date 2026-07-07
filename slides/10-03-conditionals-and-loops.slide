@@ -19,7 +19,7 @@ Use modern **`[[ ]]`** (adds `&&`, regex, no quoting needed). Operators:
 ## Loops
 
 ```bash
-for f in /etc/*.conf; do echo "$f"; done
+for f in /etc/*.conf; do echo "$f"; done      # for · while · until
 until systemctl is-active nginx; do sleep 2; done
 ```
 
@@ -30,5 +30,3 @@ while IFS= read -r line; do
     echo "$line"
 done < /etc/hostname
 ```
-
-`break` exits · `continue` skips.
