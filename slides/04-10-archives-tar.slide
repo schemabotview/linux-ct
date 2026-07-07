@@ -1,0 +1,28 @@
+# Archives — `tar` and the tar-pipe
+
+Two separate ideas:
+
+- **Archive** — bundle many files into one stream → **`tar`**
+- **Compress** — make a stream smaller → several algorithms
+
+## `tar` has three operations
+
+```bash
+tar -czf archive.tar.gz dir/    # Create:  c z=gzip f=file
+tar -xzf archive.tar.gz         # eXtract
+tar -tzf archive.tar.gz         # lisT (peek)
+```
+
+The letter picks the algorithm — **`-z`** gzip · `-j` bzip2 · **`-J`** xz · `--zstd`. On **extract, drop it** — `tar -xf` autodetects.
+
+Which? Know two: **gzip** — fast, universal default · **xz** — slow but excellent ratio. **zstd** — fast modern default, increasingly everywhere.
+
+## The tar-pipe — `-f -` = stdin/stdout
+
+Pipe one `tar` into another, no archive on disk:
+
+```bash
+tar -cf - source/ | tar -xf - -C /dest/
+```
+
+Classic over SSH *(module 08)*. For routine copies prefer **`rsync`**, but the tar-pipe works on the barest system.

@@ -1,0 +1,13 @@
+awk — the pattern-action language.
+
+awk is a small but complete programming language, built specifically for record-oriented text, text that comes in columns. Here's the mental model: for each input line, awk splits it into fields, and then runs a sequence of rules, each written as a pattern in one part and an action in curly braces.
+
+The defaults are what make awk so quick to use. By default, input is split into records, one record per line. Each record is then split into fields on whitespace. Dollar-one is the first field, dollar-two the second, and dollar-NF is the last field, where NF stands for "number of fields." Dollar-zero is the whole line. And NR is the record number, essentially a line counter.
+
+The simplest programs just pick out fields. Print dollar-one gives you the first field of every line. Print dollar-one comma dollar-NF gives the first and the last. A bare pattern like NR greater-than five prints from line six onward. And a regex in slashes, like slash-error-slash, prints matching lines, which is basically grep.
+
+To change the field separator, use dash-capital-F. The classic example is the passwd file, which separates fields with colons. So awk dash-capital-F colon, print dollar-one, gives you all the usernames. And you can put a condition in front: dollar-three greater-than-or-equal one-thousand, print dollar-one, prints the usernames of real human users, because system accounts have low user IDs.
+
+But here's the real power. awk has a BEGIN block that runs before any input, and an END block that runs after all of it. Combine those with associative arrays, arrays indexed by strings, and you have everything you need for quick data aggregation. The example on screen walks every line of the passwd file, uses the seventh field, the login shell, as an array key, and increments a counter for it; then, at the end, it prints each shell alongside its count.
+
+So the rule of thumb between the two: use sed for simple substitution, but reach for awk the moment you're dealing with columns, arithmetic, or any kind of per-record state.

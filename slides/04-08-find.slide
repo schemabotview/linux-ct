@@ -1,0 +1,24 @@
+# `find` — searching the filesystem
+
+`grep` searches *inside* files; **`find` searches *for* files** — name, type, size, time, owner. Everywhere, even on minimal systems.
+
+Shape: **starting paths**, then a **chain of predicates**.
+
+```bash
+find . -type f | wc -l        # count regular files here
+find /etc -name "*.conf"      # config files under /etc
+```
+
+## The most useful predicates
+
+| | |
+|---|---|
+| **`-name "*.log"`** | basename glob — **quote it!** |
+| **`-type f`** / `d` / `l` | file / dir / symlink |
+| **`-size +100M`** / `-1k` | larger / smaller than |
+| **`-mtime -7`** / `+30` | last 7 days / older than 30 |
+| **`-mmin -10`** | last 10 minutes |
+| **`-user`** / **`-perm -u+x`** | owner / at least these bits |
+| **`-empty`** · **`-maxdepth N`** | empty · depth limit |
+
+Combine: **`-a`** and (default) · **`-o`** or · **`!`** not, grouped `\( \)`. **`-prune`** skips trees like `.git`.

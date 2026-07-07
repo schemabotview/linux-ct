@@ -1,0 +1,21 @@
+# Text as streams through pipes
+
+Module 02 gave you the plumbing — **stdin, stdout, pipes**. Module 03 showed most files are **plain text**. Snap them together:
+
+## The idea that defines the command line
+
+**Text is the universal interface — you process it as a stream through small tools.**
+
+```
+file ─▶ grep ─▶ sed ─▶ awk ─▶ sort ─▶ uniq ─▶ result
+        filter  edit   fields  order   count
+```
+
+Each tool reads lines, does **one** transformation, writes lines. Chained with `|`, they do in one line what takes pages elsewhere.
+
+## This module, two groups
+
+- **Stream tools** — `grep`, regex, `sed`, `awk`, and the glue (`cut` `sort` `uniq` `tr` `wc`)
+- **Files** — `find` (locate), `find -exec` (act), `tar` (bundle a tree)
+
+The through-line is the **pipe** — every tool here is built to sit in a `|` chain.

@@ -1,0 +1,9 @@
+The Unix philosophy.
+
+Most operating systems give you a handful of big programs that each try to do everything. Think of one office application that word-processes, checks your grammar, does mail-merge, and embeds spreadsheets, all in one. Linux makes the opposite bet, and it was stated clearly by Doug McIlroy back in 1978: Write programs that do one thing and do it well. Write programs to work together. And write programs to handle text streams, because that is a universal interface.
+
+Every tool in this module is a small program with a narrow job. grep filters lines by a pattern. sed rewrites lines. awk treats each line as a set of fields. cut extracts columns. sort orders lines. uniq collapses adjacent duplicates. tr translates characters. word-count counts. find locates files. And tar bundles files together.
+
+None of these is impressive on its own. But look at that third rule, text as a universal interface, because that's the one that makes them combine. Since every tool speaks the same thing, lines of text coming in on standard input and going out on standard output, any tool's output can become any other tool's input. Chain them together with pipes and you get extraordinarily complex text manipulation in a single line.
+
+That's the real payoff of the plumbing you learned in module two. The Linux pipeline is genuinely one of the most powerful and underrated programming environments ever built, and after modules one through three you already have everything you need to write them. So the rest of this module is really just learning the individual tools well enough that you instinctively reach for the right one.

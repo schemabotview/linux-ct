@@ -1,0 +1,11 @@
+Text as streams through pipes.
+
+This module snaps together the two halves you built in the last two. Module two taught the shell's plumbing: standard input, standard output, pipes, and redirection. Module three taught you that on Linux almost everything is a file, and that most of those files are plain text: the passwd file, config files, log files.
+
+Put those two ideas together and you get the thing that really defines Linux at the command line. Text is the universal interface, and you process it as a stream flowing through small tools.
+
+Here's the shape of every pipeline in this module. A file feeds into grep, which filters lines; into sed, which edits them; into awk, which works with fields; into sort, which orders; into uniq, which counts. Each tool reads lines on its input, does exactly one transformation, and writes lines on its output. None of them is impressive on its own. But chained together with the pipe symbol, they perform text manipulation that would take pages of code in most languages, all in a single line.
+
+We'll teach that toolkit in two groups. First, the text stream tools: grep, to filter by pattern; regular expressions, the little pattern language those tools share; sed, to rewrite; awk, for fields and aggregation; and the supporting cast, cut, sort, uniq, tr, and word-count, that glue them together. Second, finding and bundling files: find, to locate files by name, type, size, or time; find with dash-exec, to act on what you found; and tar, to bundle a whole directory tree into one stream.
+
+The through-line the whole way is the pipe. Every tool here is designed to sit in the middle of a pipe chain, and the real skill isn't any single command, it's composing them. Module ten comes back to pipelines inside full shell scripts.

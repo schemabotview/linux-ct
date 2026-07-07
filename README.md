@@ -13,7 +13,7 @@ the plan we author against; the machine source of truth for structure is `manife
 
 **Status:** spine agreed — **10 modules × ~10 sections** (101 total, below). The `linux`
 scene is **ported into graphl-movie** (`src/scenes/linux.ts`, registered + catalog entry).
-**Modules 01–03 authored end-to-end** — every section has `.ipynb` + `.slide` + `.tts`, and
+**Modules 01–04 authored end-to-end** — every section has `.ipynb` + `.slide` + `.tts`, and
 `manifest.json` wires them onto the `linux` scene (§1 = hook on the whole map; §2–10 with
 per-section `focus`/`highlight`). Verified rendering in graphl-movie (slides trimmed to fit
 the non-scrolling 1080p pane). `audio/` is empty by design — the **owner** generates the
@@ -117,7 +117,7 @@ and the read/write/execute permission model.
 | 9 | `chmod` | `03-09-chmod` | `lx-perms` → `lx-rwx` |
 | 10 | Ownership & defaults *(chown/chgrp + umask)* | `03-10-ownership-defaults` | `lx-perms` |
 
-### 04 — Text Processing & Find  (10)
+### 04 — Text Processing & Find  ✅ authored (10)
 Frames the `lx-streams` band (text through pipes) with `lx-vfs` for `find`.
 
 | # | Section | slug | focus → highlight |

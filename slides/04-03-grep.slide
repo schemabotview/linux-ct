@@ -1,0 +1,27 @@
+# `grep` — searching for text
+
+Reads input line by line, prints the lines that **match**, discards the rest. After `ls`, the most-typed command.
+
+```bash
+grep "error" /var/log/syslog     # a file
+ps -ef | grep "bash"             # another command's output
+```
+
+Quote the pattern to keep the shell off it.
+
+## Flags you'll use constantly
+
+| | |
+|---|---|
+| **`-i`** | case-insensitive |
+| **`-v`** | invert — lines that *don't* match |
+| **`-n`** | prefix line numbers |
+| **`-c`** | count of matches only |
+| **`-r`** | recurse into directories |
+| **`-l`** | filenames with a match |
+| **`-w`** | whole words |
+| **`-A/-B/-C 3`** | 3 lines after / before / context |
+| **`-F`** | fixed string, not regex |
+| **`-E`** | **extended** regex — almost always want it |
+
+For code search, **`ripgrep`** (`rg`) — faster, respects `.gitignore`.

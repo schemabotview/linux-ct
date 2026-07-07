@@ -1,0 +1,11 @@
+find — searching the filesystem.
+
+Here's a clean distinction to hold onto. grep searches inside files, for text. find searches for files themselves, by name, by type, by size, by modification time, by ownership, or any combination of those. It's a little slower than rivals like locate or fd, because it walks the actual directory tree fresh on every run, but the trade-off is that it's absolutely everywhere, even on the most stripped-down system you'll ever log into.
+
+The shape is: the word find, then one or more starting paths, then a chain of predicates that filter what you're looking for. If you give no predicates, find just lists everything under the starting paths. So find dot dash-type f piped to word-count dash-l counts every regular file beneath the current directory.
+
+Let's go through the predicates you'll actually use. Dash-name, with a glob pattern in quotes, matches on the file's basename; and please quote that pattern, or the shell will expand the wildcard before find ever sees it. Dash-iname is the case-insensitive version. Dash-type f, d, or l matches regular files, directories, or symbolic links.
+
+For size, dash-size plus-one-hundred-capital-M finds things larger than a hundred megabytes, and a leading minus means smaller than. For time, dash-mtime minus-seven means modified within the last seven days, while plus-thirty means older than thirty days; and dash-mmin works in minutes for recent changes. Dash-user and dash-group match ownership. Dash-perm with a leading minus, like dash-perm minus-u-plus-x, means "has at least these permission bits set." Dash-empty finds empty files and directories. And dash-maxdepth stops find from recursing deeper than a given number of levels.
+
+Finally, you combine predicates. Just putting them next to each other means "and," which you can also write as dash-a. Dash-o means "or." An exclamation mark means "not." And you group them with escaped parentheses. One more escape hatch worth knowing is dash-prune, which tells find to skip entire directory trees you don't care about, like node-modules or dot-git.

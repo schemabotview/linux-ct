@@ -1,0 +1,11 @@
+Regular expressions — the brief tour.
+
+A regular expression, or regex, is a tiny language for describing patterns in text. grep, sed, and awk all speak it. The full language is large, but the part you actually need for real work is small, so let's keep this focused.
+
+The first thing to know is that there are two flavours. Basic regular expressions, BRE, are the default in grep and sed, and in that flavour metacharacters like plus, question mark, pipe, and parentheses have to be backslash-escaped to do their special job. Extended regular expressions, ERE, are what you get with grep dash-capital-E or sed dash-capital-E, and awk uses them by default. In extended mode those metacharacters just work, no escaping. My advice: use dash-capital-E by default. Extended regex is what people mean when they say "regex" today.
+
+Now the pieces you'll meet most. A dot matches any single character. A caret anchors to the start of a line, and a dollar sign anchors to the end. A star means zero or more of the previous thing; a plus means one or more; a question mark means optional, zero or one. Curly braces with numbers, like brace-two-comma-five, mean "between two and five of the previous thing." Square brackets are a character class: bracket-a-b-c matches any one of those letters, bracket-a-dash-z matches a range, and putting a caret just inside, bracket-caret-a-b-c, means anything except those. And a pipe inside parentheses is alternation: this or that.
+
+There are also portable POSIX classes, written with double brackets, like double-bracket-digit for the digits, double-bracket-alpha for letters, double-bracket-alnum for both, and double-bracket-space for whitespace.
+
+Here's the key advice: don't try to swallow the whole language at once. Start with just three building blocks. The two anchors, caret and dollar. Character classes in square brackets. And repetition, star and plus. Those three cover the vast majority of real-world greps. And the two patterns you'll reach for every day are caret-pattern, meaning lines that start with something, and pattern-dollar, meaning lines that end with it.

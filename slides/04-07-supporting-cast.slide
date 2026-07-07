@@ -1,0 +1,22 @@
+# The supporting cast
+
+The glue that turns `grep`/`sed`/`awk` into pipelines.
+
+- **`cut`** — columns by delimiter/position. `cut -d: -f1 /etc/passwd` · faster than `awk` when no math.
+- **`sort`** — order lines. Default ASCII (`10` before `2`) → **`-n`** numeric · `-r` reverse · `-k N` by field · `-h` sizes.
+- **`uniq`** — collapse **adjacent** duplicates → **almost always after `sort`**. `-c` prefixes a count.
+- **`tr`** — translate/delete single chars (pipe-only): `tr 'a-z' 'A-Z'` · `tr -d ',!'` · `tr -s ' '`.
+- **`wc`** — count: **`-l`** lines · `-w` words · `-c` bytes.
+
+## The top-N by frequency idiom
+
+```bash
+... | sort | uniq -c | sort -rn | head
+#      group   count    by count   top N
+```
+
+```bash
+awk -F: '{print $7}' /etc/passwd | sort | uniq -c | sort -rn | head
+```
+
+Most common login shells. Swap the front → top IPs in a log, most frequent errors, endless variations. **Memorise the shape.**

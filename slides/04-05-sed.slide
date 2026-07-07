@@ -1,0 +1,30 @@
+# `sed` — the stream editor
+
+Edits each line and writes to stdout. ~95% of real use is **one command — substitution**:
+
+```
+sed 's/PATTERN/REPLACEMENT/FLAGS' file
+```
+
+Default replaces the **first** match per line; **`g`** = global, **`i`** = case-insensitive:
+
+```bash
+echo "one two two" | sed 's/two/TWO/'     # one TWO two
+echo "one two two" | sed 's/two/TWO/g'    # one TWO TWO
+```
+
+## `-E`, capture groups, back-references
+
+`( )` capture; **`\1` `\2`** refer back — how you reorder text:
+
+```bash
+echo "v 1.2.3"     | sed -E 's/[0-9]+/X/g'            # v X.X.X
+echo "Hello World" | sed -E 's/(Hello) (World)/\2 \1/'  # World Hello
+```
+
+## Two more
+
+- **Change delimiter** for paths: `sed 's|/usr|/opt|g'`
+- **`-i`** edits in place · `-i.bak` keeps a backup
+
+Clunky (multiple subs, state)? → reach for **`awk`**.

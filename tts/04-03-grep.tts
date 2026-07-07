@@ -1,0 +1,11 @@
+grep — searching for text.
+
+grep is your line filter. The name stands for "global regular expression print," and what it does is simple: it reads input one line at a time, prints the lines that match a pattern, and throws away the rest. After ls, it's probably the most-typed command in all of Linux.
+
+It comes in three shapes. You can search a file directly, by giving grep a pattern and a filename. You can search several files at once. Or, most powerfully, you can pipe another command's output into grep to filter it, like piping ps into grep to find a process. The pattern can be a plain string or a full regular expression, which is the next section. For now, get in the habit of putting the pattern in quotes, so the shell keeps its hands off it.
+
+Let's go through the flags you'll use constantly. Dash-i makes the match case-insensitive. Dash-v inverts it, printing the lines that don't match, which is great for filtering noise out. Dash-n prefixes each result with its line number. Dash-c prints just the count of matching lines instead of the lines themselves. Dash-r recurses down into directories. Dash-l prints only the filenames that contain a match, rather than the matches. Dash-w matches whole words only.
+
+And three that go together: dash-capital-A followed by a number prints that many lines after each match, dash-capital-B prints lines before, and dash-capital-C prints lines of context on both sides. Those are invaluable when you're reading logs. Two more: dash-capital-F treats the pattern as a fixed string rather than a regex, which is faster and saves you escaping. And dash-capital-E turns on extended regular expressions, which you'll almost always want, and which is exactly what the next section is about.
+
+One tip: if you find yourself searching through code a lot, install ripgrep, the rg command. It's a modern grep that's dramatically faster, automatically respects your gitignore file, and has saner regex defaults out of the box.

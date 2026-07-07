@@ -1,0 +1,29 @@
+# `awk` — the pattern-action language
+
+A small language for **record-oriented** text. For each line: split into fields, run `pattern { action }` rules.
+
+## The defaults that make it powerful
+
+- Each line → **fields** on whitespace
+- **`$1`** first · **`$NF`** last · **`$0`** whole line · **`NR`** line number
+
+```bash
+awk '{print $1, $NF}'     # first + last field
+awk 'NR > 5'              # from line 6 on
+awk '/error/'             # matching lines — like grep
+```
+
+## `-F` sets the separator
+
+```bash
+awk -F: '{print $1}' /etc/passwd               # usernames
+awk -F: '$3 >= 1000 {print $1}' /etc/passwd    # real users
+```
+
+## `BEGIN`/`END` + arrays = aggregation
+
+```bash
+awk -F: '{shells[$7]++} END {for (s in shells) print shells[s], s}' /etc/passwd
+```
+
+**Rule:** `sed` for substitution · **`awk` the moment you have columns, math, or state.**

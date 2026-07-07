@@ -1,0 +1,13 @@
+find dash-exec — acting on results.
+
+Finding files is useful, but find gets truly powerful when you act on what it finds, and that's what dash-exec does: it runs a command on each match. There are two forms, and the difference between them genuinely matters for performance.
+
+The first form is dash-exec, the command, curly-brace curly-brace, then a backslash and a semicolon. Here the curly braces get replaced by the filename, and the backslash-semicolon marks the end of the command. This form runs the command once per matching file. If you've got ten thousand matches, that forks ten thousand processes, which is slow.
+
+The second form ends with a space and a plus sign instead. This one runs the command just once, appending all the matches as arguments at the end, the way you'd type them yourself. It's dramatically faster, and you should prefer the plus form unless you specifically need one invocation per file.
+
+So: find dot dash-name star-dot-tmp dash-exec rm curly-braces plus removes all the temp files in a single rm call. And here's the important one: find dot dash-type d dash-exec chmod seven-five-five, and find dot dash-type f dash-exec chmod six-four-four. That pair is the correct way to set seven-five-five on directories and six-four-four on files. Remember the gotcha from module three: a flat chmod dash-capital-R seven-five-five would wrongly make every regular file executable. Splitting by type with find fixes that.
+
+find also has a built-in dash-delete action, which is safer and faster than dash-exec rm. So find, some conditions, dash-delete removes exactly the matches. But be careful: always run the find first without dash-delete, look at the list, and only then add it. Deleting is not undoable.
+
+One last tool: xargs. It reads items from standard input and turns them into command-line arguments, roughly like dash-exec plus but for any command that produces a list. The safe idiom is find with dash-print-zero piped into xargs dash-zero. That pair uses null characters as separators instead of newlines, so filenames containing spaces or newlines survive intact.

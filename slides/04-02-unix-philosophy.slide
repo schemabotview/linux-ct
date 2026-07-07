@@ -1,0 +1,17 @@
+# The Unix philosophy
+
+Most systems ship a few big programs that do everything. Linux takes the opposite bet — McIlroy, 1978:
+
+> **Do one thing well. Write programs to work together. Handle text streams — a universal interface.**
+
+## Every tool here has a narrow job
+
+- **`grep`** filter · **`sed`** rewrite · **`awk`** fields
+- **`cut`** columns · **`sort`** order · **`uniq`** dedupe adjacent
+- **`tr`** translate · **`wc`** count · **`find`** locate · **`tar`** bundle
+
+## Why they combine
+
+The third rule is the key: because every tool speaks **lines of text** on stdin and stdout, **any output can be any other tool's input**.
+
+Chain them with pipes → complex text manipulation in a single line. That's the payoff of module 02's plumbing — the rest of this module is just learning each tool well enough to reach for the right one.

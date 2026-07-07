@@ -1,0 +1,25 @@
+# Regular expressions — the brief tour
+
+A tiny language for string patterns. `grep`, `sed`, `awk` all speak it.
+
+## Two flavours — know this first
+
+- **Basic (BRE)** — default; `+ ? | ( )` need backslash-escaping
+- **Extended (ERE)** — `grep -E` / `sed -E` (awk always). No escaping.
+
+**Use `-E` by default** — it's what "regex" means today.
+
+## The pieces you'll meet most
+
+| | |
+|---|---|
+| **`.`** | any single character |
+| **`^`** / **`$`** | start / end of line |
+| **`*`** `+` `?` | zero-or-more / one-or-more / optional |
+| **`{2,5}`** | between 2 and 5 |
+| **`[a-z]`** / **`[^abc]`** | a range / anything except |
+| **`(foo\|bar)`** | alternation |
+
+POSIX classes: `[[:digit:]]` `[[:alpha:]]` `[[:alnum:]]` `[[:space:]]`.
+
+Start with **anchors** (`^` `$`), **classes** (`[abc]`), **repetition** (`*` `+`) — that covers most greps.

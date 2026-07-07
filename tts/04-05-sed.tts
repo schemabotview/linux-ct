@@ -1,0 +1,11 @@
+sed — the stream editor.
+
+sed is an editor that works on a stream. It reads input one line at a time, applies an editing script to each line, and writes the result to standard output. Now, sed can do a lot, but here's the liberating truth: the overwhelming majority of real-world sed use is a single command, substitution. Learn that one thing well and you've covered about ninety-five percent of what you'll ever need.
+
+The shape of a substitution is: sed, then, in quotes, s-slash-pattern-slash-replacement-slash-flags, then the file. By default, and this catches people out, it only replaces the first match on each line. Add the g flag, for global, and it replaces every match on the line. Add the i flag and the match becomes case-insensitive. So piping "one two two" through sed s-slash-two-slash-capital-TWO replaces only the first; add g and all of them change.
+
+Just like grep, use dash-capital-E for extended regex, so you don't have to backslash-escape plus, question mark, pipe, parentheses, and braces. And here's where it gets powerful: parentheses create capture groups, and in the replacement, backslash-one and backslash-two are back-references to those groups. That's how you reorder text. The classic example: match "Hello" in one group and "World" in another, and replace with backslash-two space backslash-one, and you get "World Hello."
+
+Two more features worth knowing. First, you can change the delimiter. When your pattern contains slashes, like a file path, escaping every slash gets ugly, so just pick a different separator: use a pipe or a hash instead of the slash. Second, dash-i edits the file in place, modifying it directly instead of printing to the screen. Write dash-i-dot-bak and it edits in place but keeps a backup with a dot-bak extension. One portability note: the BSD sed on macOS wants dash-i followed by an empty pair of quotes.
+
+And when does sed stop being the right tool? The moment things get stateful: multiple different substitutions, conditional logic, anything that has to remember across lines. That's your cue to reach for awk, which is next. Use sed for what it's brilliant at: simple substitution in a pipeline.

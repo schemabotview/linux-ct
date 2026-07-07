@@ -1,0 +1,30 @@
+# `find -exec` — acting on results
+
+`-exec` runs a command on each match. Two forms — the difference matters:
+
+- **`-exec CMD {} \;`** — once **per match**. One process per file → slow.
+- **`-exec CMD {} +`** — once, **all matches as arguments**. Much faster. **Prefer `+`.**
+
+```bash
+find . -name "*.tmp" -exec rm {} +      # one rm for all
+find . -type d -exec chmod 755 {} +     # dirs → 755
+find . -type f -exec chmod 644 {} +     # files → 644
+```
+
+That pair is the **correct** "755 dirs, 644 files" — flat `chmod -R 755` wrongly makes every file executable *(module 03)*.
+
+## `-delete` and `xargs`
+
+Built-in **`-delete`** beats `-exec rm`:
+
+```bash
+find /tmp -name "*.tmp" -mtime +7 -delete
+```
+
+⚠️ Run it **without** `-delete` first to see what goes.
+
+**`xargs`** turns stdin into args — use `-print0` / `-0` so spaces survive:
+
+```bash
+find . -name "*.log" -print0 | xargs -0 gzip
+```

@@ -391,6 +391,133 @@
           "spine": true
         }
       ]
+    },
+    {
+      "id": "04-text-processing-and-find",
+      "title": "Text Processing & Find",
+      "sections": [
+        {
+          "heading": "Text as streams through pipes",
+          "notebook": "notebooks/04-01-text-as-streams.ipynb",
+          "slide": "slides/04-01-text-as-streams.slide",
+          "audio": "audio/04-01-text-as-streams.wav",
+          "scene": "linux",
+          "role": "hook",
+          "spine": true
+        },
+        {
+          "heading": "The Unix philosophy",
+          "notebook": "notebooks/04-02-unix-philosophy.ipynb",
+          "slide": "slides/04-02-unix-philosophy.slide",
+          "audio": "audio/04-02-unix-philosophy.wav",
+          "scene": "linux",
+          "focus": "lx-streams",
+          "highlight": [
+            "lx-streams"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "grep — searching for text",
+          "notebook": "notebooks/04-03-grep.ipynb",
+          "slide": "slides/04-03-grep.slide",
+          "audio": "audio/04-03-grep.wav",
+          "scene": "linux",
+          "focus": "lx-streams",
+          "highlight": [
+            "lx-stdin",
+            "lx-stdout"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Regular expressions — the brief tour",
+          "notebook": "notebooks/04-04-regex.ipynb",
+          "slide": "slides/04-04-regex.slide",
+          "audio": "audio/04-04-regex.wav",
+          "scene": "linux",
+          "focus": "lx-streams",
+          "highlight": [
+            "lx-streams"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "sed — the stream editor",
+          "notebook": "notebooks/04-05-sed.ipynb",
+          "slide": "slides/04-05-sed.slide",
+          "audio": "audio/04-05-sed.wav",
+          "scene": "linux",
+          "focus": "lx-streams",
+          "highlight": [
+            "lx-stdin",
+            "lx-stdout"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "awk — the pattern-action language",
+          "notebook": "notebooks/04-06-awk.ipynb",
+          "slide": "slides/04-06-awk.slide",
+          "audio": "audio/04-06-awk.wav",
+          "scene": "linux",
+          "focus": "lx-streams",
+          "highlight": [
+            "lx-stdin",
+            "lx-stdout"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "The supporting cast — cut, sort, uniq, tr, wc",
+          "notebook": "notebooks/04-07-supporting-cast.ipynb",
+          "slide": "slides/04-07-supporting-cast.slide",
+          "audio": "audio/04-07-supporting-cast.wav",
+          "scene": "linux",
+          "focus": "lx-streams",
+          "highlight": [
+            "lx-stdout"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "find — searching the filesystem",
+          "notebook": "notebooks/04-08-find.ipynb",
+          "slide": "slides/04-08-find.slide",
+          "audio": "audio/04-08-find.wav",
+          "scene": "linux",
+          "focus": "lx-vfs",
+          "highlight": [
+            "lx-vfs"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "find -exec — acting on results",
+          "notebook": "notebooks/04-09-find-exec.ipynb",
+          "slide": "slides/04-09-find-exec.slide",
+          "audio": "audio/04-09-find-exec.wav",
+          "scene": "linux",
+          "focus": "lx-vfs",
+          "highlight": [
+            "lx-file"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Archives and compression — tar and the tar-pipe",
+          "notebook": "notebooks/04-10-archives-tar.ipynb",
+          "slide": "slides/04-10-archives-tar.slide",
+          "audio": "audio/04-10-archives-tar.wav",
+          "scene": "linux",
+          "focus": "lx-streams",
+          "highlight": [
+            "lx-stdin",
+            "lx-stdout"
+          ],
+          "spine": true
+        }
+      ]
     }
   ]
 }

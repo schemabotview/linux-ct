@@ -1,0 +1,15 @@
+The supporting cast.
+
+Around grep, sed, and awk sits a set of small, sharp tools. On their own they're humble, but they're the glue that turns individual commands into real pipelines. Let's meet five.
+
+cut extracts columns. You can cut by a delimiter or by character position. Cut dash-d colon dash-f one on the passwd file pulls out the first colon-separated field. When you don't need arithmetic, cut is simpler than awk, and noticeably faster on huge files.
+
+sort orders lines. One gotcha to internalize: by default it sorts as ASCII text, which means the string "ten" sorts before the string "two," because it compares character by character. So for numbers, always use dash-n for a numeric sort. Other handy flags: dash-r reverses, dash-k sorts by a particular field, and dash-h understands human sizes like one-K and two-M.
+
+uniq collapses duplicate lines, but here's the crucial catch: it only collapses adjacent duplicates. It only ever compares each line to the one right before it. So in practice you almost always run sort first, to bring identical lines together. And uniq dash-c prefixes each line with a count of how many times it occurred.
+
+tr, for translate, replaces or deletes individual characters. It only reads from a pipe, never a filename. Tr a-z A-Z uppercases; tr dash-d with some characters deletes them; tr dash-s squeezes runs of a repeated character down to one.
+
+And word-count, wc, counts things. Dash-l for lines is the one you'll use ninety percent of the time; dash-w counts words, dash-c counts bytes.
+
+Now, put a few of these together and you get an idiom that comes up constantly: top-N by frequency. The pipeline is: something, piped to sort, piped to uniq dash-c, piped to sort dash-r-n, piped to head. Read it left to right: sort brings duplicates together, uniq dash-c collapses them with counts, sort dash-r-n orders by that count from highest down, and head keeps the top few. The example finds the most common login shells on the system. Learn that shape, because you'll write endless variations of it: top IP addresses in a log, the most frequent error messages, and on and on.
