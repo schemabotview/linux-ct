@@ -1,0 +1,22 @@
+# Viewing processes — `ps`, `top`, `htop`
+
+One snapshot, two live.
+
+## `ps` — a frozen snapshot
+
+```bash
+ps aux      # BSD: a=all users  u=detailed  x=daemons
+ps -ef      # SysV: -e=every  -f=full format
+```
+
+Key columns: **PID · PPID · USER · %CPU · %MEM · RSS · STAT · COMMAND**. Custom: `ps -eo pid,ppid,comm`. Tree: `pstree -p`.
+
+## `top` — the live view
+
+Refreshes, sorted by CPU. Inside: **`P`** CPU · **`M`** memory · **`k`** signal · **`u`** user · **`q`** quit. Scripts: `top -b -n 1`.
+
+## `htop` — the friendly one
+
+Coloured, scrollable, mouse-aware. **F5** tree · **F6** sort · **F9** signal. `sudo apt install htop` — strictly better interactively.
+
+`top` still wins for scripted monitoring. (Prettier still: **`btop`**.)

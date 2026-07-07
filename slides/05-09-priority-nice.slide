@@ -1,0 +1,29 @@
+# Priority — `nice` and `renice`
+
+The scheduler shares CPU fairly; a **nice value** tilts the balance.
+
+## The range is backwards on purpose
+
+```
+-20  ◀───────── nice ─────────▶  19
+highest priority          lowest priority
+        (default 0)
+```
+
+**Higher nice = lower priority.** Mnemonic: nice = "willing to yield." nice-19 steps aside; nice-−20 is selfish.
+
+⚠️ **Only root can lower nice** (raise priority). Any user can raise their own.
+
+```bash
+nice -n 10 some-command      # start at nice 10
+renice 5 -p 12345            # change a running process
+renice 10 -u alice           # all of alice's processes
+```
+
+## `ionice` — I/O priority (separate)
+
+Class 3 = idle: use the disk only when nothing else wants it. The backup that won't choke production:
+
+```bash
+nice -n 19 ionice -c 3 rsync -av source/ dest/
+```

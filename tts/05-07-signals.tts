@@ -1,0 +1,11 @@
+Signals — the kernel's notification system.
+
+A signal is a small message that the kernel delivers to a process. Each signal has a number and a name; for example, signal fifteen is SIGTERM. Signals are how you poke a process asynchronously, to say things like: terminate, reload your config, pause, or resume.
+
+When a signal arrives, the receiving process has four possible responses. It can run its default handler, which for most signals is simply "terminate." It can run a custom handler, code the program's author wrote specifically to deal with that signal, for instance, catching SIGHUP to reload configuration. It can ignore the signal entirely, pretending it never came. Or it can block the signal, queuing it up to handle later.
+
+But there are two signals that are the exception to all of that. They cannot be caught, cannot be blocked, and cannot be ignored. The kernel enforces them no matter what the program wants. The first is SIGKILL, signal nine: terminate immediately, with no chance to clean up. That's your absolute last resort. The second is SIGSTOP, signal nineteen: pause execution immediately, and you resume it later with SIGCONT. Every other signal, the process is allowed to handle however it likes.
+
+You can list all of them, around thirty, by running kill dash-l. But only a handful matter day to day. SIGTERM, number fifteen, is the polite shutdown, and it's the default that kill sends; because it's catchable, a well-written app cleans up first. SIGKILL, number nine, is the last resort: instant death, no cleanup, for when SIGTERM is being ignored. SIGINT, number two, is what Ctrl-C sends, the interactive interrupt. SIGHUP, number one, was originally "hangup," but today it's used by convention to tell a daemon to reread its config. And the pair SIGTSTP and SIGCONT: TSTP is what Ctrl-Z sends to pause a process, and CONT resumes a stopped one.
+
+So the three you'll actually send, over and over: SIGTERM to ask a process nicely to shut down, SIGKILL when that gets ignored, and SIGHUP to make a daemon reload its configuration.

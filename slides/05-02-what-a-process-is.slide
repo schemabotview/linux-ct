@@ -1,0 +1,19 @@
+# What a process actually is
+
+A **running program**. The file on disk is the recipe; loaded into memory and executing, it's a process.
+
+## What the kernel tracks
+
+- **PID** — unique ID while alive (never shared by two live processes)
+- **PPID** — the **parent** that started it
+- **UID / GID** — who it runs as → what it can touch
+- **Command** · **State** — running / sleeping / stopped / zombie
+
+## PID 1 is special
+
+The first process at boot — almost always **`systemd`** *(module 09)*. Everything descends from it. Orphaned children get **re-parented** to PID 1.
+
+## Two consequences
+
+- **Every command is a new process** — `ls /etc` → shell **forks**, child **execs** `ls`, shell **waits**, reprompts. A pipeline = one process per stage.
+- **The shell itself is a process** — starts at login, ends at `exit`.

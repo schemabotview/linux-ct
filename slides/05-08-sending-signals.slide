@@ -1,0 +1,31 @@
+# Sending signals — `kill`, `killall`, `pkill`
+
+Same job, different way to name the target.
+
+```bash
+kill 12345        # by PID — SIGTERM (default)
+kill -9 12345     # SIGKILL by number
+kill -HUP 12345   # reload config
+killall nginx     # every process named nginx
+pkill -f script   # regex on the command line
+```
+
+## Check your aim first — `pgrep`
+
+`pgrep` returns matches **without** killing. Always inspect, then swap in `pkill`:
+
+```bash
+pgrep -af long-script.sh    # look
+pkill -f long-script.sh     # then fire
+```
+
+## Escalate — don't lead with `-9`
+
+**`SIGTERM`**, wait, *then* **`SIGKILL`** if still alive:
+
+```bash
+kill -TERM 12345; sleep 5
+kill -0 12345 2>/dev/null && kill -KILL 12345
+```
+
+`-9` gives no chance to flush logs or release locks → corrupt state. This is what **`systemctl stop`** does for you *(module 09)*.

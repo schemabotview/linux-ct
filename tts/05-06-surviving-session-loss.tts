@@ -1,0 +1,13 @@
+Surviving session loss — nohup, disown, and tmux.
+
+Here's a problem that catches everyone eventually. When you log out, or your SSH connection drops, the shell sends a signal called SIGHUP, short for "hangup," to all of its jobs. And most programs treat SIGHUP as "you should exit now." Which means, by default, closing your terminal kills the background work you left running. For anything long-running, that's not good enough, so you need one of these tools.
+
+The first is nohup. You run nohup, then your command, then ampersand. It runs the command with SIGHUP ignored, and it redirects the output into a file called nohup-dot-out. So the command keeps running even after the shell dies.
+
+The second is disown. This one is for a job that's already running in the background. disown removes it from the shell's job table, so the shell simply forgets about it and won't send it SIGHUP when you exit. Bare disown forgets the most recent job.
+
+The third is setsid, which runs a command in a brand-new session with no controlling terminal at all. It's the cleanest primitive for fully detaching something.
+
+But the modern answer, the one you should actually reach for, is a terminal multiplexer: tmux, or the older screen. Instead of detaching commands one at a time, you run a persistent session that itself hosts your shells. Your SSH connection dies, but the multiplexer keeps running on the server. You reconnect, you attach to your session, and you're right back where you left off, with everything still running. You start it by typing tmux, you do your work normally, and you detach by pressing Ctrl-B and then d. Later, tmux attach brings you back, and tmux ls lists your sessions.
+
+So the bottom line: for real work, tmux is the right answer, because it solves the entire problem rather than one command at a time. nohup and disown are still genuinely handy for quick one-offs, but a multiplexer handles the whole thing more gracefully.

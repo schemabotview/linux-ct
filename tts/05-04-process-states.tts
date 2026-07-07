@@ -1,0 +1,15 @@
+Process states — R, S, D, T, and Z.
+
+In ps output there's a column called STAT, and it shows a single letter for each process's current state. Five of them matter.
+
+R is running. That means the process is either on a CPU right now, or it's runnable and just waiting for its turn. S is sleeping: it's waiting for some event, and it responds normally to signals. This is where most processes are, most of the time. D is uninterruptible sleep: the process is blocked inside the kernel, almost always on disk input-output, and crucially, it can't be killed. T is stopped: the process has been paused, either by a signal like Ctrl-Z or by a debugger. And Z is a zombie: the process has finished, but its parent hasn't yet collected its exit status.
+
+Now the intuitions that actually matter in practice. First, almost every process is in state S most of the time, and that's completely healthy. Sleeping just means the process is waiting: for input, for a timer, for a network packet. A machine with two hundred mostly-idle sleeping processes is totally normal.
+
+Second, R means runnable, not "executing this instant." On a busy CPU, lots of processes can sit in R at once, all waiting their turn in the queue.
+
+Third, D is the dangerous one. A process stuck in D is blocked in the kernel and cannot be killed, not even with SIGKILL, the nuclear option. It usually means a hung disk, a wedged network filesystem mount, or a faulty driver. If you see a process sitting in D persistently, don't fight it; go investigate the input-output system.
+
+And fourth, a zombie is harmless one at a time. It's just a leftover PID and an exit code, waiting to be collected. But if you see hundreds of zombies piling up under a single parent, that parent has a bug: it's not calling wait to reap its children.
+
+One last thing: you'll see extra modifier characters attached to the state letter. A plus sign means the process is in the foreground. A lowercase s means it's a session leader. A left angle bracket means high priority, and a capital N means low priority. So your interactive shell typically shows up as S-s-plus: a sleeping session leader, in the foreground.

@@ -1,0 +1,11 @@
+Jobs — foreground and background.
+
+By default, when you run a command, the shell runs it in the foreground and waits for it to finish before giving you the prompt back. That's fine for quick commands, but sometimes you want to keep working while something runs. To do that, put it in the background by appending an ampersand. So sleep sixty ampersand starts the sleep in the background, and the shell immediately prints something like bracket-one, then a PID. The bracket-one is a job number, and the number after it is the process ID.
+
+To see what's running in the background of your current shell, type jobs. You'll get a list, each with its own job number in brackets, like bracket-one, bracket-two. Those job numbers are local to this particular shell. To bring a background job back to the foreground, type fg, then percent and the job number. Bare fg with no argument brings back the most recent one.
+
+Now the move you'll use all the time: the "oh no, this is taking forever" recovery. You start a long command in the foreground, and you want your prompt back without killing it. Step one: press Ctrl-Z. The shell stops the process, putting it in state T, and hands you the prompt. Step two: type bg. The stopped job resumes, but now it's running in the background. So Ctrl-Z then bg rescues a foreground command you didn't mean to block on.
+
+Two keys that people mix up: Ctrl-C and Ctrl-Z are not the same. Ctrl-C terminates the foreground process; it sends the interrupt signal, SIGINT. Ctrl-Z merely pauses it; it sends the stop signal, SIGTSTP. One kills, one freezes.
+
+And finally, there's the wait command, which blocks until your background jobs finish. Bare wait waits for all of them; wait percent-one waits for job one specifically, and you can also wait on a bare PID.

@@ -1,0 +1,22 @@
+# A process from fork to exit
+
+A program is a file on disk — a recipe. A **process** is that recipe **running**. This module is about the running things.
+
+## The one idea: the process lifecycle
+
+```
+parent ──fork()──▶ child ──exec()──▶ new program
+                                          │
+                    runnable ⇄ sleeping ⇄ stopped
+                                          │
+              ──exit()──▶ zombie ──parent wait()──▶ gone
+```
+
+- **`fork`** — a process clones itself
+- **`exec`** — the child swaps in a new program (`ls`, `grep`, …)
+- lives in the scheduler: **running / sleeping / stopped**
+- **`exit`** → brief **zombie** until the **parent** `wait`s
+
+Type `ls /etc`: your shell **forks**, the child **execs** `ls`, the kernel schedules it, it prints and **exits**, the shell **waits** and reprompts.
+
+**This module walks that loop** — view, states, jobs, signals, priority, scheduling.

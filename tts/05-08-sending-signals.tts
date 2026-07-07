@@ -1,0 +1,13 @@
+Sending signals — kill, killall, and pkill.
+
+Three commands send signals, and they do essentially the same job. The only real difference is how you name the target.
+
+kill takes a PID. By default it sends SIGTERM, the polite one. To send a different signal, you give a dash followed by the name or the number. So kill space one-two-three-four-five sends SIGTERM to that PID. kill dash-nine, then the PID, sends SIGKILL, the forceful one, and dash-nine is what most people just type out of habit. And kill dash-HUP tells the process to reload its config.
+
+killall takes a name instead of a PID, and it signals every process whose executable matches that exact name. So killall nginx sends SIGTERM to all the nginx processes at once; killall dash-nine chrome force-kills every chrome process. It's perfect when you know the program but not the PID.
+
+pkill is like killall, but the pattern is a regular expression, and it has handy selectors: dash-f matches against the whole command line, and dash-u matches by user. And pkill has a twin called pgrep, which returns the matching PIDs without killing anything. That leads to the golden rule here: always run pgrep first to check your aim, look at what it matched, and only then swap pgrep for pkill with the same flags. Measure twice, cut once.
+
+Now, the most important habit in this whole section: escalate politely, and do not lead with dash-nine. The standard way to shut down a misbehaving process is a sequence. First send SIGTERM. Then wait a few seconds, giving the process a chance to clean up. Only if it's still alive after that do you send SIGKILL. There's even a neat trick for the "is it still alive" check: kill dash-zero. Signal zero isn't a real signal; it just tests whether the process still exists, without disturbing it.
+
+Why not just dash-nine straight away? Because SIGKILL gives the process no chance to flush its logs, close its database connections, or release its locks. Leading with it is how you end up with half-written files and corrupted state. And here's the reassuring part: this whole polite-then-forceful escalation is exactly what systemctl stop does for you automatically, which we'll see in module nine.

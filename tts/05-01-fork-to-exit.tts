@@ -1,0 +1,9 @@
+A process from fork to exit.
+
+A program is a file sitting on disk. It's just a recipe, doing nothing. A process is what you get the moment the kernel loads that recipe into memory and starts running it. This whole module is about those running things: how to see them, control them, signal them, and schedule them.
+
+The one idea to hold onto is the process lifecycle, and it's surprisingly small. Almost every process on a Linux system is born the same way. A parent process calls fork, which produces a child that's a near-identical copy of itself. That child then calls exec, which replaces its own memory with a brand-new program. That's how everything runs: ls, grep, all of it. Once it's running, the process lives inside the scheduler, moving between three states: runnable, sleeping, and stopped. And eventually it calls exit and finishes, becoming briefly a zombie, until its parent collects the exit status with a call named wait, and then it's truly gone.
+
+That single loop, fork, exec, run, exit, wait, is the fork-to-exit path this entire module frames. Let's make it concrete. When you type ls space slash-etc, your shell forks a child process. The child execs the ls program. The kernel schedules it onto a CPU. It prints its output and exits. And your shell, which was waiting on it the whole time, collects the result and shows you a fresh prompt. That happens on every command you run.
+
+The rest of the module walks around that loop. What a process really is, and the identifiers the kernel tracks. Viewing processes with ps, top, and htop. The five process states. Controlling jobs in the foreground and background. Keeping work alive after you log out. Then signals, the kernel's way of poking a process; sending them with kill; tuning priority with nice; and finally, scheduling processes to run later with cron and systemd timers.

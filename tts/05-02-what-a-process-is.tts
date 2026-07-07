@@ -1,0 +1,9 @@
+What a process actually is.
+
+Let's pin down the definition. A process is a running program. The program itself, the file on disk, is just the recipe. The moment the kernel loads it into memory and starts executing it, you have a process. And for each one, the kernel tracks a small bundle of attributes.
+
+First, the PID, the process ID: a unique number that identifies the process while it's alive. The number gets reused after the process exits, but no two live processes ever share a PID. Second, the PPID, the parent PID: the process that started this one. Third, the UID and GID, the user and group the process runs as, which decide what files it's allowed to read and write. Fourth, the command, the program plus its arguments. And fifth, the state: running, sleeping, stopped, or zombie, which we'll get to in the next couple of sections.
+
+Now, PID one is special. It's the very first process the kernel starts at boot, and on modern Linux that's almost always systemd, which we cover in module nine. Every other process on the system descends from it, directly or indirectly. And here's a neat detail: if a process's parent dies while the child is still running, the child becomes an orphan, and the kernel re-parents it to PID one, which adopts it.
+
+Two consequences are worth really internalizing. First: every command you run is a new process. When you type ls slash-etc, the shell forks a child, the child execs ls, the shell waits for it to finish, and then it reprints the prompt. And a pipeline, a piped to b piped to c, creates one process per stage, all running at the same time. Second: the shell itself is a process. When you log in, a shell process starts; when you type exit, it ends. That parent-and-child, fork-exec-wait rhythm from the hook is quietly happening on every single command you type.

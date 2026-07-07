@@ -13,12 +13,12 @@ the plan we author against; the machine source of truth for structure is `manife
 
 **Status:** spine agreed — **10 modules × ~10 sections** (101 total, below). The `linux`
 scene is **ported into graphl-movie** (`src/scenes/linux.ts`, registered + catalog entry).
-**Modules 01–04 authored end-to-end** — every section has `.ipynb` + `.slide` + `.tts`, and
+**Modules 01–05 authored end-to-end** — every section has `.ipynb` + `.slide` + `.tts`, and
 `manifest.json` wires them onto the `linux` scene (§1 = hook on the whole map; §2–10 with
 per-section `focus`/`highlight`). Verified rendering in graphl-movie (slides trimmed to fit
 the non-scrolling 1080p pane). `audio/` is empty by design — the **owner** generates the
 `.wav`s from `tts/` via Colab, then the manifest `audio` fields resolve. **Pushed** to
-`github.com/schemabotview/linux-ct` (public). Modules 05–10 pending (same pattern).
+`github.com/schemabotview/linux-ct` (public). Modules 06–10 pending (same pattern).
 
 ## The scene — one dense map, framed per section
 
@@ -133,7 +133,7 @@ Frames the `lx-streams` band (text through pipes) with `lx-vfs` for `find`.
 | 9 | `find -exec` | `04-09-find-exec` | `lx-vfs` → `lx-file` |
 | 10 | Archives — `tar` + the tar-pipe | `04-10-archives-tar` | `lx-streams` |
 
-### 05 — Processes, Jobs & Signals  (10)
+### 05 — Processes, Jobs & Signals  ✅ authored (10)
 Frames the `lx-process` and `lx-sched` bands — a process from fork to exit, states,
 jobs, signals, and priority.
 

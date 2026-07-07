@@ -1,0 +1,21 @@
+# Surviving session loss
+
+Log out or drop SSH → the shell sends **`SIGHUP`** to its jobs, and most programs exit. **Closing the terminal kills your background work.**
+
+## Quick one-offs
+
+- **`nohup cmd &`** — ignores `SIGHUP`, output → `nohup.out`
+- **`disown`** — drops an *already-running* job from the job table
+- **`setsid`** — new session, no controlling terminal
+
+## The real answer — a multiplexer
+
+**`tmux`** (or `screen`) hosts your shells in a persistent session. SSH drops, tmux keeps running, you reconnect and **attach** right back.
+
+```bash
+tmux             # start; work normally
+                 # Ctrl-B then D to detach
+tmux attach      # reconnect later  (tmux ls to list)
+```
+
+**`tmux` solves the whole problem**, not one command at a time — the right tool for real work. `nohup`/`disown` stay handy for quick jobs.

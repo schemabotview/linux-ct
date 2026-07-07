@@ -1,0 +1,32 @@
+# Jobs — foreground & background
+
+The shell runs a command in the **foreground** and waits. Append **`&`** to background it and keep typing:
+
+```bash
+sleep 60 &
+[1] 12345        # [job number] and PID
+```
+
+## Managing jobs
+
+```bash
+jobs             # background jobs of this shell
+fg %1            # bring job 1 to the foreground
+```
+
+Job numbers (`%1`) are local to your shell.
+
+## "This is taking too long" — Ctrl-Z, bg
+
+```
+$ long-command
+^Z
+[1]+  Stopped     long-command
+$ bg               # resume in background
+$                  # prompt back, still running
+```
+
+1. **Ctrl-Z** stops the process (state `T`)
+2. **`bg`** resumes it in the background
+
+⚠️ **Ctrl-C** *terminates* (`SIGINT`) · **Ctrl-Z** only *pauses* (`SIGTSTP`). **`wait`** blocks until jobs finish.

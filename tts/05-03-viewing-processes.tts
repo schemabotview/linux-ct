@@ -1,0 +1,11 @@
+Viewing processes — ps, top, and htop.
+
+You've got three tools for seeing what's running: one gives a snapshot, and two give you a live, updating view.
+
+Start with ps, which stands for process status. It gives you a snapshot, a frozen list of the processes running right at that instant. It doesn't update. Now, ps has two historical flag styles that both survive to this day, and you just pick one. The BSD style uses flags with no dash, and the classic combination is ps a-u-x: a for all users, u for detailed output, and x to include daemons that aren't attached to a terminal. The SysV style uses dashes, and the classic there is ps dash-e-f: dash-e for every process, dash-f for full format. They give you nearly the same thing; pick one and stick with it.
+
+The columns you'll read most are: PID, the process ID; PPID, the parent's PID; USER; percent-CPU and percent-MEM; RSS, which is the real amount of RAM in kilobytes; STAT, the state letter we'll cover next; and COMMAND. You can also ask for exactly the columns you want with ps dash-e-o and a comma-separated list, and you can draw the parent-child tree with ps dash-e-f dash-dash-forest, or with the dedicated pstree dash-p.
+
+Next, top, the classic live view. It refreshes every few seconds and sorts by CPU usage by default. The useful keys, pressed inside top, are: capital-P to sort by CPU, capital-M to sort by memory, lowercase-k to send a signal to a process, lowercase-u to filter by user, and q to quit. For scripts, run it non-interactively with top dash-b dash-n one, which does a single pass and prints it.
+
+Finally, htop, which is top's much friendlier cousin: coloured, scrollable, mouse-aware, with per-CPU bars along the top and function-key shortcuts along the bottom, F5 for tree view, F6 to choose the sort column, F9 to send a signal. It's not installed by default, so grab it with sudo apt install htop. For interactive use it's strictly better than top. top still wins for scripted monitoring, because batch mode is rock-solid. And if you want something even prettier, with graphs over time, look at btop.

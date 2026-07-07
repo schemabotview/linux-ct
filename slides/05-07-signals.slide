@@ -1,0 +1,20 @@
+# Signals — the kernel's notifications
+
+A **signal** is a small message the kernel delivers to a process (number + name). The process can **default** (usually terminate), **catch** it, **ignore**, or **block** it.
+
+## Two the kernel enforces — uncatchable
+
+- **`SIGKILL` (9)** — die now, no cleanup. Last resort.
+- **`SIGSTOP` (19)** — pause now. Resume with `SIGCONT`.
+
+## The handful you'll use  (`kill -l` lists all)
+
+| Signal | № | Meaning |
+|---|---|---|
+| **`SIGTERM`** | 15 | **polite shutdown** — `kill`'s default, catchable |
+| **`SIGKILL`** | 9 | **last resort** — instant, no cleanup |
+| **`SIGINT`** | 2 | **Ctrl-C** — interactive interrupt |
+| **`SIGHUP`** | 1 | daemons: **"reload your config"** |
+| **`SIGTSTP`/`CONT`** | 20/18 | **Ctrl-Z** pause / resume |
+
+The three you'll send: **`TERM`** ask nicely · **`KILL`** when ignored · **`HUP`** reload config.

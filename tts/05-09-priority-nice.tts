@@ -1,0 +1,11 @@
+Priority — nice and renice.
+
+The Linux scheduler hands out CPU time among all the runnable processes, and by default everyone gets a fair share. But you can tilt the scales, and the way you do it is with a value called nice.
+
+Here's the range, and it's genuinely confusing at first: nice runs from minus-twenty, which is the highest priority, to positive-nineteen, which is the lowest. The default is zero. So it's backwards from what you'd expect: a higher nice number means lower priority. The trick to remembering it is to think about politeness. Nice means "how willing am I to yield the CPU to others." A process at nice nineteen is very nice, very willing to step aside. A process at nice minus-twenty is selfish; it grabs the CPU and doesn't yield.
+
+There's an important permission rule. Only root can decrease a nice value, that is, raise a process's priority. Any regular user can increase nice, lowering the priority of their own processes. That asymmetry exists so that users can't just hand themselves more CPU than they're entitled to.
+
+To start a command with a particular nice value, you use nice dash-n and the number. So nice dash-n ten, then the command, launches it at nice ten, lower priority. To change the priority of a process that's already running, you use renice. renice five dash-p and a PID sets that process to nice five. And renice ten dash-u alice renices every one of alice's processes at once.
+
+There's a sibling command worth knowing too: ionice, which controls input-output priority, completely separate from CPU priority. Its class three is "idle," meaning "only touch the disk when nothing else needs it." The classic combination is for a heavy backup you don't want to choke your production workload: nice dash-n nineteen, ionice dash-c three, then rsync. That runs the copy at the lowest CPU priority and idle disk priority, so it politely gets out of everyone's way. For exam-level work, know nice and renice cold, and treat ionice as a useful bonus.

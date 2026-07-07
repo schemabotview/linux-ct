@@ -518,6 +518,132 @@
           "spine": true
         }
       ]
+    },
+    {
+      "id": "05-processes-jobs-and-signals",
+      "title": "Processes, Jobs & Signals",
+      "sections": [
+        {
+          "heading": "A process from fork to exit",
+          "notebook": "notebooks/05-01-fork-to-exit.ipynb",
+          "slide": "slides/05-01-fork-to-exit.slide",
+          "audio": "audio/05-01-fork-to-exit.wav",
+          "scene": "linux",
+          "role": "hook",
+          "spine": true
+        },
+        {
+          "heading": "What a process actually is",
+          "notebook": "notebooks/05-02-what-a-process-is.ipynb",
+          "slide": "slides/05-02-what-a-process-is.slide",
+          "audio": "audio/05-02-what-a-process-is.wav",
+          "scene": "linux",
+          "focus": "lx-process",
+          "highlight": [
+            "lx-fork",
+            "lx-exec",
+            "lx-wait",
+            "lx-exit"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Viewing processes — ps, top, htop",
+          "notebook": "notebooks/05-03-viewing-processes.ipynb",
+          "slide": "slides/05-03-viewing-processes.slide",
+          "audio": "audio/05-03-viewing-processes.wav",
+          "scene": "linux",
+          "focus": "lx-sched",
+          "highlight": [
+            "lx-pid-table"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Process states — R, S, D, T, Z",
+          "notebook": "notebooks/05-04-process-states.ipynb",
+          "slide": "slides/05-04-process-states.slide",
+          "audio": "audio/05-04-process-states.wav",
+          "scene": "linux",
+          "focus": "lx-sched",
+          "highlight": [
+            "lx-runqueue"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Jobs — foreground and background",
+          "notebook": "notebooks/05-05-jobs.ipynb",
+          "slide": "slides/05-05-jobs.slide",
+          "audio": "audio/05-05-jobs.wav",
+          "scene": "linux",
+          "focus": "lx-process",
+          "highlight": [
+            "lx-process"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Surviving session loss — nohup, disown, tmux",
+          "notebook": "notebooks/05-06-surviving-session-loss.ipynb",
+          "slide": "slides/05-06-surviving-session-loss.slide",
+          "audio": "audio/05-06-surviving-session-loss.wav",
+          "scene": "linux",
+          "focus": "lx-process",
+          "highlight": [
+            "lx-process"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Signals — the kernel's notification system",
+          "notebook": "notebooks/05-07-signals.ipynb",
+          "slide": "slides/05-07-signals.slide",
+          "audio": "audio/05-07-signals.wav",
+          "scene": "linux",
+          "focus": "lx-sched",
+          "highlight": [
+            "lx-sigterm"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Sending signals — kill, killall, pkill",
+          "notebook": "notebooks/05-08-sending-signals.ipynb",
+          "slide": "slides/05-08-sending-signals.slide",
+          "audio": "audio/05-08-sending-signals.wav",
+          "scene": "linux",
+          "focus": "lx-sched",
+          "highlight": [
+            "lx-sigterm"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Priority — nice and renice",
+          "notebook": "notebooks/05-09-priority-nice.ipynb",
+          "slide": "slides/05-09-priority-nice.slide",
+          "audio": "audio/05-09-priority-nice.wav",
+          "scene": "linux",
+          "focus": "lx-sched",
+          "highlight": [
+            "lx-nice"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Scheduled tasks — cron, at, systemd timers",
+          "notebook": "notebooks/05-10-scheduled-tasks.ipynb",
+          "slide": "slides/05-10-scheduled-tasks.slide",
+          "audio": "audio/05-10-scheduled-tasks.wav",
+          "scene": "linux",
+          "focus": "lx-systemd",
+          "highlight": [
+            "lx-systemd"
+          ],
+          "spine": true
+        }
+      ]
     }
   ]
 }
