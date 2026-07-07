@@ -2,7 +2,7 @@
 
 ## Hard link — `ln src name`
 
-A second directory entry pointing at the **same inode**. Both names are equal — no "original." Delete one → data survives while any name remains.
+A second directory entry pointing at the **same inode**. Both names are equal — no "original."
 
 ```bash
 ln original.txt second-name.txt
@@ -25,4 +25,4 @@ ln -s /etc/hostname host-link
 | directory? cross-disk? | no | **yes** |
 | in `ls -l` | `-` | `l` with `→` |
 
-**Symlinks 99% of the time** — `/bin/sh`→`bash`, `python3`→a version, dotfiles. `readlink -f` resolves the chain.
+**Symlinks 99% of the time** — `/bin/sh`, `python3`, dotfiles. `readlink -f` resolves a chain.
