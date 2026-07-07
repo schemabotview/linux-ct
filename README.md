@@ -18,7 +18,7 @@ scene is **ported into graphl-movie** (`src/scenes/linux.ts`, registered + catal
 per-section `focus`/`highlight`). Verified rendering in graphl-movie (slides trimmed to fit
 the non-scrolling 1080p pane). `audio/` is empty by design — the **owner** generates the
 `.wav`s from `tts/` via Colab, then the manifest `audio` fields resolve. **Pushed** to
-`github.com/schemabotview/linux-ct` (public). Modules 04–10 pending (same pattern).
+`github.com/schemabotview/linux-ct` (public). Modules 05–10 pending (same pattern).
 
 ## The scene — one dense map, framed per section
 
