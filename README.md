@@ -150,7 +150,7 @@ jobs, signals, and priority.
 | 9 | Priority — `nice`/`renice` | `05-09-priority-nice` | `lx-sched` → `lx-nice` |
 | 10 | Scheduled tasks *(cron/at/timers)* | `05-10-scheduled-tasks` | `lx-systemd` |
 
-### 06 — Users, Groups & Access Control  (10)
+### 06 — Users, Groups & Access Control  ✅ authored (10)
 Frames the `lx-users` band with `lx-perms` for the SUID/SGID/ACL beats.
 
 | # | Section | slug | focus → highlight |

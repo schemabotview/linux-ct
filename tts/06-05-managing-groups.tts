@@ -1,0 +1,9 @@
+Managing groups.
+
+Groups have their own set of management commands, mirroring the user ones, and, like those, they all need sudo.
+
+To create a group, use groupadd, followed by the group name. Add dash-g and a number if you want a specific GID rather than the next free one. To rename a group, use groupmod dash-n with the new name and then the old name. And to delete a group, use groupdel, though that will fail if the group is still someone's primary group; you can't orphan a user's primary group out from under them.
+
+For managing who's actually in a group, there's gpasswd, which changes membership without touching the rest of a user's account. gpasswd dash-a adds a user to a group; gpasswd dash-d removes them; and gpasswd dash-capital-M sets the entire member list at once. So you now have two equivalent ways to add alice to the docker group: either gpasswd dash-a alice docker, or usermod dash-a-capital-G docker alice. Use whichever you prefer.
+
+But here's the gotcha that confuses absolutely everyone, and it's worth slowing down for. When you add a user to a new group, that change does not reach a shell they already have open. Group memberships are loaded at login. So if alice is sitting at a shell and you add her to the docker group, her current shell still can't use docker; the kernel loaded her groups when that shell started, and it won't re-read them. The clean fix is for her to log out and back in. But if she doesn't want to do that, there's a shortcut: the newgrp command. Running newgrp docker starts a fresh shell with that group already active, so she can use it immediately without a full logout. Either way, you can always confirm the final membership with id alice, or with groups alice.

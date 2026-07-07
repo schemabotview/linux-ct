@@ -1,0 +1,13 @@
+ACLs — when owner, group, and other aren't enough.
+
+The classic three-class model, user, group, and other, is elegant and covers most situations. But it has a hard limit: there's only one owner and only one group. So it simply cannot express a request like "I want alice to have write access, and bob to have read access, and everyone else to have nothing." Three distinct people, three different levels; the standard bits can't say that. For exactly those cases, Linux supports POSIX access control lists, or ACLs.
+
+ACLs let you grant explicit permissions to named users and named groups, over and above the file's single owner and single group. They're an extension layered on top of the standard model; the normal owner-group-other bits still exist and still apply, and ACLs just add extra entries alongside them.
+
+Two commands do the work. To read the ACLs on a file, use getfacl, which prints the owner, group, and other permissions plus any additional named entries. To set them, use setfacl. setfacl dash-m, for modify, adds an entry: setfacl dash-m, u colon bob colon r-dash-dash, grants bob read access; setfacl dash-m, g colon contractors colon r-w, grants that group read and write. setfacl dash-x removes a specific entry, and setfacl dash-b strips all ACLs off entirely, returning the file to plain permissions.
+
+Now, how do you even know a file has ACLs? There's a subtle but crucial signal. Once a file carries ACL entries, ls dash-l appends a plus sign at the end of its permission string. So if you see r-w-r-r followed by a plus, that plus is telling you: there's more here than meets the eye, go run getfacl to see the full picture.
+
+For directories, there's a powerful variant: a default ACL, set with dash-d. A default ACL acts as a template that's automatically applied to every new file created inside that directory. So setfacl dash-d dash-m, u colon bob colon r-w-x, on a project directory means bob will automatically get read-write-execute on anything created there later.
+
+A word of judgment, though. Use ACLs for genuine one-off exceptions, not as your primary access-control mechanism. They're harder to audit, they're easy to forget in backups, and they can quietly confuse the next administrator. Whenever you can solve the problem with groups and standard permissions instead, do that. For the exam, know that ACLs exist, know how to read getfacl output, and know the basic setfacl dash-m syntax.

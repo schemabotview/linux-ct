@@ -1,0 +1,11 @@
+Managing users — useradd, usermod, passwd, and chage.
+
+Now let's actually create and manage accounts. All of these commands need sudo, and together they cover creating, modifying, and aging users.
+
+To create an account, use useradd. A typical invocation is useradd dash-m, dash-s slash-bin-bash, dash-capital-G with a list of groups, then the username. The flags that matter most: dash-m creates the home directory, and this is the one people forget; skip it and you get a broken account with no home. Dash-s sets the login shell. Dash-c sets the full name. Dash-capital-G sets the supplementary groups. And dash-u forces a specific UID. One gotcha: a freshly created account has no password and is locked, so you follow up with sudo passwd, the username, to set one. Debian and Ubuntu also ship a friendlier wrapper called adduser that prompts you interactively; but for scripts, use useradd.
+
+To change an existing account, use usermod, which takes the same flags plus a few more. And here is the single most infamous gotcha in this whole module. To add alice to the docker group, you write usermod dash-a-capital-G docker alice. The dash-a means append. If you forget the a and write just dash-capital-G, it doesn't add her to docker, it replaces her entire supplementary group list with just docker, silently dropping her from every other group she was in. So burn this in: always use dash-a-capital-G when adding someone to a group. usermod also does renames with dash-l, and locks and unlocks accounts with dash-capital-L and dash-capital-U.
+
+To delete a user, there's userdel. Plain userdel removes the account but leaves the home directory behind; userdel dash-r also removes the home directory and mail spool. Before you do that, check that nothing is still running as them, with pgrep dash-u alice.
+
+Finally, passwords and aging. The passwd command sets a password; sudo passwd dash-l or dash-u locks or unlocks an account, and dash-e expires the password to force a change at next login. And chage controls the aging policy: chage dash-l lists it, dash-capital-M sets the maximum password age in days, dash-capital-W sets the warning window, and dash-capital-E sets an account expiry date. Those are the ones to know for the exam.

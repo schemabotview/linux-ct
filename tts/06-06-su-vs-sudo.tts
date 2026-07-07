@@ -1,0 +1,11 @@
+su versus sudo.
+
+There are two ways to act as another user on a Linux system, and the single most important difference between them is: whose password do you type?
+
+The first is su, which stands for substitute user. su starts a new shell as another user, and it prompts for that target user's password. So su dash alice makes you alice; su dash on its own makes you root; and su dash-c with a command runs one command as root and then returns you. The key detail here is that little dash. Without it, you become the other user but keep your own environment, your current directory and variables. With the dash, you simulate a real, fresh login: it runs their login scripts and drops you into their home directory. So su dash is what you almost always want.
+
+The second is sudo, which stands for substitute user do. sudo runs a single command as another user, root by default, and, crucially, it prompts for your own password, not the target's. So plain sudo, then a command, runs it as root. sudo dash-u alice runs it as alice. sudo dash-i gives you an interactive root shell using sudo's own authentication. And sudo dash-k forgets your cached credential, so the next sudo asks again.
+
+sudo is the modern, recommended approach for almost everything, and the comparison table shows exactly why. With su you type the target's password, which means everyone who needs root has to know the shared root password; with sudo you type your own, so the root password can be locked away entirely, or not exist at all. sudo logs every command it runs, to the auth log, giving you a real audit trail; su gives you none. And sudo lets you write a fine-grained allow-list in etc-sudoers, saying exactly who can run what; su is all-or-nothing.
+
+In fact, on Ubuntu and most cloud Linux images, the root account is locked outright. There is no root password, and every bit of administration flows through per-user sudo. That's the right pattern: one shared root login is nearly impossible to audit, while per-user sudo policies are easy. And if you ever genuinely need to become a non-root user, say to test as www-data, sudo dash-i dash-u www-data does exactly that, without anyone having to share a password.

@@ -644,6 +644,131 @@
           "spine": true
         }
       ]
+    },
+    {
+      "id": "06-users-groups-and-access-control",
+      "title": "Users, Groups & Access Control",
+      "sections": [
+        {
+          "heading": "Identity, credentials, and access",
+          "notebook": "notebooks/06-01-identity-and-access.ipynb",
+          "slide": "slides/06-01-identity-and-access.slide",
+          "audio": "audio/06-01-identity-and-access.wav",
+          "scene": "linux",
+          "role": "hook",
+          "spine": true
+        },
+        {
+          "heading": "The Linux user model — UID and GID",
+          "notebook": "notebooks/06-02-user-model.ipynb",
+          "slide": "slides/06-02-user-model.slide",
+          "audio": "audio/06-02-user-model.wav",
+          "scene": "linux",
+          "focus": "lx-users",
+          "highlight": [
+            "lx-uid",
+            "lx-gid"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Account databases — passwd, shadow, group",
+          "notebook": "notebooks/06-03-account-databases.ipynb",
+          "slide": "slides/06-03-account-databases.slide",
+          "audio": "audio/06-03-account-databases.wav",
+          "scene": "linux",
+          "focus": "lx-users",
+          "highlight": [
+            "lx-passwd"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Managing users — useradd, usermod, passwd, chage",
+          "notebook": "notebooks/06-04-managing-users.ipynb",
+          "slide": "slides/06-04-managing-users.slide",
+          "audio": "audio/06-04-managing-users.wav",
+          "scene": "linux",
+          "focus": "lx-users",
+          "highlight": [
+            "lx-passwd"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Managing groups",
+          "notebook": "notebooks/06-05-managing-groups.ipynb",
+          "slide": "slides/06-05-managing-groups.slide",
+          "audio": "audio/06-05-managing-groups.wav",
+          "scene": "linux",
+          "focus": "lx-users",
+          "highlight": [
+            "lx-gid"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "su vs sudo",
+          "notebook": "notebooks/06-06-su-vs-sudo.ipynb",
+          "slide": "slides/06-06-su-vs-sudo.slide",
+          "audio": "audio/06-06-su-vs-sudo.wav",
+          "scene": "linux",
+          "focus": "lx-users",
+          "highlight": [
+            "lx-sudo"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "sudo deep dive — /etc/sudoers and visudo",
+          "notebook": "notebooks/06-07-sudo-deep-dive.ipynb",
+          "slide": "slides/06-07-sudo-deep-dive.slide",
+          "audio": "audio/06-07-sudo-deep-dive.wav",
+          "scene": "linux",
+          "focus": "lx-users",
+          "highlight": [
+            "lx-sudo"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Special permission bits — SUID, SGID, sticky",
+          "notebook": "notebooks/06-08-suid-sgid-sticky.ipynb",
+          "slide": "slides/06-08-suid-sgid-sticky.slide",
+          "audio": "audio/06-08-suid-sgid-sticky.wav",
+          "scene": "linux",
+          "focus": "lx-perms",
+          "highlight": [
+            "lx-suid",
+            "lx-sgid"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "ACLs — when owner/group/other isn't enough",
+          "notebook": "notebooks/06-09-acls.ipynb",
+          "slide": "slides/06-09-acls.slide",
+          "audio": "audio/06-09-acls.wav",
+          "scene": "linux",
+          "focus": "lx-perms",
+          "highlight": [
+            "lx-acl"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Login mechanics — PAM and shell startup files",
+          "notebook": "notebooks/06-10-login-mechanics.ipynb",
+          "slide": "slides/06-10-login-mechanics.slide",
+          "audio": "audio/06-10-login-mechanics.wav",
+          "scene": "linux",
+          "focus": "lx-users",
+          "highlight": [
+            "lx-users"
+          ],
+          "spine": true
+        }
+      ]
     }
   ]
 }

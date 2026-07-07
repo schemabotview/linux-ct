@@ -1,0 +1,11 @@
+sudo deep dive — sudoers and visudo.
+
+sudo gets all its power from its policy file, etc-sudoers, along with any drop-in files placed in the etc-sudoers-dot-d directory. The syntax of that file is a small language in its own right, so let's break it down.
+
+First, the single most important safety rule: never, ever edit etc-sudoers directly with a plain text editor. Always use visudo. visudo opens the file for editing but checks the syntax before it saves. This matters enormously, because a sudoers file with even a small syntax error can lock you out of administration entirely, and then you need single-user mode or a rescue disk to recover. To edit the main file, run sudo visudo. To edit a drop-in, run sudo visudo dash-f and the path under sudoers-dot-d; the drop-in approach is preferred because your rules survive package updates that might rewrite the main file.
+
+Now the rules themselves. Every sudoers rule has the same four-part shape: who, where, in parentheses as-whom, and finally what. Let's read a couple. The line percent-sudo, ALL, equals, parens ALL colon ALL, ALL, is the default rule on Debian and Ubuntu: it says members of the sudo group, on all hosts, may run any command as any user. A more surgical example: alice, ALL, equals, parens root, NOPASSWD colon slash-bin-systemctl restart nginx. That lets alice restart nginx as root, and only that, without even typing a password.
+
+Breaking the pieces down: WHO is a username, or a percent sign followed by a group name for a whole group. WHERE is which hosts the rule applies to, usually just ALL unless you share one sudoers file across many machines. The parenthesized part is which identity sudo may switch to, defaulting to root. WHAT is the full path or paths to the allowed commands, comma-separated, where ALL means any command. And the NOPASSWD colon prefix means "skip the password prompt for these specific commands."
+
+Two closing tips. Prefer drop-in files in sudoers-dot-d over editing the main file, so your customizations stay cleanly separate from the distribution's. And whenever sudo "isn't working," your very first debugging step is sudo dash-l, which lists exactly which commands and conditions apply to you right now.
