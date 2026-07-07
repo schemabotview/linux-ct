@@ -1140,6 +1140,144 @@
           "spine": true
         }
       ]
+    },
+    {
+      "id": "10-scripting-troubleshooting-and-lfcs-prep",
+      "title": "Scripting, Troubleshooting & LFCS Prep",
+      "sections": [
+        {
+          "heading": "From one-liners to production scripts and troubleshooting",
+          "notebook": "notebooks/10-01-scripts-and-troubleshooting.ipynb",
+          "slide": "slides/10-01-scripts-and-troubleshooting.slide",
+          "audio": "audio/10-01-scripts-and-troubleshooting.wav",
+          "scene": "linux",
+          "role": "hook",
+          "spine": true
+        },
+        {
+          "heading": "Shell scripting essentials",
+          "notebook": "notebooks/10-02-scripting-essentials.ipynb",
+          "slide": "slides/10-02-scripting-essentials.slide",
+          "audio": "audio/10-02-scripting-essentials.wav",
+          "scene": "linux",
+          "focus": "lx-shell",
+          "highlight": [
+            "lx-shells"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Conditionals and loops",
+          "notebook": "notebooks/10-03-conditionals-and-loops.ipynb",
+          "slide": "slides/10-03-conditionals-and-loops.slide",
+          "audio": "audio/10-03-conditionals-and-loops.wav",
+          "scene": "linux",
+          "focus": "lx-shell",
+          "highlight": [
+            "lx-shells"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Functions, exit codes, and set -euo pipefail",
+          "notebook": "notebooks/10-04-functions-and-safety.ipynb",
+          "slide": "slides/10-04-functions-and-safety.slide",
+          "audio": "audio/10-04-functions-and-safety.wav",
+          "scene": "linux",
+          "focus": "lx-shell",
+          "highlight": [
+            "lx-streams"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Troubleshooting methodology",
+          "notebook": "notebooks/10-05-troubleshooting-method.ipynb",
+          "slide": "slides/10-05-troubleshooting-method.slide",
+          "audio": "audio/10-05-troubleshooting-method.wav",
+          "scene": "linux",
+          "focus": "lx-trace",
+          "highlight": [
+            "lx-trace"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Playbook 1 — disk is full",
+          "notebook": "notebooks/10-06-playbook-disk-full.ipynb",
+          "slide": "slides/10-06-playbook-disk-full.slide",
+          "audio": "audio/10-06-playbook-disk-full.wav",
+          "scene": "linux",
+          "focus": "lx-block",
+          "highlight": [
+            "lx-fs"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Playbook 2 — out of memory",
+          "notebook": "notebooks/10-07-playbook-oom.ipynb",
+          "slide": "slides/10-07-playbook-oom.slide",
+          "audio": "audio/10-07-playbook-oom.wav",
+          "scene": "linux",
+          "focus": "lx-mem",
+          "highlight": [
+            "lx-oom"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Playbook 3 — runaway process pinning the CPU",
+          "notebook": "notebooks/10-08-playbook-cpu.ipynb",
+          "slide": "slides/10-08-playbook-cpu.slide",
+          "audio": "audio/10-08-playbook-cpu.wav",
+          "scene": "linux",
+          "focus": "lx-sched",
+          "highlight": [
+            "lx-runqueue",
+            "lx-nice"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Playbook 4 — network is down",
+          "notebook": "notebooks/10-09-playbook-network.ipynb",
+          "slide": "slides/10-09-playbook-network.slide",
+          "audio": "audio/10-09-playbook-network.wav",
+          "scene": "linux",
+          "focus": "lx-net",
+          "highlight": [
+            "lx-netfilter"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Playbook 5 — service won't start",
+          "notebook": "notebooks/10-10-playbook-service.ipynb",
+          "slide": "slides/10-10-playbook-service.slide",
+          "audio": "audio/10-10-playbook-service.wav",
+          "scene": "linux",
+          "focus": "lx-systemd",
+          "highlight": [
+            "lx-units"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Security, performance, and LFCS prep",
+          "notebook": "notebooks/10-11-security-perf-lfcs.ipynb",
+          "slide": "slides/10-11-security-perf-lfcs.slide",
+          "audio": "audio/10-11-security-perf-lfcs.wav",
+          "scene": "linux",
+          "focus": "lx-trace",
+          "highlight": [
+            "lx-strace",
+            "lx-perf",
+            "lx-ebpf"
+          ],
+          "spine": true
+        }
+      ]
     }
   ]
 }

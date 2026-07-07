@@ -1,0 +1,11 @@
+Playbook four — the network is down.
+
+Symptoms: you can't reach external sites, DNS is slow, your SSH sessions keep dropping. This is exactly the layered flow from module eight, and the discipline here is to go through it in order, where each step assumes the previous one passed. That ordering is what makes it fast, because each layer eliminates half of what could be wrong.
+
+Layer one: do I even have an interface with an address? Run ip dash-b-r link to see if any interface is DOWN, and ip dash-b-r addr to see whether you have an IP address at all. If there's no address, that's a DHCP or NetworkManager problem, and you fix that first.
+
+Layer two: can I reach my own gateway? ip route shows you what the gateway is, and ping dash-c three at that gateway tells you if the local network is working. If the interface is up but the gateway won't answer, the problem is local, your cable, your switch, your subnet.
+
+Layer three: can I reach the wider internet by raw IP? Ping one dot one dot one dot one. Using an IP deliberately bypasses DNS, so this isolates connectivity from name resolution. Layer four: does DNS resolve? Compare dig plus-short against dig at-eight-dot-eight-dot-eight-dot-eight plus-short. If only the second one works, then the internet is fine and your resolver is broken. Layer five is where does the path die, with traceroute. Layer six, is the target port reachable, with nc dash-z-v. And layer seven, on the server side, are you actually listening, with ss dash-t-u-n-l-p.
+
+For the common immediate fixes: if you have no IP, restart networking with systemctl restart NetworkManager. If DNS is broken, point it at a public resolver. And a firewall warning: if you suspect the firewall is blocking you, you can disable it, but only to confirm that's the cause, with something like ufw disable, and then re-enable it the very moment you're done diagnosing. Never, ever leave the firewall off and call that "the fix." That's not a fix; it's a new, bigger problem.

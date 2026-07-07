@@ -1,0 +1,13 @@
+Playbook two — out of memory.
+
+The symptoms here are processes getting killed seemingly at random, the word "Killed" showing up in dmesg, a sluggish, thrashing system. Let's work through it.
+
+Step one, get the current state with free dash-h. And here's the single most important thing to know about reading that output: look at the available column, not the free column. Available is what can actually be allocated to a new process. Free looks alarmingly small because Linux counts the page cache as "used" memory, but that cache is reclaimable the instant something needs it. So a machine can show almost no free memory and still be perfectly healthy; available is the number that tells the truth.
+
+Step two, find out what's actually using the memory. Run ps dash-e-o, asking for pid, user, rss, and comm, sorted by rss descending, and take the top of the list. Or just run top and press capital-M to sort by memory. The key column is rss, the resident set size, which is the honest amount of real RAM a process is using. Ignore vsz, the virtual size; it's usually much larger and rarely what you care about, unless you're specifically chasing an address-space leak.
+
+Step three, check the OOM killer's verdict. When Linux truly runs out of memory, the kernel's out-of-memory killer picks a victim and kills it. Run sudo dmesg dash-capital-T, piped to grep for "killed process" or "out of memory," and you'll see exactly which process it killed and why. That's often your smoking gun.
+
+Step four, check swap, which is frequently the missing piece we covered in module seven. If there's no swap configured at all, that's often the root of the problem, and you can add a swap file at runtime to buy immediate breathing room: fallocate a file, chmod it to six hundred, mkswap it, and swapon.
+
+And step five, if one critical service keeps getting singled out and killed, you can protect it. In its systemd unit, set OOMScoreAdjust to a negative number, like minus five hundred; minus one thousand means "never kill this one." But understand that's a band-aid. The real, lasting fix is almost always either adding more RAM, or finding and fixing the process that's leaking memory in the first place.

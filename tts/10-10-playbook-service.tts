@@ -1,0 +1,15 @@
+Playbook five — a service won't start.
+
+The symptom: systemctl start on some service returns an error, or systemctl status shows it as failed. The good news is there's a fixed escalation path that solves well over ninety percent of these cases, and it goes: status, then journalctl dash-u, then the config test, then running the binary by hand, then checking SELinux or AppArmor, and finally, daemon-reload. Let's walk it.
+
+Step one, read the status with systemctl status, and this is the big one, because most of the time the last ten log lines that status prints already contain the answer. Learn to recognize four classic messages. "Permission denied" means the service can't access some file, directory, or socket it needs. "Address already in use" means another process is already holding the port. "No such file or directory" means a wrong path, a missing binary, or a missing config file. And "failed to parse" means there's a syntax error in a config file.
+
+Step two, if you need more, get the full logs for that unit with sudo journalctl dash-u, the name, dash-n one-hundred, which we covered in module nine.
+
+Step three, test the config. Most well-behaved services ship a config-syntax checker: nginx dash-t, sshd dash-t, apachectl configtest. If that fails, the error message tells you the exact file and line.
+
+Step four, if the config is clean but it still won't start, run the binary directly, by hand, using the exact command from systemctl cat, the unit name. Running it in the foreground yourself surfaces errors that systemd was hiding, very often an environment or permissions issue.
+
+Step five, check the surrounding conditions: is the port already taken, with ss dash-t-u-n-l-p piped to grep; do the data directories have the right owner and mode; and on a Red Hat system, is SELinux blocking it, which you check with ausearch dash-m AVC.
+
+And step six, the one that catches everyone: did you run systemctl daemon-reload? If you recently edited the unit file, systemd hasn't seen your change until you daemon-reload, and this is far and away the most common "I changed it and it still doesn't work" cause. Master that sequence, and you'll solve the vast majority of service problems.

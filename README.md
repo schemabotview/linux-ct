@@ -214,7 +214,7 @@ Frames the `lx-systemd` column with `lx-boot` (boot chain) and `lx-pkg` (package
 | 9 | Package management *(apt/dnf)* | `09-09-package-management` | `lx-pkg` → `lx-apt`,`lx-dnf` |
 | 10 | Repositories | `09-10-repositories` | `lx-pkg` → `lx-apt` |
 
-### 10 — Scripting, Troubleshooting & LFCS Prep  (11)
+### 10 — Scripting, Troubleshooting & LFCS Prep  ✅ authored (11)
 Frames `lx-shell` + `lx-trace`, then tours the whole map as troubleshooting playbooks.
 
 | # | Section | slug | focus → highlight |

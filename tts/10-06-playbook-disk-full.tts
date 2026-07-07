@@ -1,0 +1,13 @@
+Playbook one — the disk is full.
+
+The symptom is unmistakable: "no space left on device." Services fail to write their logs, package installs fail, and things generally start falling over. Here's the flow.
+
+Step one, confirm it, and figure out whether it's a bytes problem or an inodes problem. Run df dash-h to see which filesystem is at a hundred percent. Then run df dash-i, which shows inode usage instead of bytes. If the use-percent column is a hundred on df dash-h, you've run out of bytes. But if the inode-use-percent is a hundred on df dash-i, you've run out of inodes, which happens when you have a huge number of tiny files, and it's common on mail spools and build directories.
+
+Step two, assuming it's bytes, find the big stuff. The workhorse is du dash-h dash-dash-max-depth equals one on a directory, piped to sort dash-h, then tail; that shows you the biggest subdirectories at one level. You drill down from there. Or hunt for large files directly with find, dash-type f, dash-size plus-one-hundred-M. And if ncdu happens to be installed, it's a much faster interactive way to find the big things.
+
+Step three, and this is the classic gotcha, check for deleted-but-held files. Run sudo lsof piped to grep deleted. Remember this from module seven: when a process is still holding a deleted file open, the disk space isn't actually freed until that process closes the file. So df reports the disk as full, but du can't find the space, because the file no longer has a name. The fix is usually to restart the offending service, which closes the file handle and releases the space.
+
+Step four, if it was inodes, hunt down the directories with the most files in them and clear the culprit, often PHP session directories, mail queues, or abandoned package caches.
+
+And step five, the quick wins that reclaim space fast: clear the package manager cache with apt clean or dnf clean all; trim the systemd journals with journalctl dash-dash-vacuum-size; and on Ubuntu, remove old kernels with apt autoremove dash-dash-purge. Those three alone often buy you enough room to breathe and investigate properly.

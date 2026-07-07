@@ -1,0 +1,11 @@
+Playbook three — a runaway process pinning the CPU.
+
+The symptoms: the load average is climbing, the fans are spinning up, and the whole system feels unresponsive. Something is eating all the CPU. Let's find it and deal with it.
+
+Step one, find the culprit. Run top, which sorts by CPU usage by default, or press capital-P to be sure; htop gives you a nicer interactive view of the same thing. For a quick scriptable snapshot, ps dash-e-o with pid, user, percent-cpu, and comm, sorted by percent-cpu descending, and take the top few. Now you've got a PID.
+
+Step two, and this is the interesting part, figure out what the process is actually doing. This is where strace shines. Run sudo strace dash-p, then the PID, and you'll see, live, every system call the process is making. Or strace dash-c dash-p for a summarized count after a few seconds. A process that's spinning in a tight syscall loop, say, opening the same file over and over, will make the bug obvious immediately. You can also read slash-proc-slash-the-pid-slash-cmdline to see its full command line.
+
+Step three, take control, and escalate gently rather than reaching straight for the kill. First option: sudo renice plus-ten dash-p, the PID, which lowers its priority; that doesn't kill it, it just tells the scheduler to give everyone else a turn, which we covered in module five. Second: you can pause it entirely with kill dash-STOP, inspect the system while it's frozen, and then resume it with kill dash-CONT. And only if you need to, kill it, escalating from a polite SIGTERM, waiting a few seconds, and then a forceful dash-nine if it's still alive.
+
+Step four, the frustrating case: what if you can't kill it, even with dash-nine? If the process is in the capital-D state, uninterruptible sleep, it's blocked deep in the kernel, usually waiting on disk or on a hung network filesystem, and, as we saw in module five, it simply cannot be killed by any signal. Your only options are to wait for the underlying I/O to finally complete, to fix the root cause, like unmounting a wedged NFS share, or, in the worst case, to reboot.
