@@ -14,8 +14,6 @@ directory entry            inode #8214
                           metadata + data — NO name
 ```
 
-The **name lives in the directory**; **data + metadata live in the inode**.
-
 ## Why this matters
 
 - **Links** — two names, one inode *(hard)* · a name that holds a path *(symbolic)*
