@@ -23,8 +23,4 @@ chmod u=rw,go=r file.txt   # set exactly
 
 ## Flags & a gotcha
 
-`-R` recursive · `-v` verbose. ⚠️ `chmod -R 755 dir/` makes **every file** executable — split with `find`:
-
-```bash
-find dir -type d -exec chmod 755 {} +   # dirs 755, files 644
-```
+`-R` recursive · `-v` verbose. ⚠️ `chmod -R 755 dir/` makes **every file** executable — split dirs from files with `find` (`-type d` → 755, `-type f` → 644).
