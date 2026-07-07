@@ -1,0 +1,21 @@
+# Repositories — where packages come from
+
+**Repositories** are servers hosting a catalog + package files. Distro ships defaults; you can add more.
+
+## Debian/Ubuntu — `/etc/apt/sources.list*`
+
+```
+deb http://archive.ubuntu.com/ubuntu jammy main restricted universe multiverse
+```
+
+`deb` · URL · **`jammy`** codename · **components**: **`main`** (supported), `restricted`, **`universe`** (community), `multiverse`.
+
+## RHEL/Fedora — `/etc/yum.repos.d/*.repo`
+
+INI: `baseurl`, `enabled`, `gpgcheck`, `gpgkey`. Manage: `dnf config-manager --enable/--disable` · `dnf repolist`.
+
+## ⚠️ GPG signatures gate trust
+
+Repos **sign** packages; the manager verifies before installing — your defence against a tampered mirror. **Never ignore GPG errors.** Adding a repo = add its key → add the source → refresh → install.
+
+**EPEL** — `dnf install epel-release` unlocks common packages on RHEL (e.g. `htop`). Almost a must-install; Ubuntu needs no equivalent.

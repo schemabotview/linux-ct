@@ -1,0 +1,28 @@
+# `systemctl` & reading `status`
+
+One command for everything — `systemctl VERB [UNIT]`.
+
+| Verb | Does |
+|---|---|
+| **`status`** | state + recent logs |
+| **`start`/`stop`/`restart`** | now (temporary) |
+| **`reload`** | re-read config, no restart |
+| **`enable --now`** | start at boot **and** now |
+| **`daemon-reload`** | re-read unit files from disk |
+
+⚠️ **After editing a unit file, `systemctl daemon-reload`** — systemd caches definitions. Change not taking? Check: did I `daemon-reload`? did I `restart` (not `reload`)?
+
+## Reading `status`
+
+```
+● nginx.service - high performance web server
+   Loaded: loaded (...; enabled)
+   Active: active (running) since Mon 09:14; 2h ago
+ Main PID: 1234 (nginx)
+```
+
+- **`●`** green active · red failed · white inactive
+- **`Loaded:`** file + `enabled`/`disabled` (boots?)
+- **`Active:`** `running` · `exited` (one-shot OK) · **`failed`**
+
+`failed`? Recent log lines are right there → `journalctl -u nginx`.

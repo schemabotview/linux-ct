@@ -1,0 +1,20 @@
+# What systemd is (PID 1)
+
+The **init system** — PID 1 — on every modern distro, plus a suite of daemons (`journald`, `logind`, `resolved`, `timesyncd`). First process the kernel starts, ancestor of all *(module 05)*.
+
+## What it does
+
+- **Starts services in dependency order**, in parallel → fast boots
+- **Manages lifecycles** — restart on crash, on schedule, on demand
+- **Tracks with cgroups** — stopping a service kills *all* its children
+- **Aggregates logs** + **defines boot targets**
+
+## Everything is a unit — location = priority
+
+| Location | What |
+|---|---|
+| **`/lib/systemd/system/`** | **vendor** units — don't edit |
+| **`/etc/systemd/system/`** | **admin** + your own — **edit here** |
+| `~/.config/systemd/user/` | per-user |
+
+Rule: **read** in `/lib`, **write** in `/etc` — that's what survives a package update.

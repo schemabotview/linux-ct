@@ -1,0 +1,11 @@
+Unit types.
+
+Every systemd unit file ends in a suffix, and that suffix declares what type of unit it is. You'll actively manage a handful of these, and simply recognize the rest.
+
+The one you'll write most is dot-service: a daemon, or a one-shot process, something to run. Then there's dot-socket, which is a socket that systemd listens on and which starts the matching service on demand, only when something actually connects. Dot-timer triggers a unit on a schedule; it's the modern replacement for cron. Dot-target is a group of units that together define a system state; those are systemd's version of runlevels. Dot-mount and dot-automount describe mount points, an alternative to putting them in etc-fstab. Dot-path triggers a unit when a file or directory changes. And then there are dot-device, dot-slice, and dot-swap, for a hardware device, a control group, and a swap area, respectively.
+
+Of all those, the three you'll actually author and drive are dot-service, dot-timer, and, occasionally, dot-target.
+
+To list units, there are two commands, and the difference between them matters. systemctl list-units dash-dash-type equals service shows you the services that are loaded right now. Add dash-dash-all and it includes the stopped ones too. Switch type to timer and you see the active timers. But systemctl list-unit-files, with the word "files," is different: it shows every unit file that exists on disk, whether it's active or not, enabled or not.
+
+So keep that distinction clear in your head. A loaded unit is one that systemd currently knows about and is tracking in memory. A unit file is the definition sitting on disk, which may or may not currently be loaded. list-units shows the former; list-unit-files shows the latter.

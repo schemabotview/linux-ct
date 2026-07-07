@@ -1,0 +1,31 @@
+# Writing a service unit (& drop-ins)
+
+INI-style — `[sections]`, `key=value`.
+
+```ini
+# /etc/systemd/system/myapp.service
+[Unit]
+Description=My Application
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/myapp   # absolute path!
+Restart=on-failure               # auto-restart on crash
+User=myapp
+
+[Install]
+WantedBy=multi-user.target       # = start at boot
+```
+
+**`[Unit]`** description + ordering · **`[Service]`** how to run (`Type`, `ExecStart`, `Restart`, `User`) · **`[Install]`** boot behaviour.
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now myapp
+journalctl -u myapp -f
+```
+
+## Drop-ins — tweak a vendor unit safely
+
+**`systemctl edit nginx`** → override in `…/nginx.service.d/override.conf`, merged over the vendor file. Survives updates. `systemctl cat` shows merged; `revert` removes it. **Prefer drop-ins.**

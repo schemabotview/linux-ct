@@ -1,0 +1,11 @@
+Targets — systemd's runlevels.
+
+Older init systems had the concept of runlevels: numbered system states, where zero was halt, three was multi-user text mode, and five was the graphical desktop. systemd's equivalent is called a target. A target is just a unit that groups other units together to define a whole system state.
+
+Let's meet the ones you'll actually encounter. poweroff-dot-target halts and powers off the machine; that's the old runlevel zero. rescue-dot-target is single-user mode: a root shell on the console, with no network; runlevel one. multi-user-dot-target is full multi-user mode with networking but no graphical interface, and it's the default on servers; that maps to runlevel three. graphical-dot-target adds the GUI on top, and it's the default on desktops; runlevel five. reboot-dot-target restarts the machine; runlevel six. And emergency-dot-target is the most minimal of all: only the root filesystem mounted, a root shell, no services; you use it when things are badly broken.
+
+There's also default-dot-target, which is just a symlink pointing at whichever of these boots by default. To see it, run systemctl get-default. To change what boots by default, systemctl set-default, then the target name. And to switch to a different target right now, on a running system, systemctl isolate, then the target; so systemctl isolate rescue-dot-target drops you out of the desktop into rescue mode immediately.
+
+Here's a recovery trick worth filing away: when a machine won't boot normally, you can reach rescue or emergency mode straight from the GRUB menu, by appending systemd-dot-unit equals rescue-dot-target to the kernel command line. That's often how you get in to fix a broken system.
+
+Finally, shutting down and rebooting. There are modern and traditional spellings, and they all work. To reboot: systemctl reboot, or just reboot, or the old shutdown dash-r now. To power off: systemctl poweroff, or poweroff, or shutdown dash-h now. And you can schedule one: shutdown dash-h plus-five, with a message, warns logged-in users and shuts down in five minutes; shutdown dash-c cancels a scheduled shutdown.

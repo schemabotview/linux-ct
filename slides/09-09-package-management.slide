@@ -1,0 +1,18 @@
+# Package management — `apt` & `dnf`
+
+A **package manager** downloads from a repo, resolves dependencies, installs cleanly, removes later. Two families:
+
+- **Debian/Ubuntu** — `.deb`, **`apt`** (`dpkg` underneath)
+- **RHEL/Fedora** — `.rpm`, **`dnf`** (`rpm` underneath)
+
+| Task | apt | dnf |
+|---|---|---|
+| refresh | `apt update` | *(automatic)* |
+| upgrade all | `apt upgrade` | `dnf upgrade` |
+| install / remove | `apt install`/`remove` | `dnf install`/`remove` |
+| owns a file | `dpkg -S` | `dnf provides` |
+| clean orphans | `apt autoremove` | `dnf autoremove` |
+
+⚠️ **`update` vs `upgrade`:** `update` refreshes the *list* (installs nothing); `upgrade` installs newer versions. **Always `apt update` first.** dnf refreshes automatically + has `dnf history undo N`.
+
+Got a `.deb`/`.rpm` file? Use the high-level tool so deps resolve: `apt install ./pkg.deb`. Low-level `dpkg -i`/`rpm -i` skip dependencies.

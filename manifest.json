@@ -1015,6 +1015,131 @@
           "spine": true
         }
       ]
+    },
+    {
+      "id": "09-services-boot-systemd-and-packages",
+      "title": "Services, Boot, systemd & Packages",
+      "sections": [
+        {
+          "heading": "How Linux starts and stays running",
+          "notebook": "notebooks/09-01-boot-and-services.ipynb",
+          "slide": "slides/09-01-boot-and-services.slide",
+          "audio": "audio/09-01-boot-and-services.wav",
+          "scene": "linux",
+          "role": "hook",
+          "spine": true
+        },
+        {
+          "heading": "What systemd is (PID 1)",
+          "notebook": "notebooks/09-02-what-systemd-is.ipynb",
+          "slide": "slides/09-02-what-systemd-is.slide",
+          "audio": "audio/09-02-what-systemd-is.wav",
+          "scene": "linux",
+          "focus": "lx-systemd",
+          "highlight": [
+            "lx-units"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Unit types",
+          "notebook": "notebooks/09-03-unit-types.ipynb",
+          "slide": "slides/09-03-unit-types.slide",
+          "audio": "audio/09-03-unit-types.wav",
+          "scene": "linux",
+          "focus": "lx-systemd",
+          "highlight": [
+            "lx-units"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "systemctl and reading status",
+          "notebook": "notebooks/09-04-systemctl.ipynb",
+          "slide": "slides/09-04-systemctl.slide",
+          "audio": "audio/09-04-systemctl.wav",
+          "scene": "linux",
+          "focus": "lx-systemd",
+          "highlight": [
+            "lx-units"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Writing a service unit and drop-ins",
+          "notebook": "notebooks/09-05-writing-a-service.ipynb",
+          "slide": "slides/09-05-writing-a-service.slide",
+          "audio": "audio/09-05-writing-a-service.wav",
+          "scene": "linux",
+          "focus": "lx-systemd",
+          "highlight": [
+            "lx-units"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Targets — systemd's runlevels",
+          "notebook": "notebooks/09-06-targets.ipynb",
+          "slide": "slides/09-06-targets.slide",
+          "audio": "audio/09-06-targets.wav",
+          "scene": "linux",
+          "focus": "lx-systemd",
+          "highlight": [
+            "lx-targets"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Logs — journalctl and /var/log",
+          "notebook": "notebooks/09-07-logs.ipynb",
+          "slide": "slides/09-07-logs.slide",
+          "audio": "audio/09-07-logs.wav",
+          "scene": "linux",
+          "focus": "lx-systemd",
+          "highlight": [
+            "lx-journald"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "The boot chain — GRUB, initramfs, systemd",
+          "notebook": "notebooks/09-08-boot-chain.ipynb",
+          "slide": "slides/09-08-boot-chain.slide",
+          "audio": "audio/09-08-boot-chain.wav",
+          "scene": "linux",
+          "focus": "lx-boot",
+          "highlight": [
+            "lx-grub",
+            "lx-initramfs"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Package management — apt and dnf",
+          "notebook": "notebooks/09-09-package-management.ipynb",
+          "slide": "slides/09-09-package-management.slide",
+          "audio": "audio/09-09-package-management.wav",
+          "scene": "linux",
+          "focus": "lx-pkg",
+          "highlight": [
+            "lx-apt",
+            "lx-dnf"
+          ],
+          "spine": true
+        },
+        {
+          "heading": "Repositories — where packages come from",
+          "notebook": "notebooks/09-10-repositories.ipynb",
+          "slide": "slides/09-10-repositories.slide",
+          "audio": "audio/09-10-repositories.wav",
+          "scene": "linux",
+          "focus": "lx-pkg",
+          "highlight": [
+            "lx-apt"
+          ],
+          "spine": true
+        }
+      ]
     }
   ]
 }

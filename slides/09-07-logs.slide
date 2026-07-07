@@ -1,0 +1,22 @@
+# Logs — `journalctl` & `/var/log`
+
+**`systemd-journald`** collects kernel + every service + session into one **structured binary journal**. Read with **`journalctl`** — unified, with metadata + filtering.
+
+```bash
+journalctl -u nginx              # one service
+journalctl -u nginx -f           # follow live
+journalctl -u nginx --since "1 hour ago"
+journalctl -p err                # priority: err and worse
+journalctl -b                    # this boot (-b -1 = previous)
+journalctl -k                    # kernel (dmesg replacement)
+```
+
+⚠️ **Persistent vs volatile:** default lives in `/run` (**tmpfs, wiped on reboot**). Create **`/var/log/journal/`** to keep history. Cap `SystemMaxUse=1G`; trim `--vacuum-time=2weeks`.
+
+## Traditional `/var/log/` still matters
+
+- **`syslog`** (Debian) / **`messages`** (RHEL) — general
+- **`auth.log`** / **`secure`** — logins, sudo
+- **`dmesg`** — kernel ring buffer
+
+**`logrotate`** (`/etc/logrotate.d/`) renames, compresses, expires — daily.

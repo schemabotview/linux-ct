@@ -1,0 +1,13 @@
+Writing a basic service unit, and drop-ins.
+
+Let's actually write a service. A dot-service file is INI-style: sections in square brackets, and key-equals-value lines underneath them. There are three sections.
+
+The first is bracket-Unit, which holds generic information and dependencies. Description is a human-readable line shown in status. And After, set to network-online-dot-target, means "don't start me until the network is up." There's a related pair, Wants and Requires, where Wants is a soft dependency and Requires is a hard one.
+
+The second section is bracket-Service, which describes how to run the program, and this is where the important fields live. Type is the most important one; the default, simple, means your ExecStart command is itself the main, long-running process. ExecStart is the command to run, and it must be an absolute path. Restart, set to on-failure, is the killer feature: systemd automatically restarts the service if it crashes. And User lets you run the service as an unprivileged account instead of root, which you should do whenever possible.
+
+The third section is bracket-Install, which controls what happens when you enable the unit. WantedBy equals multi-user-dot-target means: when enabled, start me whenever the system reaches multi-user mode, which is to say, at boot.
+
+To activate a new unit, you follow the golden rule. First, systemctl daemon-reload, so systemd reads the new file. Then systemctl enable dash-dash-now to start it immediately and at every future boot. And then journalctl dash-u, the name, dash-f to watch its logs live.
+
+Now, drop-ins, which are how you tweak a unit that a package shipped, without editing the vendor file. If you edit the file in slash-lib directly, the next package update overwrites your change. So instead, you run systemctl edit, the unit name. That opens an editor on a small override file under slash-etc, and whatever you put there gets merged on top of the vendor unit, overriding matching keys and adding new ones. systemd automatically runs daemon-reload for you, though you still need to restart the service for the new config to take effect. systemctl cat shows you the merged result, and systemctl revert throws the override away. The takeaway: always prefer drop-ins over full edits. They survive package updates, they're easy to audit, and they're trivial to remove.

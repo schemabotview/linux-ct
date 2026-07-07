@@ -1,0 +1,25 @@
+# Unit types
+
+Every unit file's suffix declares its **type**.
+
+| Suffix | What it is |
+|---|---|
+| **`.service`** | a daemon / one-shot — you'll write this most |
+| **`.socket`** | a socket; starts its `.service` on demand |
+| **`.timer`** | scheduled trigger — the modern **cron** |
+| **`.target`** | a *group* of units — systemd's runlevels |
+| **`.mount`** / **`.automount`** | a mount point (vs `/etc/fstab`) |
+| **`.path`** | trigger when a file changes |
+| **`.device`**/**`.slice`**/**`.swap`** | device / cgroup / swap |
+
+Author + drive three: **`.service`**, **`.timer`**, sometimes **`.target`**.
+
+## List them
+
+```bash
+systemctl list-units --type=service        # loaded now
+systemctl list-units --type=service --all  # incl. stopped
+systemctl list-unit-files --type=service   # all files on disk
+```
+
+**loaded unit** = systemd knows it now · **unit file** = the definition on disk.

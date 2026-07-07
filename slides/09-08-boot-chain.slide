@@ -1,0 +1,19 @@
+# The boot chain in detail
+
+Four stages, power-on → login. Knowing them fixes a machine that won't boot.
+
+## 1 · BIOS / UEFI
+
+Firmware runs first: POST, find a boot device. **BIOS** loads the MBR; **UEFI** runs a `.efi` from `/boot/efi`. `[ -d /sys/firmware/efi ]` → UEFI.
+
+## 2 · GRUB
+
+Menu, then loads the kernel. ⚠️ **Don't edit `grub.cfg`** — it's generated from `/etc/default/grub` → **`update-grub`**. Press **`e`** at the menu to edit one boot — the escape hatch.
+
+## 3 · kernel + initramfs
+
+**kernel** (`vmlinuz`) + **initramfs** (`initrd.img`) — a tiny FS with just enough drivers to mount the *real* `/` (which may be LVM on LUKS on RAID). Rebuild: **`update-initramfs -u`**.
+
+## 4 · systemd
+
+Kernel runs `/sbin/init` → **systemd**, PID 1 → starts everything → default target → login prompt.

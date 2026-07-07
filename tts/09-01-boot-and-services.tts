@@ -1,0 +1,9 @@
+How Linux starts, and stays running.
+
+This module answers two questions. How does a Linux box get from a cold power button all the way to a login prompt? And once it's up, what keeps all of its services running? The answer to both is a single chain that ends at one program: systemd, running as process ID one.
+
+Let's trace the chain. You press power, and the firmware, BIOS or UEFI, runs first and finds a disk. Then GRUB, the bootloader, loads the kernel into memory. The kernel uses a tiny in-memory filesystem called the initramfs to mount your real root filesystem. And then it runs systemd as the very first process. From that moment on, systemd is in charge of absolutely everything that's running, and that's what most of this module is about.
+
+The key idea is that systemd manages the whole system as a collection of units. Service units are your daemons: nginx, sshd, your own application. You control every one of them with a single command, systemctl, and you read their logs with journalctl. Target units are systemd's version of runlevels; they answer the question "what should be running for a server?" versus "for a graphical desktop?" And timer units are the modern replacement for cron.
+
+So here's the path we'll take, and it's deliberate. First, what systemd is and the unit model. Then the unit types. Then the systemctl command and how to read a service's status. Then writing your own service unit, and how to override a vendor's unit safely with a drop-in. Then targets. Then the logging system. After all of that, we drop back down and look at the boot chain in detail, GRUB, initramfs, and systemd. And finally, we cover how software gets onto the machine in the first place: package management, with apt and dnf, and the repositories that packages come from.

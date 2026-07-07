@@ -1,0 +1,11 @@
+Package management — apt and dnf.
+
+Software on Linux is installed through a package manager, a tool that downloads software from a repository, resolves all the dependencies for you, installs it cleanly, and lets you remove it just as cleanly later. There are two major families you need to know.
+
+On Debian and Ubuntu, packages are dot-deb files, and the modern command-line tool is apt, with a lower-level tool called dpkg underneath it. On Red Hat, Fedora, and their relatives like Rocky and Alma, packages are dot-rpm files, and the modern tool is dnf, with rpm underneath.
+
+The good news is that the vocabulary maps almost one to one between them. To refresh the catalog, it's apt update, while dnf does it automatically. To upgrade everything, apt upgrade or dnf upgrade. To install, apt install or dnf install, plus the package name. To remove, apt remove or dnf remove. To search or show info, apt search and apt show, or dnf search and dnf info. To find which package owns a particular file, dpkg dash-capital-S on Debian, or dnf provides on Red Hat. And to clean up dependencies nothing needs anymore, apt autoremove or dnf autoremove.
+
+Now, the single most common confusion for beginners: apt update versus apt upgrade. They sound similar but do completely different things. apt update refreshes the list of available packages from the repositories; it installs absolutely nothing, it just learns what's out there and what versions exist. apt upgrade is what actually installs the newer versions, based on what update just learned. So the rule is: always run apt update before apt upgrade or apt install, otherwise you're working from a stale catalog. dnf, by contrast, refreshes its metadata automatically when it's stale, so there's no separate update step; and as a bonus, dnf offers transaction history and rollback, with dnf history and dnf history undo, which apt doesn't have built in.
+
+One last thing: when you've downloaded a dot-deb or dot-rpm file directly, outside the repositories, prefer the high-level tool so that dependencies still get resolved. So apt install, then the path to the dot-deb, or dnf install, then the path to the dot-rpm. If you instead use the low-level dpkg dash-i or rpm dash-i, those install the file but do not fetch its dependencies, and you'd have to run apt install dash-f afterward to patch things up.

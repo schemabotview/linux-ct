@@ -13,7 +13,7 @@ the plan we author against; the machine source of truth for structure is `manife
 
 **Status:** spine agreed — **10 modules × ~10 sections** (101 total, below). The `linux`
 scene is **ported into graphl-movie** (`src/scenes/linux.ts`, registered + catalog entry).
-**Modules 01–08 authored end-to-end** — every section has `.ipynb` + `.slide` + `.tts`, and
+**Modules 01–09 authored end-to-end** — every section has `.ipynb` + `.slide` + `.tts`, and
 `manifest.json` wires them onto the `linux` scene (§1 = hook on the whole map; §2–10 with
 per-section `focus`/`highlight`). Verified rendering in graphl-movie (slides trimmed to fit
 the non-scrolling 1080p pane). `audio/` is empty by design — the **owner** generates the
@@ -198,7 +198,7 @@ Frames the `lx-net` band — the network stack, the socket, SSH, and the firewal
 | 9 | `sshd` & file transfer *(scp/rsync)* | `08-09-sshd-file-transfer` | `lx-net` → `lx-ssh` |
 | 10 | Firewalls & troubleshooting | `08-10-firewalls` | `lx-net` → `lx-netfilter` |
 
-### 09 — Services, Boot, systemd & Packages  (10)
+### 09 — Services, Boot, systemd & Packages  ✅ authored (10)
 Frames the `lx-systemd` column with `lx-boot` (boot chain) and `lx-pkg` (packages).
 
 | # | Section | slug | focus → highlight |

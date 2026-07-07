@@ -1,0 +1,27 @@
+# Targets — systemd's runlevels
+
+A **target** groups units to define a whole system state (the old numbered runlevels).
+
+| Target | Means | Old |
+|---|---|---|
+| **`poweroff`** | halt + power off | 0 |
+| **`rescue`** | single-user, root shell, no net | 1 |
+| **`multi-user`** | + network, no GUI — **server** | 3 |
+| **`graphical`** | + GUI — **desktop** | 5 |
+| **`reboot`** | restart | 6 |
+| **`emergency`** | only `/`, root shell | — |
+
+```bash
+systemctl get-default                        # what boots
+sudo systemctl set-default multi-user.target
+sudo systemctl isolate rescue.target         # switch NOW
+```
+
+⚠️ Boot broken? Append **`systemd.unit=rescue.target`** at the GRUB kernel line — the recovery trick.
+
+## Shutdown / reboot
+
+```bash
+sudo systemctl reboot      # or reboot / shutdown -r now
+sudo shutdown -h +5 "Patching"   # scheduled; -c cancels
+```

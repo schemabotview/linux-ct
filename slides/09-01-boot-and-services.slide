@@ -1,0 +1,21 @@
+# How Linux starts & stays running
+
+Two questions, one answer — a chain ending at **systemd, PID 1**.
+
+```
+power ─▶ BIOS/UEFI ─▶ GRUB ─▶ kernel + initramfs ─▶ systemd (PID 1)
+                                                       │
+                  ┌─────────────────────────────────────┤
+               services    targets    journal    packages
+              (.service)  (runlevels) (journald)  (apt/dnf)
+```
+
+The **boot chain** hands control down: firmware finds a disk → **GRUB** loads the kernel → **initramfs** mounts real `/` → **systemd** runs as first process. From there, systemd runs *everything*.
+
+## systemd manages the system as units
+
+- **`.service`** — daemons. Drive with **`systemctl`**, read logs with **`journalctl`**
+- **`.target`** — runlevels (server vs desktop)
+- **`.timer`** — the modern cron
+
+**This module:** systemd & units → `systemctl` → writing a service → targets → logs → the boot chain in detail → **packages** & **repos**.
