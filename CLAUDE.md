@@ -94,10 +94,12 @@ teaching sections.
 ## Status
 
 **Spine agreed** (10 modules × ~10 sections — see `README.md`) and the `linux` scene is
-**ported into graphl-movie** (`src/scenes/linux.ts` + registry + catalog entry). **Modules
-01–02 authored end-to-end** — each section is (`.ipynb` + `.slide` + `.tts`), wired in
-`manifest.json` (§1 hook on the whole map, §2–10 per-section `focus`/`highlight`), verified
-rendering against a local CORS-served copy. Slides are trimmed to the **non-scrolling**
-1080p pane (an over-long `.slide` clips top/bottom — the real browser frame runs a touch
-larger than the preview screenshots, so leave a line of headroom). `audio/` empty pending
-the owner's Colab run. **Pushed** to `github.com/schemabotview/linux-ct`. Modules 03–10 next.
+**ported into graphl-movie** (`src/scenes/linux.ts` + registry + catalog entry). **All 10
+modules authored end-to-end** (101 sections) — each section is (`.ipynb` + `.slide` +
+`.tts`), and all 101 are wired in `manifest.json` (§1 of each module = hook on the whole
+map, the rest per-section `focus`/`highlight`), verified rendering against a local
+CORS-served copy. Slides are trimmed to the **non-scrolling** 1080p pane (an over-long
+`.slide` clips top/bottom — the real browser frame runs a touch larger than the preview
+screenshots, so leave a line of headroom). `audio/` empty pending the owner's Colab run.
+Modules 01–02 **pushed** to `github.com/schemabotview/linux-ct`; **modules 03–10 authored
+locally, not yet pushed.**

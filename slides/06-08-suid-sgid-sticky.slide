@@ -4,11 +4,7 @@ Three bits beyond `rwx`, shown as modifiers in the `x` slots of `ls -l`.
 
 ## SUID `4000` — run as the **owner**
 
-```
--rwsr-xr-x  /usr/bin/passwd     ← 's' in owner slot
-```
-
-`passwd` is root-owned + SUID → you can write root's `/etc/shadow`. ⚠️ Dangerous — audit: `find / -perm -4000 -type f`.
+`-rwsr-xr-x /usr/bin/passwd` — the **`s`** in the owner slot. `passwd` is root-owned + SUID → you can write root's `/etc/shadow`. ⚠️ Dangerous — audit: `find / -perm -4000 -type f`.
 
 ## SGID `2000` — inherit the **group**
 
@@ -21,12 +17,8 @@ sudo chmod 2775 /srv/project    # drwxrwsr-x
 
 ## Sticky `1000` — only owner deletes
 
-On shared-writable dirs, you can't `rm` others' files — the classic `/tmp`:
-
-```
-drwxrwxrwt  /tmp     ← 't'
-```
+On shared-writable dirs you can't `rm` others' files — the classic `/tmp` (`drwxrwxrwt`, the **`t`**).
 
 ## Numeric prefix
 
-**4** SUID · **2** SGID · **1** sticky → `chmod 1777 /tmp`, `chmod 2775 /srv/project`.
+**4** SUID · **2** SGID · **1** sticky → `chmod 1777 /tmp` · `chmod 2775 /srv/project`.

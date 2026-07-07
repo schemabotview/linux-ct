@@ -13,12 +13,12 @@ the plan we author against; the machine source of truth for structure is `manife
 
 **Status:** spine agreed — **10 modules × ~10 sections** (101 total, below). The `linux`
 scene is **ported into graphl-movie** (`src/scenes/linux.ts`, registered + catalog entry).
-**Modules 01–09 authored end-to-end** — every section has `.ipynb` + `.slide` + `.tts`, and
-`manifest.json` wires them onto the `linux` scene (§1 = hook on the whole map; §2–10 with
-per-section `focus`/`highlight`). Verified rendering in graphl-movie (slides trimmed to fit
-the non-scrolling 1080p pane). `audio/` is empty by design — the **owner** generates the
-`.wav`s from `tts/` via Colab, then the manifest `audio` fields resolve. **Pushed** to
-`github.com/schemabotview/linux-ct` (public). Module 10 pending (same pattern).
+**All 10 modules authored end-to-end** (101 sections) — every section has `.ipynb` +
+`.slide` + `.tts`, and `manifest.json` wires all 101 onto the `linux` scene (§1 of each
+module = hook on the whole map; the rest with per-section `focus`/`highlight`). Verified
+rendering in graphl-movie (slides trimmed to fit the non-scrolling 1080p pane). `audio/` is
+empty by design — the **owner** generates the `.wav`s from `tts/` via Colab, then the
+manifest `audio` fields resolve. **Pushed** to `github.com/schemabotview/linux-ct` (public).
 
 ## The scene — one dense map, framed per section
 

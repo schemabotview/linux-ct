@@ -2,7 +2,7 @@
 
 ## PAM — how you're authenticated
 
-Login, `su`, `sudo` don't check credentials themselves — they call **PAM**. So auth is *config*, not code (2FA, LDAP, complexity = drop in a module). Config: **`/etc/pam.d/`**, one file per service.
+Login, `su`, `sudo` don't check credentials themselves — they call **PAM**. So auth is *config*, not code (2FA, LDAP = drop in a module). Config: **`/etc/pam.d/`**.
 
 | Group | Handles |
 |---|---|
@@ -18,4 +18,4 @@ Login, `su`, `sudo` don't check credentials themselves — they call **PAM**. So
 - **Login shell** (TTY, SSH, `su -`) → `/etc/profile` → `~/.bash_profile`
 - **Interactive non-login** (new terminal) → `/etc/bash.bashrc` → **`~/.bashrc`**
 
-Convention: **`~/.bashrc`** = aliases, functions, prompt · **`~/.bash_profile`** = `export`s, `PATH` (usually just sources `~/.bashrc`). The module 03 dotfiles — `source ~/.bashrc` to apply.
+Convention: **`~/.bashrc`** = aliases, functions, prompt · **`~/.bash_profile`** = `export`s + `PATH`, usually just sources `~/.bashrc`. (The module 03 dotfiles.)
