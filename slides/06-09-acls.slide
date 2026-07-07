@@ -1,0 +1,24 @@
+# ACLs — beyond owner/group/other
+
+The three-class model can't say "alice writes, bob reads, others nothing" — only **one** owner, **one** group. **ACLs** grant permissions to **named users and groups**, on top of the standard bits.
+
+## Read `getfacl` · set `setfacl`
+
+```bash
+getfacl file.txt                     # owner/group/other + ACL entries
+setfacl -m u:bob:r-- file.txt        # grant bob read
+setfacl -m g:contractors:rw file.txt # grant a group
+setfacl -x u:bob file.txt            # remove bob
+setfacl -b file.txt                  # strip all ACLs
+```
+
+## Spotting them — the `+`
+
+```
+-rw-r--r--+ 1 alice devs 0 file.txt
+          ↑ ACL present → run getfacl
+```
+
+**Default ACL** on a dir = template for new files: `setfacl -d -m u:bob:rwx /srv/project`.
+
+⚠️ Use for **one-off exceptions**, not your main mechanism — hard to audit, easy to miss in backups. Prefer **groups + standard perms**.

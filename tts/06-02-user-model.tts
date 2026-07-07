@@ -1,0 +1,13 @@
+The Linux user model — UID and GID.
+
+Here's something worth internalizing right away: to the kernel, a "user" isn't a name at all. It's a number, a user ID, a UID. The names we use, alice, ubuntu, root, are just a convenience for humans, looked up from a file. The kernel only ever checks the number.
+
+There are three rough classes of account, and they're split by their UID range. First, root, which is UID zero. Root is the superuser. It can do absolutely anything: read any file, kill any process, and it ignores the permission bits entirely. There's exactly one root, and the rule is: never log in as root for everyday work, because doing so bypasses every safety rail the system has. Use sudo for specific tasks instead.
+
+Second, system users, in the range of roughly one to nine hundred ninety-nine. These are identities for daemons and services. www-data runs your web server; postgres runs your database. They typically have no password and no login shell, because they exist purely so the kernel has an identity to attach to each service and can control what it's allowed to touch.
+
+Third, regular users, from UID one thousand upward. These are human accounts, each with a home directory, a login shell, and a password. That one-thousand cutoff is configurable; it's set by UID-MIN in etc-login-dot-defs, and older RHEL systems actually started regular users at five hundred.
+
+Every user also has a primary group, a GID, and can belong to many supplementary groups on top of that. When it decides access, the kernel checks all of them.
+
+And that brings us back to the principle from the hook, which is really the whole point: the kernel checks the running process's UID and its group IDs against the file's owner, group, and mode, every single time you do anything. Process credentials, plus file metadata, equals an allow-or-deny decision. That's it. Everything else is just where those numbers are stored and how you manage them. To see your own, run id for the full picture, or whoami and groups for the short versions.

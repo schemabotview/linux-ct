@@ -1,0 +1,21 @@
+# Login mechanics — PAM & startup files
+
+## PAM — how you're authenticated
+
+Login, `su`, `sudo` don't check credentials themselves — they call **PAM**. So auth is *config*, not code (2FA, LDAP, complexity = drop in a module). Config: **`/etc/pam.d/`**, one file per service.
+
+| Group | Handles |
+|---|---|
+| **`auth`** | prove who you are |
+| **`account`** | allowed right now? (expired/locked) |
+| **`password`** | change rules — complexity, history |
+| **`session`** | setup/teardown — mount home, log, limits |
+
+⚠️ A PAM mistake locks you out — keep a root session open while editing.
+
+## Shell startup files — what runs on entry
+
+- **Login shell** (TTY, SSH, `su -`) → `/etc/profile` → `~/.bash_profile`
+- **Interactive non-login** (new terminal) → `/etc/bash.bashrc` → **`~/.bashrc`**
+
+Convention: **`~/.bashrc`** = aliases, functions, prompt · **`~/.bash_profile`** = `export`s, `PATH` (usually just sources `~/.bashrc`). The module 03 dotfiles — `source ~/.bashrc` to apply.

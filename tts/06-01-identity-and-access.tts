@@ -1,0 +1,9 @@
+Identity, credentials, and access.
+
+Module three taught you that every file carries an owner, a group, and permission bits. This module answers the other half of that sentence. Who, exactly, are the owner and the group? Where do users and groups come from, how do you prove that you're one of them, and how does the kernel turn your identity into a yes-or-no answer on every single file you touch?
+
+Linux was multi-user from day one. Hundreds of accounts can share one machine, each isolated from the others, and the whole arrangement rests on one tiny idea. On one side you have a process's credentials: its user ID, its group ID, and its supplementary groups. On the other side you have a file's metadata: its owner, its group, and its permission mode. Every time a process tries to open a file, the kernel compares those two things and produces an access decision, allow or deny. That single comparison is the entire security model. Everything else in this module is just the plumbing around that one check.
+
+And we'll walk that plumbing in order. First, where identity is stored: the user model, root, system users, and regular users, and the three databases that hold it all, etc-passwd, etc-shadow, and etc-group. Then, managing it: creating and aging user accounts, and managing groups. Then, becoming someone else: su versus sudo, and the sudoers policy file that makes sudo safe. Then, going beyond plain owner-group-other: the special permission bits, SUID, SGID, and sticky, and access control lists. And finally, proving who you are: PAM, the authentication framework, and the shell startup files that set up your session once you're in.
+
+And any time you want to know your own identity, three commands tell you: id, whoami, and groups.

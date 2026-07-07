@@ -1,0 +1,22 @@
+# Account databases
+
+Three plain-text files under `/etc` hold all identity data.
+
+## `/etc/passwd` — the user list (world-readable)
+
+```
+ubuntu:x:1000:1000:Ubuntu User:/home/ubuntu:/bin/bash
+ name  x  UID  GID   GECOS         home        shell
+```
+
+Password is always **`x`** (the hash is elsewhere). Shell = `/usr/sbin/nologin` forbids login.
+
+## `/etc/shadow` — hashes + aging (root-only, `640`)
+
+The **hash** (`$6$`=SHA-512, `$y$`=yescrypt) plus **aging** fields. Password can be **`!`** locked · **`*`** system · empty = disaster.
+
+## `/etc/group` — `name:x:GID:members`
+
+**Primary** group = passwd field 4 · **supplementary** = listed here. Key groups: **`sudo`**/`wheel`, `adm` (logs), `docker` (≈ root).
+
+⚠️ In scripts use **`getent passwd alice`** — consults LDAP too, not just files.

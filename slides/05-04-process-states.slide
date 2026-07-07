@@ -1,7 +1,5 @@
 # Process states — R S D T Z
 
-The **STAT** column in `ps` — one letter for the state.
-
 | | State | Meaning |
 |---|---|---|
 | **`R`** | Running | on a CPU, **or runnable**, waiting its turn |
@@ -9,8 +7,6 @@ The **STAT** column in `ps` — one letter for the state.
 | **`D`** | Uninterruptible | blocked in the kernel (disk I/O) — **can't be killed** |
 | **`T`** | Stopped | paused by a signal (Ctrl-Z) or debugger |
 | **`Z`** | Zombie | done, parent hasn't collected exit status |
-
-## The intuitions
 
 - **Almost everything is `S`** — sleeping just means "waiting." Hundreds is normal.
 - **`R` = runnable**, not "executing now."

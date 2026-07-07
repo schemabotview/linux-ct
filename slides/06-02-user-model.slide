@@ -1,0 +1,22 @@
+# The user model — UID and GID
+
+To the kernel, a user is a **number** (UID). Names are a lookup for humans.
+
+## Three classes of account
+
+| UID | Class | What |
+|---|---|---|
+| **0** | **`root`** | superuser — ignores permission bits. Never log in as root; use `sudo`. |
+| **~1–999** | **system** | daemon identities (`www-data`, `postgres`) — no password, no shell |
+| **1000+** | **regular** | humans — home dir, shell, password |
+
+Each user has a primary **GID** and can be in many **supplementary groups** — the kernel checks *all* of them.
+
+## The one principle
+
+**The kernel checks the process's UID/GIDs against the file's owner/group/mode — every time.** Credentials + metadata → allow/deny. The rest is just where those numbers are stored.
+
+```bash
+id        # uid=1000(alice) gid=1000(alice) groups=...,27(sudo)
+whoami    # alice
+```

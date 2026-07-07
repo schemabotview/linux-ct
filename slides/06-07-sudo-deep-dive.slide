@@ -1,0 +1,24 @@
+# `sudo` deep dive — `sudoers`
+
+Policy lives in `/etc/sudoers` (+ drop-ins in `/etc/sudoers.d/`).
+
+## ⚠️ Never edit it directly — use `visudo`
+
+It checks syntax before saving; a broken sudoers locks you out of admin.
+
+```bash
+sudo visudo                            # main file
+sudo visudo -f /etc/sudoers.d/myrule   # a drop-in (survives updates)
+```
+
+## Rule shape — WHO WHERE = (AS_WHOM) WHAT
+
+```sudoers
+%sudo  ALL=(ALL:ALL) ALL                    # the default: sudo group, anything
+alice  ALL=(root) NOPASSWD: /bin/systemctl restart nginx
+```
+
+- **WHO** — user or **`%group`** · **WHAT** — full command paths (`ALL` = any)
+- **`NOPASSWD:`** — skip the prompt for those commands
+
+Prefer **drop-in files** over the main file. Debug "sudo isn't working" with **`sudo -l`** — lists exactly what you may run.

@@ -1,0 +1,27 @@
+# Managing users
+
+All need `sudo`.
+
+## Create — `useradd`
+
+```bash
+sudo useradd -m -s /bin/bash -G sudo,docker alice
+sudo passwd alice        # fresh account is locked — set a password
+```
+
+**`-m`** home dir (don't forget!) · **`-s`** shell · **`-G`** groups · **`-u`** UID. Debian's `adduser` prompts interactively.
+
+## Modify — `usermod`
+
+```bash
+sudo usermod -aG docker alice    # ADD to docker  (-a appends)
+sudo usermod  -G docker alice    # SET — REPLACES all groups!
+```
+
+⚠️ **Always `-aG`** to add — bare `-G` drops every other group. Also `-l` rename · `-L`/`-U` lock/unlock.
+
+## Delete & age
+
+- **`userdel -r alice`** — also removes home (check `pgrep -u alice` first)
+- **`passwd -l/-u/-e`** — lock / unlock / expire
+- **`chage`** — `-l` list · `-M 90` max age · `-W 14` warn · `-E` expiry

@@ -1,0 +1,33 @@
+# `su` vs `sudo`
+
+Act as another user — the difference is **whose password**.
+
+## `su` — a shell as another user
+
+Asks for **that user's** password.
+
+```bash
+su - alice     # become alice, fresh login env
+su -           # become root
+su -c "cmd"    # one command as root
+```
+
+The **`-`** = simulate a real login (runs scripts, moves home).
+
+## `sudo` — one command, your password
+
+```bash
+sudo cmd            # as root
+sudo -u alice cmd   # as alice
+sudo -i             # root shell
+```
+
+## Why `sudo` is the modern default
+
+| | `su -` | `sudo` |
+|---|---|---|
+| whose password? | target's | **your own** |
+| shares root pw? | yes | **no — root locked** |
+| logging / allow-list? | no | **yes** (`/etc/sudoers`) |
+
+On Ubuntu/cloud images **root is locked** — all admin goes through per-user `sudo`.

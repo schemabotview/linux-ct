@@ -1,0 +1,25 @@
+# Identity, credentials & access
+
+Module 03 gave files an **owner** and a **group**. This module answers: **who are they, and how do you prove you're one?**
+
+## The whole security model in one check
+
+```
+process credentials              file metadata
+  UID · GID · groups     ─┐   ┌─  owner · group · mode
+                          ▼   ▼
+                    ┌──────────────┐
+                    │ kernel checks │ ── allow / deny
+                    └──────────────┘
+```
+
+Every file access: the kernel compares the **process's UID/GIDs** against the **file's owner/group/mode**. That one check *is* the model — everything else is plumbing.
+
+## This module
+
+- **Where identity lives** — user model · `passwd` / `shadow` / `group`
+- **Managing it** — users, aging, groups
+- **Becoming someone** — `su` vs `sudo` · `/etc/sudoers`
+- **Beyond ugo** — SUID/SGID/sticky · ACLs · PAM
+
+Find yourself: **`id`** · **`whoami`** · **`groups`**.

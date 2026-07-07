@@ -1,0 +1,31 @@
+# Managing groups
+
+The group-side mirror — all need `sudo`.
+
+```bash
+sudo groupadd devs               # create
+sudo groupadd -g 1500 devs       # ...with a GID
+sudo groupmod -n developers devs # rename
+sudo groupdel developers         # delete (not if primary group)
+```
+
+## `gpasswd` — membership only
+
+```bash
+sudo gpasswd -a alice devs       # add
+sudo gpasswd -d alice devs       # remove
+sudo gpasswd -M alice,bob devs   # set whole list
+```
+
+Two equal ways to add: `gpasswd -a alice docker` **or** `usermod -aG docker alice`.
+
+## ⚠️ New groups don't reach a running shell
+
+Groups load at **login** — an open shell won't see the change:
+
+```bash
+sudo gpasswd -a alice docker
+newgrp docker      # new shell with the group active (the workaround)
+```
+
+Confirm with `id alice` or `groups alice`.
