@@ -4,11 +4,7 @@
 
 ## 1 · Current state
 
-```bash
-free -h
-```
-
-⚠️ Read **`available`**, not `free` — page cache counts as "used" but is reclaimable.
+**`free -h`** — ⚠️ read **`available`**, not `free` (page cache counts as "used" but is reclaimable).
 
 ## 2 · What's using it?
 

@@ -18,12 +18,7 @@ Returns the exit code of its **last command**. In a function use **`return`**, n
 
 ## The production preamble
 
-Bash is forgiving; production scripts want **fail fast, fail loud**:
-
-```bash
-#!/bin/bash
-set -euo pipefail
-```
+Bash is forgiving; production scripts want **fail fast, fail loud** — put `set -euo pipefail` right after the shebang:
 
 - **`-e`** exit on any failed command
 - **`-u`** error on an unset variable (typo catcher)
