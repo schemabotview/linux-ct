@@ -101,6 +101,14 @@ percent, free memory ≠ memory pressure, one correlated metric ≠ cause, conta
 | | `shell-sed-awk` | sed preview + -i.bak card beside keep-them-bounded column → awk per-store totals card |
 | | `shell-filenames` | leading-dash rm card → name-list approaches table → NUL-delimited find card |
 | | `shell-archives` | tar create / list / extract card → letters 2×2 beside what-the-listing-checks column |
+| `identity` | `identity-accounts` | getent passwd/group + ls -l owner card → Debian UID ranges table → what the kernel checks |
+| | `identity-modes` | r/w/x on file vs directory table → namei -l parent-trace card → reading -rwxr-x--- |
+| | `identity-special` | umask 022 table → setfacl / default ACL / rollback card → special bits table |
+| | `identity-sudo` | numbered authenticate → authorise → record → sudo -l + redirection-trap card → root is not unlimited |
+| | `identity-fork-exec` | numbered 2×2 fork/redirect/exec → what the child inherits table → ps --forest card |
+| | `identity-signals` | job-control card → signals table → KILL is not instant (TERM first, state D) |
+| | `identity-reaping` | numbered 2×2 running → exit → zombie → reaped → wait / <defunct> card → a zombie is a parent problem |
+| | `identity-proc` | /proc/$$/fd + ulimit + status card → /proc/<pid>/ entries table → when a limit is hit |
 
 ## Invariants — do not break
 
