@@ -135,6 +135,14 @@ percent, free memory ≠ memory pressure, one correlated metric ≠ cause, conta
 | | `networking-ssh` | numbered host-then-you → first-connection fingerprint + ssh-keygen card → never normalise |
 | | `networking-remote` | who expands ~ and * table → rsync --dry-run card → ControlMaster config card |
 | | `networking-exposure` | numbered upstream → host firewall → proxy (TLS) → loopback reportd → nftables card → before you change it |
+| `storage` | `storage-devices` | numbered kernel → udev → /dev/disk/ → by-id + blkid card → which name to use table |
+| | `storage-stack` | lsblk tree + findmnt -T card → path → fs → LV → LUKS → partition → disk 3×2 |
+| | `storage-mounts` | fstab line card → findmnt --verify / mount / findmnt card → mount options table |
+| | `storage-capacity` | df -h / df -i / du / lsof +L1 card → why df and du disagree table |
+| | `storage-redundancy` | PV → VG → LV row → vgs + lvextend card → RAID 1 vs backup threats table |
+| | `storage-persistence` | numbered write → page cache → writeback → media 2×2 → three claims table → free + Dirty card |
+| | `storage-backups` | crash- vs application-consistent table → sqlite3 .backup + tar + rsync card → retention |
+| | `storage-repair` | dmesg + smartctl evidence card → disposable-image e2fsck -n / -y card → numbered real-disk order |
 
 ## Invariants — do not break
 

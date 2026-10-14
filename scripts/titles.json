@@ -6,5 +6,6 @@
   "identity": "Linux Permissions And Processes: Users, sudo, Signals, Zombies And /proc",
   "scripting": "Bash Scripting For Reliable Automation: Errors, Traps, Locks And Retries",
   "services": "Linux Services With systemd: apt, Boot, Units, Journal, Timers And Hardening",
-  "networking": "Linux Networking Explained: IP, Routes, Sockets, DNS, SSH And Firewalls"
+  "networking": "Linux Networking Explained: IP, Routes, Sockets, DNS, SSH And Firewalls",
+  "storage": "Linux Storage Explained: Disks, LVM, fstab, df vs du, Page Cache And Backups"
 }
