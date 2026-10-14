@@ -126,6 +126,15 @@ percent, free memory ≠ memory pressure, one correlated metric ≠ cause, conta
 | | `services-logs` | status + journalctl 217/USER failed-start card → logrotate with HUP card → journal vs app files |
 | | `services-timers` | timer + oneshot service card → list-timers + cron.d card → timer vs cron table |
 | | `services-hardening` | hardened [Service] card beside four-kinds-of-control column → systemd-analyze security card |
+| `networking` | `networking-addresses` | ip address card → reading /24 table → loopback / global / link-local |
+| | `networking-routes` | ip route + ip route get card → numbered match / on-link / via gateway 2×2 → a route is not reachability |
+| | `networking-sockets` | ss -lntp card → who can connect by bind address table → TCP vs UDP |
+| | `networking-dns` | numbered nsswitch → /etc/hosts → resolv.conf → server 2×2 → getent vs dig disagreeing card → when they disagree |
+| | `networking-config` | runtime ip add/del card → /etc/network/interfaces card → which manager owns it table |
+| | `networking-diagnosis` | four curl failures card → suggests / does not prove table → ping is a weak test |
+| | `networking-ssh` | numbered host-then-you → first-connection fingerprint + ssh-keygen card → never normalise |
+| | `networking-remote` | who expands ~ and * table → rsync --dry-run card → ControlMaster config card |
+| | `networking-exposure` | numbered upstream → host firewall → proxy (TLS) → loopback reportd → nftables card → before you change it |
 
 ## Invariants — do not break
 
