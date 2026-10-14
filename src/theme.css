@@ -1,0 +1,8 @@
+/* Linux's design surface — the three tokens @graphlearning/shell leaves to the repo.
+   Imported AFTER the shell's stylesheet in main.tsx, so these win the cascade. Shared with the
+   schemabotview/linux site so the two read as one subject in the catalog. */
+:root {
+  --brand: #f2b632; /* Linux gold — the subject's identity colour */
+  --brand-hover: #fac95d; /* lighter Linux gold — the eyebrow's hover state */
+  --accent-2: #5fd3c4; /* counter tone to --brand: the slide's `###` subheading */
+}
