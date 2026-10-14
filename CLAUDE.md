@@ -18,7 +18,7 @@ The render engine is `@graphlearning/flow`; the app shell is `@graphlearning/she
 One plan chapter = one course. Course id = folder under `src/content/`, `src/scenes/` and
 `public/audio/`. Routes are `#/<courseId>-<sectionId>`; `#/` is the catalog.
 
-| # | course id | plan chapter | plan sections |
+| # | course id | plan chapter | sections |
 | --- | --- | --- | --- |
 | 1 | `foundations` | System Foundations and a First Session | 6 |
 | 2 | `files` | Files, Paths, and the Filesystem Namespace | 8 |
@@ -34,8 +34,25 @@ One plan chapter = one course. Course id = folder under `src/content/`, `src/sce
 Courses are registered in `src/content/index.ts`, `src/scenes/index.ts` and `scripts/titles.json`
 only once authored — an empty registry is the honest state, not a placeholder course.
 
-Section files are `src/content/<course>/NN-<section-id>.ts`. Scene ids are globally unique, so
-prefix them with the course id when a bare name could collide (`files-inode-links`).
+**One plan section = one app section.** 82 sections, the counts above, in plan order. The chapter's
+worked illustrations are folded into the scenes of the sections they belong to, not given frames
+of their own.
+
+Section ids are short kebab-case slugs of the section title (`hard-and-symbolic-links`, not `s5`).
+Section files are `src/content/<course>/NN-<section-id>.ts`. Scene ids are globally unique — prefix
+them with the course id (`files-inode-links`). One scene per section is the default.
+
+**Every section follows the plan's teaching method:** objective → mental model → annotated example
+and expected behaviour → alternative or failure contrast → summary → bridge. Within one frame that
+means: the scene carries the model or the annotated artefact; the slide carries the claim and the
+contrast; the narration carries the reasoning and the bridge to the next section.
+
+**The plan's contrasts are load-bearing** — each gets visible space in its section's frame: kernel ≠
+distribution, `cd` is a built-in, removing a name ≠ reclaiming storage, `uniq` groups only adjacent
+lines, `>out 2>&1` ≠ `2>&1 >out`, SIGKILL ≠ instant disappearance, `set -e` is context-dependent,
+rename ≠ crash durability, `After=` ≠ requirement, `enable` ≠ start, process started ≠ ready, ping
+failure ≠ application unreachable, redundancy ≠ backup, write ≠ flush ≠ durable, load average ≠ CPU
+percent, free memory ≠ memory pressure, one correlated metric ≠ cause, containers ≠ complete isolation.
 
 ## Content conventions (from the plan)
 
