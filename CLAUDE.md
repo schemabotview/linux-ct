@@ -92,6 +92,15 @@ percent, free memory ≠ memory pressure, one correlated metric ≠ cause, conta
 | | `files-resolution` | numbered 2×3 walk of /var/lib/reportd/state.db with a mount → ENOENT vs EACCES + findmnt card |
 | | `files-text` | less / nano / vi column beside bytes-plus-agreement box → CRLF bad interpreter card |
 | | `files-finding` | annotated find card → question → tool table → find vs plocate |
+| `shell` | `shell-redirection` | three-streams column beside fd-after-each-step table → >out 2>&1 vs 2>&1 >out card |
+| | `shell-pipelines` | grep  |
+| | `shell-expansion` | numbered 3×2 expansion order → split / quoted / single-quoted / unmatched glob card |
+| | `shell-variables` | shell var vs export vs PATH card → numbered 2×2 command lookup |
+| | `shell-grep` | grep -n / -c / -F / -v card → regex characters table → locale |
+| | `shell-sort-uniq` | uniq-without-sort vs sort  |
+| | `shell-sed-awk` | sed preview + -i.bak card beside keep-them-bounded column → awk per-store totals card |
+| | `shell-filenames` | leading-dash rm card → name-list approaches table → NUL-delimited find card |
+| | `shell-archives` | tar create / list / extract card → letters 2×2 beside what-the-listing-checks column |
 
 ## Invariants — do not break
 
