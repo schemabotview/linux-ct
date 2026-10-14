@@ -84,6 +84,14 @@ percent, free memory ≠ memory pressure, one correlated metric ≠ cause, conta
 | | `foundations-first-session` | id / $HOME / pwd / mkdir session card → three facts → one relative name, two answers |
 | | `foundations-help` | annotated synopsis card → man / help / man -f card → manual sections table |
 | | `foundations-boundaries` | host / VM / container / WSL table → container uname vs os-release card → macOS is not Linux |
+| `files` | `files-paths` | from-lab-dir resolution table → cd / .. / cd - card → quoted vs unquoted ~ |
+| | `files-layout` | top-level directories 3×2 → where reportd will live table → merged /usr card |
+| | `files-metadata` | ls -l card → stat card → three traps (file reads bytes, names lie, ctime ≠ birth) |
+| | `files-operations` | mkdir / cp / mv / ls -i / rm -ri card → what each changes table → guards |
+| | `files-links` | two names + inode + symlink 2×2 beside lifetime box → ln / rm / dangling / deleted-open card |
+| | `files-resolution` | numbered 2×3 walk of /var/lib/reportd/state.db with a mount → ENOENT vs EACCES + findmnt card |
+| | `files-text` | less / nano / vi column beside bytes-plus-agreement box → CRLF bad interpreter card |
+| | `files-finding` | annotated find card → question → tool table → find vs plocate |
 
 ## Invariants — do not break
 
