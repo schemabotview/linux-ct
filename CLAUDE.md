@@ -143,6 +143,15 @@ percent, free memory ≠ memory pressure, one correlated metric ≠ cause, conta
 | | `storage-persistence` | numbered write → page cache → writeback → media 2×2 → three claims table → free + Dirty card |
 | | `storage-backups` | crash- vs application-consistent table → sqlite3 .backup + tar + rsync card → retention |
 | | `storage-repair` | dmesg + smartctl evidence card → disposable-image e2fsck -n / -y card → numbered real-disk order |
+| `diagnosis` | `diagnosis-method` | numbered symptom / timeline / baseline / hypotheses 2×2 → hypothesis → predicts → check table |
+| | `diagnosis-cpu` | two hosts at load 8 (CPU-bound vs I/O wait) card → CPU-line fields table → what load average counts |
+| | `diagnosis-memory` | vmstat + PSI + cgroup OOM line card → signs of real pressure table → low free is not a problem |
+| | `diagnosis-io` | iostat -x card → throughput / latency / queue / %util 2×2 → reading this one table |
+| | `diagnosis-network` | ss accept queue + nstat card → where the bottleneck is table → network symptom, application cause |
+| | `diagnosis-correlate` | Tuesday from four sources timeline table → apt history + journalctl card → correlated is not caused |
+| | `diagnosis-strace` | strace -T openat/fsync card → reading a line table → before you attach it |
+| | `diagnosis-cgroups` | host free vs memory.max / memory.events / oom-kill card → cgroups vs namespaces → containers are not more |
+| | `diagnosis-experiment` | numbered one change / same measure / rollback / record → before-and-after table with the trade-off row |
 
 ## Invariants — do not break
 
