@@ -152,6 +152,14 @@ percent, free memory ≠ memory pressure, one correlated metric ≠ cause, conta
 | | `diagnosis-strace` | strace -T openat/fsync card → reading a line table → before you attach it |
 | | `diagnosis-cgroups` | host free vs memory.max / memory.events / oom-kill card → cgroups vs namespaces → containers are not more |
 | | `diagnosis-experiment` | numbered one change / same measure / rollback / record → before-and-after table with the trade-off row |
+| `operations` | `operations-threats` | threat → path in → control table → ss / sudo group / set-UID / dpkg surface card → three principles |
+| | `operations-access` | unattended-upgrades + needrestart card → sshd_config.d drop-in card → numbered keep A / sshd -t / reload / test as B |
+| | `operations-policy` | journal → id → namei → AppArmor DENIED trail card → permissions / capabilities / MAC → AppArmor vs SELinux table |
+| | `operations-secrets` | where a password ends up table → LoadCredential= card → keep the evidence trustworthy |
+| | `operations-restore` | RPO / RTO → timed restore-drill table → integrity_check + row-count card |
+| | `operations-recovery` | first evidence / first move per layer table → stolen key vs deleted reports table → apt pin + hold card |
+| | `operations-change` | change record card → runbook card → incident update 2×2 |
+| | `operations-lifecycle` | reportd's eight parts 2×4 with chapter numbers → when a symptom crosses layers table |
 
 ## Invariants — do not break
 

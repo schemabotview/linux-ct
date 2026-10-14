@@ -7,6 +7,7 @@ import { services } from './services'
 import { networking } from './networking'
 import { storage } from './storage'
 import { diagnosis } from './diagnosis'
+import { operations } from './operations'
 import type { Course, Section } from './types'
 
 // Course registry, in syllabus order (LINUX-COURSE-PLAN.md chapters 1–10). Courses are added here
@@ -21,6 +22,7 @@ export const COURSES: Record<string, Course> = {
   [networking.id]: networking,
   [storage.id]: storage,
   [diagnosis.id]: diagnosis,
+  [operations.id]: operations,
 }
 
 export type { Course, Section }
