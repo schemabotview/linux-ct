@@ -109,6 +109,14 @@ percent, free memory ≠ memory pressure, one correlated metric ≠ cause, conta
 | | `identity-signals` | job-control card → signals table → KILL is not instant (TERM first, state D) |
 | | `identity-reaping` | numbered 2×2 running → exit → zombie → reaped → wait / <defunct> card → a zombie is a parent problem |
 | | `identity-proc` | /proc/$$/fd + ulimit + status card → /proc/<pid>/ entries table → when a limit is hit |
+| `scripting` | `scripting-invocation` | make-report head card beside positional-parameters column → four ways to run it table (sh is dash) |
+| | `scripting-conditions` | validate-first if/[[ ]]/grep -q card → tests table → three spellings (a && b || c caveat) |
+| | `scripting-loops` | summarise() + for-loop card → for / function / local / return-vs-exit 2×2 |
+| | `scripting-arguments` | "$@" vs $@ vs "$*" card → arrays + IFS= read -r card → rules |
+| | `scripting-errors` | set -euo pipefail + die + trap EXIT card → where set -e does not stop table → interrupted-run card |
+| | `scripting-publish` | direct write vs temp+rename table → flock + mktemp + chmod + mv card → what rename does not promise |
+| | `scripting-robustness` | log / done-marker / bounded-retry card beside three properties → journalctl + state/ morning-after card |
+| | `scripting-handoff` | interactive vs scheduled table → shell or Python table → before handing over |
 
 ## Invariants — do not break
 

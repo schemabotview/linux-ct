@@ -2,6 +2,7 @@ import { foundations } from './foundations'
 import { files } from './files'
 import { shell } from './shell'
 import { identity } from './identity'
+import { scripting } from './scripting'
 import type { Course, Section } from './types'
 
 // Course registry, in syllabus order (LINUX-COURSE-PLAN.md chapters 1–10). Courses are added here
@@ -11,6 +12,7 @@ export const COURSES: Record<string, Course> = {
   [files.id]: files,
   [shell.id]: shell,
   [identity.id]: identity,
+  [scripting.id]: scripting,
 }
 
 export type { Course, Section }

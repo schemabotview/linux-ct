@@ -3,5 +3,6 @@
   "foundations": "Linux Basics: Kernel, Boot, Shell And Your First Terminal Session",
   "files": "Linux Files And Paths Explained: Inodes, Links, Mounts And find",
   "shell": "Linux Command Line: Pipes, Redirection, Quoting, grep, sed And awk",
-  "identity": "Linux Permissions And Processes: Users, sudo, Signals, Zombies And /proc"
+  "identity": "Linux Permissions And Processes: Users, sudo, Signals, Zombies And /proc",
+  "scripting": "Bash Scripting For Reliable Automation: Errors, Traps, Locks And Retries"
 }
