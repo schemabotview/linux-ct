@@ -76,7 +76,14 @@ percent, free memory ≠ memory pressure, one correlated metric ≠ cause, conta
 
 ## Scene inventory
 
-None yet. List each scene here as it is authored: `id` — course — what it shows — which sections use it.
+| course | scene id | shape |
+| --- | --- | --- |
+| `foundations` | `foundations-layers` | uname / os-release card → running system (user space · kernel · hardware) beside what the distribution decides |
+| | `foundations-boot` | numbered 2×4 boot chain (firmware → session) → systemd-analyze card |
+| | `foundations-command-path` | numbered 2×2 terminal → Bash → /usr/bin/ls → kernel → `type` card → why cd is built in |
+| | `foundations-first-session` | id / $HOME / pwd / mkdir session card → three facts → one relative name, two answers |
+| | `foundations-help` | annotated synopsis card → man / help / man -f card → manual sections table |
+| | `foundations-boundaries` | host / VM / container / WSL table → container uname vs os-release card → macOS is not Linux |
 
 ## Invariants — do not break
 
