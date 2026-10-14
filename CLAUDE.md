@@ -117,6 +117,15 @@ percent, free memory ≠ memory pressure, one correlated metric ≠ cause, conta
 | | `scripting-publish` | direct write vs temp+rename table → flock + mktemp + chmod + mv card → what rename does not promise |
 | | `scripting-robustness` | log / done-marker / bounded-retry card beside three properties → journalctl + state/ morning-after card |
 | | `scripting-handoff` | interactive vs scheduled table → shell or Python table → before handing over |
+| `services` | `services-trust` | deb822 source card → numbered 2×2 key → InRelease → index → .deb beside what-you-are-trusting column |
+| | `services-apt` | apt 3.0 --simulate + dpkg -L / -S card → update / upgrade / remove / purge table |
+| | `services-boot` | stage → lives in → failure table → /proc/cmdline + /boot card → GRUB recovery paths |
+| | `services-systemd` | unit types 3×2 → get-default + list-units card → system vs user manager |
+| | `services-unit` | reportd.service card → systemctl edit drop-in card → After / Wants / Requires table |
+| | `services-lifecycle` | start / enable / reload verbs table → enabled ≠ running, started ≠ ready card → simple vs notify |
+| | `services-logs` | status + journalctl 217/USER failed-start card → logrotate with HUP card → journal vs app files |
+| | `services-timers` | timer + oneshot service card → list-timers + cron.d card → timer vs cron table |
+| | `services-hardening` | hardened [Service] card beside four-kinds-of-control column → systemd-analyze security card |
 
 ## Invariants — do not break
 
